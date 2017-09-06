@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 114110124865200298}
   m_Layer: 0
   m_Name: PlayerNetwork
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1418,6 +1418,8 @@ MonoBehaviour:
   - {fileID: 114691148467136362}
   playerCamera: {fileID: 20000010588761962}
   playerUi: {fileID: 0}
+  pName: player
+  playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114000011804474640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1523,6 +1525,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4390506781828530}
   bulletPrefab: {fileID: 1986693398775490, guid: 43c4d92f03b3058409c4c0c022ce0b89,
     type: 2}
+  paused: 0
 --- !u!114 &114000013940530370
 MonoBehaviour:
   m_ObjectHideFlags: 1

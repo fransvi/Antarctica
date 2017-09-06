@@ -19,13 +19,20 @@ namespace Prototype.NetworkLobby
 
         void Update()
         {
-            if (!isInGame)
-                return;
 
+
+            if (!isInGame)
+            {
+                return;
+            }
+  
+
+            /* TODO Fiksumpi lobbystä poistuminen---->
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ToggleVisibility(!isDisplayed);
             }
+            */
 
         }
 

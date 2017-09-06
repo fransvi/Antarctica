@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -74,13 +75,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void InternalLockUpdate()
         {
-            if(Input.GetKeyUp(KeyCode.Escape))
+
+            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                m_cursorIsLocked = false;
-            }
-            else if(Input.GetMouseButtonUp(0))
-            {
-                m_cursorIsLocked = true;
+                if (player.GetComponent<NetworkIdentity>().isLocalPlayer)
+                {
+                    if (player.GetComponent<FirstPersonController>().paused == true)
+                    {
+                        m_cursorIsLocked = false;
+                    }
+                    else
+                    {
+                        m_cursorIsLocked = true;
+                    }
+                }
             }
 
             if (m_cursorIsLocked)
