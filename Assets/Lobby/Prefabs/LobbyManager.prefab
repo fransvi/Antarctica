@@ -1935,7 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763992d85d3f6d4428454c2a968ce084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInGame: 1
+  isInGame: 0
 --- !u!114 &11426276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3201,7 +3201,7 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: menuScene
+  m_OfflineScene: lobbyScene
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1986693398775490, guid: 43c4d92f03b3058409c4c0c022ce0b89, type: 2}
@@ -3268,7 +3268,7 @@ MonoBehaviour:
     type: 2}
   m_GamePlayerPrefab: {fileID: 1000013247140538, guid: 219ac966ee520124d8cfcbdc016b81f6,
     type: 2}
-  m_LobbyScene: menuScene
+  m_LobbyScene: lobbyScene
   m_PlayScene: gameScene
   lobbySlots: []
   prematchCountdown: 3
@@ -4827,8 +4827,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1039.3477, y: -50}
-  m_SizeDelta: {x: 2078.6953, y: 100}
+  m_AnchoredPosition: {x: 917.442, y: -50}
+  m_SizeDelta: {x: 1834.884, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22434328
 RectTransform:

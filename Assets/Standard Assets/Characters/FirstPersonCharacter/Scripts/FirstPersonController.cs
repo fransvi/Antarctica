@@ -123,10 +123,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_MoveDir.z = desiredMove.z*speed;
             if (!paused)
             {
+                /*
                 if (Input.GetMouseButtonUp(0))
                 {
                     CmdFire();
                 }
+                */
 
 
                 if (m_CharacterController.isGrounded)
@@ -183,6 +185,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             PlayFootStepAudio();
         }
+        /*
         [Command]
         void CmdFire()
         {
@@ -201,7 +204,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Destroy(bullet, 2.0f);
         }
 
-
+    */
         private void PlayFootStepAudio()
         {
             if (!m_CharacterController.isGrounded)
