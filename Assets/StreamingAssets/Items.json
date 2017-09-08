@@ -12,7 +12,7 @@
 		"title": "Lantern",
 		"weight": 1,
 		"description": "Points to north",
-		"stackable": false, 
+		"stackable": true, 
 		"slug": "lantern_item"
 	}
 ]
