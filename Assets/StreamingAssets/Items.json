@@ -1,0 +1,18 @@
+[
+	{
+		"id": 0,
+		"title": "Compass",
+		"weight": 0.2,
+		"description": "Points to north",
+		"stackable": false,
+		"slug": "compass_item"
+	},
+	{
+		"id": 1,
+		"title": "Lantern",
+		"weight": 1,
+		"description": "Points to north",
+		"stackable": false, 
+		"slug": "lantern_item"
+	}
+]
