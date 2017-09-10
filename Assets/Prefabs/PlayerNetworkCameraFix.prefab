@@ -1418,6 +1418,8 @@ MonoBehaviour:
   - {fileID: 114691148467136362}
   playerCamera: {fileID: 20000010588761962}
   playerUi: {fileID: 0}
+  pName: player
+  playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114000011804474640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1523,6 +1525,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 4390506781828530}
   bulletPrefab: {fileID: 1986693398775490, guid: 43c4d92f03b3058409c4c0c022ce0b89,
     type: 2}
+  paused: 0
 --- !u!114 &114000013940530370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1667,8 +1670,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467116a45097bce46aef268ddbfe7dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBarContent: {fileID: 0}
+  staminaBarContent: {fileID: 0}
+  hungerBarContent: {fileID: 0}
+  thirstBarContent: {fileID: 0}
+  temperatureBarContent: {fileID: 0}
   currentHealth: 100
   healthBar: {fileID: 224218391851261178}
+  currentStamina: 100
+  currentHunger: 50
+  currentThirst: 70
+  currentTemperature: 100
+  allowHealthReduction: 0
+  allowStaminaReduction: 0
+  allowHungerReduction: 0
+  allowThirstReduction: 0
+  allowTemperatureReduction: 0
+  allowHealthIncrement: 0
+  allowStaminaIncrement: 0
+  allowHungerIncrement: 0
+  allowThirstIncrement: 0
+  allowTemperatureIncrement: 0
 --- !u!114 &114993932642982150
 MonoBehaviour:
   m_ObjectHideFlags: 1
