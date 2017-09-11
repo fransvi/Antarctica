@@ -8,6 +8,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public Behaviour[] componentsToEnable;
     public Camera playerCamera;
     public GameObject playerUi;
+    public int playerHealth;
 
     [SyncVar]
     public string pName = "player";
@@ -17,6 +18,9 @@ public class NetworkPlayerSetup : NetworkBehaviour
 
     void Update()
     {
+
+        //Might cause lag TODO: better implementation
+        
     }
 
 
@@ -63,6 +67,29 @@ public class NetworkPlayerSetup : NetworkBehaviour
     {
         GetComponent<NetworkAnimator>().SetParameterAutoSend(0, true);
     }
+
+    public void Init()
+    {
+        //Player init through Gamemanager
+    }
+
+    public void EnableLobbyCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+
+    void Awake()
+    {
+        NetworkGameManager.players.Add(this);
+    }
+
+    void OnDestroy()
+    {
+        NetworkGameManager.players.Remove(this);
+    }
+
 
 
 }

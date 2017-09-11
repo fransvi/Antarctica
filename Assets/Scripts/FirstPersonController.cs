@@ -278,6 +278,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+        public void UnlockMouseLook()
+        {
+            m_MouseLook.lockCursor = false;
+        }
+
+ 
 
         private void RotateView()
         {

@@ -55,10 +55,10 @@ namespace Prototype.NetworkLobby
 
         void Start()
         {
+ 
             s_Singleton = this;
             _lobbyHooks = GetComponent<Prototype.NetworkLobby.LobbyHook>();
             currentPanel = mainMenuPanel;
-
             backButton.gameObject.SetActive(false);
             GetComponent<Canvas>().enabled = true;
 
@@ -66,6 +66,13 @@ namespace Prototype.NetworkLobby
 
             SetServerInfo("Offline", "None");
         }
+
+        private void Update()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
 
         public override void OnLobbyClientSceneChanged(NetworkConnection conn)
         {

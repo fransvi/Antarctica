@@ -37,6 +37,7 @@ public class PlayerHealth : NetworkBehaviour
 
     public void Start()
     {
+        GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
         healthBarContent = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
         staminaBarContent = transform.GetChild(5).GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>();
         hungerBarContent = transform.GetChild(5).GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>();
@@ -104,6 +105,7 @@ public class PlayerHealth : NetworkBehaviour
         //Debug.Log("reducing health...");
         currentHealth -= amount;
         healthBarContent.fillAmount -= 0.01f;
+        GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
         allowHealthReduction = true;
     }
 
