@@ -87,7 +87,9 @@ public class PlayerHealth : NetworkBehaviour
 
     void OnChangeHealth(int health)
     {
+        currentHealth = health;
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
+
     }
 
     IEnumerator IncreaseHealth(int amount, float frequency)
@@ -99,7 +101,7 @@ public class PlayerHealth : NetworkBehaviour
     IEnumerator ReduceHealth(int amount, float frequency)
     {
         yield return new WaitForSeconds(frequency);
-        Debug.Log("reducing health...");
+        //Debug.Log("reducing health...");
         currentHealth -= amount;
         healthBarContent.fillAmount -= 0.01f;
         allowHealthReduction = true;

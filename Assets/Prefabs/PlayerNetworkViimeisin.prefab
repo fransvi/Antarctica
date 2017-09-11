@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 223834250653908472}
   - component: {fileID: 114403278479472378}
   - component: {fileID: 114947960072824538}
+  - component: {fileID: 114061408051301534}
   m_Layer: 5
   m_Name: WorldSpaceHealthbarCanvas
   m_TagString: Untagged
@@ -177,7 +178,7 @@ GameObject:
   - component: {fileID: 95800039982862660}
   - component: {fileID: 114290574513513124}
   m_Layer: 0
-  m_Name: PlayerNetwork 1
+  m_Name: PlayerNetworkViimeisin
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,6 +607,7 @@ GameObject:
   - component: {fileID: 223963852861623072}
   - component: {fileID: 114965671430576010}
   - component: {fileID: 114807933800102440}
+  - component: {fileID: 114479293650146974}
   m_Layer: 5
   m_Name: HealthBarCanvas
   m_TagString: Untagged
@@ -1048,7 +1050,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05820465, y: 0.5, z: 4.130776}
+  m_LocalPosition: {x: 2.8339925, y: 0.5, z: 8.099071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419989092079774}
@@ -1734,6 +1736,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114061408051301534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099850500828332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 131
+    i1: 66
+    i2: 75
+    i3: 102
+    i4: 186
+    i5: 66
+    i6: 147
+    i7: 132
+    i8: 123
+    i9: 119
+    i10: 249
+    i11: 246
+    i12: 35
+    i13: 224
+    i14: 46
+    i15: 223
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114095157236052858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1951,7 +1985,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 467116a45097bce46aef268ddbfe7dc8, type: 3}
   m_Name: 
@@ -2009,6 +2043,38 @@ MonoBehaviour:
     i15: 223
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114479293650146974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587858584347474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 131
+    i1: 66
+    i2: 75
+    i3: 102
+    i4: 186
+    i5: 66
+    i6: 147
+    i7: 132
+    i8: 123
+    i9: 119
+    i10: 249
+    i11: 246
+    i12: 35
+    i13: 224
+    i14: 46
+    i15: 223
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114508577440666072
 MonoBehaviour:
   m_ObjectHideFlags: 1
