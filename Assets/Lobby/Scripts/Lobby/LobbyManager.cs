@@ -69,6 +69,11 @@ namespace Prototype.NetworkLobby
 
         private void Update()
         {
+            //ActivateCursor();
+        }
+
+        public void ActivateCursor()
+        {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

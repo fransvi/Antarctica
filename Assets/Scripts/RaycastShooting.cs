@@ -34,16 +34,37 @@ public class RaycastShooting : NetworkBehaviour
 
     public void CmdShootRayCast()
     {
+
+
         nextFire = Time.time + fireRate;
 
         StartCoroutine(ShotEffect());
 
         Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
 
-        RaycastHit hit;
+        //RaycastHit hit;
 
         laserLine.SetPosition(0, gunEnd.position);
 
+        RaycastHit[] hits;
+
+        hits = Physics.RaycastAll(rayOrigin, fpsCam.transform.forward, weaponRange);
+
+        foreach (RaycastHit h in hits)
+        {
+            if (h.transform.CompareTag("Interactable"))
+            {
+                h.rigidbody.AddForce(-h.normal * hitForce);
+                laserLine.SetPosition(1, h.point);
+            }
+            else
+            {
+                laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+            }
+        }
+
+
+        /*
         if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
         {
             laserLine.SetPosition(1, hit.point);
@@ -54,28 +75,28 @@ public class RaycastShooting : NetworkBehaviour
                 health.Damage(gunDamage);
             }
 
+            
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(-hit.normal * hitForce);
             }
+            
         }
         else
         {
             laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
         }
+        */
     }
 
 
     void Update()
     {
-
-        
-
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
-        {
-            CmdShootRayCast();
-        }
-
+ 
+            if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+            {
+                CmdShootRayCast();
+            }
 
     }
 

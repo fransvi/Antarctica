@@ -72,7 +72,7 @@ public class NetworkGameManager : NetworkBehaviour
     {
         _running = false;
         yield return new WaitForSeconds(3.0f);
-
+        LobbyManager.s_Singleton.ActivateCursor();
         //TODO: Make Gameover screen to replace following to throw players out when one is dead
         LobbyManager.s_Singleton.ServerReturnToLobby();
     }
