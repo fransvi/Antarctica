@@ -31,6 +31,7 @@ public class Inventory : MonoBehaviour
         {
             items.Add(new Item());
             slots.Add(Instantiate(inventorySlot));//luodaan uusia slotteja listaan
+            slots[i].GetComponent<Slot>().id = i; // asetetaan kyseisen slotin id-muuttujaan id-numero
             slots[i].transform.SetParent(slotPanel.transform);//asetetaan uudet slotit olemaan slotPanelin lapsia
         }
         AddItem(0);
@@ -42,7 +43,7 @@ public class Inventory : MonoBehaviour
         AddItem(1);
     }
 
-    //Lisää esineen jolle annetaan esineen id
+    //Lisää esineprefabin ja asettaa arvot annetun id perusteella
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemById(id);// täyttää kyseisen esineobjektin sillä kyseisellä id:llä olevan esineen databasesta
@@ -71,7 +72,8 @@ public class Inventory : MonoBehaviour
                 {
                     items[i] = itemToAdd;//vie kyseisen inventoryn paikkaan haetun esineen
                     GameObject itemObj = Instantiate(inventoryItem); //luo fyysisen kopion esineprefabista
-                    itemObj.GetComponent<ItemData>().item = itemToAdd; //
+                    itemObj.GetComponent<ItemData>().item = itemToAdd; //Asettaa tiedon itemdata-luokan item muuttujalle siitä mikä esine luotiin
+                    itemObj.GetComponent<ItemData>().slotLocation = i; //päivitetään tieto siitä missä slotissa esine on slotin oman järjestys id:n mukaan
                     itemObj.transform.SetParent(slots[i].transform); //Asettaa esineen olemaan slotin lapsi
                     itemObj.transform.position = Vector2.zero;
                     itemObj.GetComponent<Image>().sprite = itemToAdd.Sprite;// Asettaa prefabin source imagen olemaan esineen nimen mukainen Sprite
@@ -82,11 +84,5 @@ public class Inventory : MonoBehaviour
 
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
