@@ -11,7 +11,7 @@
 		"id": 1,
 		"title": "Lantern",
 		"weight": 1,
-		"description": "Points to north",
+		"description": "Lights the way",
 		"stackable": true, 
 		"slug": "lantern_item"
 	}

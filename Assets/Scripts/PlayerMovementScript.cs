@@ -6,11 +6,15 @@ using UnityEngine;
 public class PlayerMovementScript : NetworkBehaviour {
 
     public Animator playerAnimator;
+    private GameObject inventory;
+    bool inventoryActive = false;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        inventory = GameObject.Find("InventoryPanel");
+        inventory.SetActive(false);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -44,6 +48,15 @@ public class PlayerMovementScript : NetworkBehaviour {
             {
                 playerAnimator.SetBool("isRunning", false);
             }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                Debug.Log("inventory avattu/suljettu");
+                if (inventoryActive == false)
+                    inventory.SetActive(true);
+                else if (inventoryActive == true)
+                    inventory.SetActive(false);
+            }
+            
 
         }
 

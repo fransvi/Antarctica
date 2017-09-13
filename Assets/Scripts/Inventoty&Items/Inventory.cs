@@ -64,8 +64,6 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-
-            Debug.Log(itemToAdd.Slug);
             for (int i = 0; i < items.Count; i++)
             {
                 if (items[i].ID == -1)//tsekkaa onko esine olemsassa
@@ -73,6 +71,7 @@ public class Inventory : MonoBehaviour
                     items[i] = itemToAdd;//vie kyseisen inventoryn paikkaan haetun esineen
                     GameObject itemObj = Instantiate(inventoryItem); //luo fyysisen kopion esineprefabista
                     itemObj.GetComponent<ItemData>().item = itemToAdd; //Asettaa tiedon itemdata-luokan item muuttujalle siitä mikä esine luotiin
+                    itemObj.GetComponent<ItemData>().amount = 1;
                     itemObj.GetComponent<ItemData>().slotLocation = i; //päivitetään tieto siitä missä slotissa esine on slotin oman järjestys id:n mukaan
                     itemObj.transform.SetParent(slots[i].transform); //Asettaa esineen olemaan slotin lapsi
                     itemObj.transform.position = Vector2.zero;

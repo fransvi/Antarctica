@@ -36,7 +36,7 @@ public class Slot : MonoBehaviour, IDropHandler {
         }
         else
         {
-
+            // tämä kohta hoitaa sitä tapahtumaa, kun slotissa on esine. Esineet vaihtavat paikkaa
             Transform item = this.transform.GetChild(0);
             item.GetComponent<ItemData>().slotLocation = droppedItem.slotLocation;
             item.transform.SetParent(inventory.slots[droppedItem.slotLocation].transform);
