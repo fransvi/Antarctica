@@ -34,13 +34,16 @@ public class Inventory : MonoBehaviour
             slots[i].GetComponent<Slot>().id = i; // asetetaan kyseisen slotin id-muuttujaan id-numero
             slots[i].transform.SetParent(slotPanel.transform);//asetetaan uudet slotit olemaan slotPanelin lapsia
         }
-        AddItem(0);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
-        AddItem(1);
+
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddItem(0);
+        }
     }
 
     //Lisää esineprefabin ja asettaa arvot annetun id perusteella
@@ -74,7 +77,7 @@ public class Inventory : MonoBehaviour
                     itemObj.GetComponent<ItemData>().amount = 1;
                     itemObj.GetComponent<ItemData>().slotLocation = i; //päivitetään tieto siitä missä slotissa esine on slotin oman järjestys id:n mukaan
                     itemObj.transform.SetParent(slots[i].transform); //Asettaa esineen olemaan slotin lapsi
-                    itemObj.transform.position = Vector2.zero;
+                    itemObj.transform.position = slots[i].transform.position;
                     itemObj.GetComponent<Image>().sprite = itemToAdd.Sprite;// Asettaa prefabin source imagen olemaan esineen nimen mukainen Sprite
                     itemObj.name = itemToAdd.Title;// Asettaa slotissa olevien esineiden nimeksi databasessa olevan nimen. Tämä näkyy inspectorissa
 

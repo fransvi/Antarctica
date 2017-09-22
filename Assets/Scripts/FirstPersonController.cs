@@ -43,9 +43,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        private GameObject inventory;
+        private Inventory inv;
+        private Tooltip tooltip;
+        private GameObject inventorypanel;
         bool inventoryActive = false;
-        public Transform bulletSpawn;
+        public Transform bulletSpawn; 
         public GameObject bulletPrefab;
 
         public bool paused =false;
@@ -65,8 +67,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-            inventory = GameObject.Find("InventoryPanel");
-            inventory.SetActive(false);
+            inventorypanel = GameObject.Find("InventoryPanel");
+            inventorypanel.SetActive(false);
+
+            inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan p‰‰sy inventory objektiin
+            tooltip = inv.GetComponent<Tooltip>();
         }
 
 
@@ -106,14 +111,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 Debug.Log("inventory avattu/suljettu");
                 if (inventoryActive == false)
                 {
+                    
                     m_MouseLook.SetCursorLock(false);
-                    inventory.SetActive(true);
+                    inventorypanel.SetActive(true);
                     inventoryActive = true;
                 }
                 else if (inventoryActive == true)
                 {
                     m_MouseLook.SetCursorLock(true);
-                    inventory.SetActive(false);
+                    tooltip.Deactivate();
+                    inventorypanel.SetActive(false);
                     inventoryActive = false;
                 }
             }
