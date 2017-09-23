@@ -26,7 +26,6 @@ public class SetSunLight : MonoBehaviour
     {
 
         stars.transform.rotation = transform.rotation;
-
         Vector3 tvec = Camera.main.transform.position;
         worldProbe.transform.position = tvec;
 

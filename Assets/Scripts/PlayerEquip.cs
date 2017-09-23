@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerEquip : MonoBehaviour {
 
+    public GameObject[] _currentItems;
     public GameObject _lantern;
     private bool _active = false;
 
