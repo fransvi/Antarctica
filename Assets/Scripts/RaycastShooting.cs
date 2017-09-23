@@ -54,13 +54,27 @@ public class RaycastShooting : NetworkBehaviour
         {
             if (h.transform.CompareTag("Interactable"))
             {
+
                 h.rigidbody.AddForce(-h.normal * hitForce);
                 laserLine.SetPosition(1, h.point);
             }
-            else
+            if (h.transform.CompareTag("Door"))
             {
-                laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+                Debug.Log("Door hit");
+                if (h.transform.GetComponent<Animator>().GetBool("isOpen"))
+                {
+                    h.transform.GetComponent<DoorController>().CloseDoor();
+                }
+                else
+                {
+                    h.transform.GetComponent<DoorController>().OpenDoor();
+                }
+
+
             }
+            
+            laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+            
         }
 
 
