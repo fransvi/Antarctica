@@ -138,7 +138,7 @@ MonoBehaviour:
     serializedVersion: 2
     key0: {r: 0, g: 0.39224142, b: 0.6691177, a: 1}
     key1: {r: 0, g: 0.32576078, b: 0.64705884, a: 1}
-    key2: {r: 1, g: 0.64137936, b: 0, a: 0}
+    key2: {r: 0.9485294, g: 0.6476167, b: 0, a: 0}
     key3: {r: 1, g: 0.93103445, b: 0, a: 0}
     key4: {r: 0.9829615, g: 1, b: 0.8235294, a: 0}
     key5: {r: 1, g: 1, b: 1, a: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 6
     m_NumAlphaKeys: 2
-  maxIntensity: 3
+  maxIntensity: 1
   minIntensity: 0
   minPoint: -0.2
   maxAmbient: 1
@@ -202,14 +202,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: -0.037082672
-      value: 0.578125
+      time: -1.108017
+      value: 0.9069519
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 1.157608
-      value: -0.28632736
+      time: 1.0076294
+      value: -0.0054397583
       inSlope: 0
       outSlope: 0
       tangentMode: 0

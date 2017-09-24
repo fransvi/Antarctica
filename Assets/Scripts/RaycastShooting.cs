@@ -61,6 +61,7 @@ public class RaycastShooting : NetworkBehaviour
             if (h.transform.CompareTag("Door"))
             {
                 Debug.Log("Door hit");
+                
                 if (h.transform.GetComponent<Animator>().GetBool("isOpen"))
                 {
                     h.transform.GetComponent<DoorController>().CloseDoor();
@@ -69,6 +70,7 @@ public class RaycastShooting : NetworkBehaviour
                 {
                     h.transform.GetComponent<DoorController>().OpenDoor();
                 }
+                
 
 
             }
