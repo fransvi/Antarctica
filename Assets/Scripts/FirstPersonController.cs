@@ -4,6 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityEngine.Networking;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -167,10 +168,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     if (m_Jump)
                     {
+                        
                         m_MoveDir.y = m_JumpSpeed;
                         PlayJumpSound();
                         m_Jump = false;
                         m_Jumping = true;
+                        
                     }
                 }
                 else

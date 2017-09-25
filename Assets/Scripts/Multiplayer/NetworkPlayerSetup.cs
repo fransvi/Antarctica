@@ -31,7 +31,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
         Renderer[] rend = GetComponentsInChildren<Renderer>();
         foreach (Renderer r in rend)
         {
-            r.material.color = playerColor;
+            //r.material.color = playerColor;
         }
     }
 
