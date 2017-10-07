@@ -21,7 +21,7 @@ public class RaycastShooting : NetworkBehaviour
     private bool isGrabbed;
     private Rigidbody grabbedObject;
 
-
+    private Inventory inv;
 
     void Start()
     {
@@ -30,6 +30,8 @@ public class RaycastShooting : NetworkBehaviour
         fpsCam = GetComponentInParent<Camera>();
 
         isGrabbed = false;
+
+        inv = GameObject.Find("Inventory").GetComponent<Inventory>();
     }
 
     public void CmdShootRayCast()
@@ -70,11 +72,17 @@ public class RaycastShooting : NetworkBehaviour
                 {
                     h.transform.GetComponent<DoorController>().OpenDoor();
                 }
-                
+            }
+            if (h.transform.CompareTag("Item"))
+            {
+                Debug.Log("Item hit");
 
+                inv.AddItem(h.transform.GetComponent<ItemPick>().id);
+                Destroy(h.transform.gameObject);
+                //h.transform.GetComponent<ItemPick>().Destroy();
 
             }
-            
+
             laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
             
         }

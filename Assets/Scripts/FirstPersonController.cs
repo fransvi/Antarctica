@@ -80,7 +80,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Update()
         {
             
-  
 
             if (!paused)
             {
