@@ -76,10 +76,10 @@ public class RaycastShooting : NetworkBehaviour
             if (h.transform.CompareTag("Item"))
             {
                 Debug.Log("Item hit");
-
+                
                 inv.AddItem(h.transform.GetComponent<ItemPick>().id);
+                
                 Destroy(h.transform.gameObject);
-                //h.transform.GetComponent<ItemPick>().Destroy();
 
             }
 

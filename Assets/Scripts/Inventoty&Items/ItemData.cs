@@ -4,16 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
     public Item item;
+
+    public int id;
     public int amount;
     public int slotLocation;
-
+     
     //private Transform originalSlot;
     private Inventory inv;
     private Tooltip tooltip;
+    private PlayerEquip equip;
 
 
     // Use this for initialization
@@ -67,12 +70,23 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tooltip.Activate(item);
+        tooltip.Activate(item);//Aktivoi tooltipin kun hoveraa päällä
 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.Deactivate();
+        tooltip.Deactivate();//Deaktivoi kun poistutaan
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (item != null)//tsekkaus onko asia jota halutaan käyttää esine 
+        {
+            Transform apu = GameObject.Find("Equipment").transform;
+
+            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + eventData.pointerPress.name), apu);
+            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+        }
     }
 }

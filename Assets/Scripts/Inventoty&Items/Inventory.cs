@@ -75,6 +75,7 @@ public class Inventory : MonoBehaviour
                     GameObject itemObj = Instantiate(inventoryItem); //luo fyysisen kopion esineprefabista
                     itemObj.GetComponent<ItemData>().item = itemToAdd; //Asettaa tiedon itemdata-luokan item muuttujalle siitä mikä esine luotiin
                     itemObj.GetComponent<ItemData>().amount = 1;
+                    itemObj.GetComponent<ItemData>().id = id;
                     itemObj.GetComponent<ItemData>().slotLocation = i; //päivitetään tieto siitä missä slotissa esine on slotin oman järjestys id:n mukaan
                     itemObj.transform.SetParent(slots[i].transform); //Asettaa esineen olemaan slotin lapsi
                     itemObj.transform.position = slots[i].transform.position;
