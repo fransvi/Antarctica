@@ -23,17 +23,23 @@ public class PlayerHealth : NetworkBehaviour
     public int currentThirst;
     public int currentTemperature;
 
-    public bool allowHealthReduction;
-    public bool allowStaminaReduction;
-    public bool allowHungerReduction;
-    public bool allowThirstReduction;
-    public bool allowTemperatureReduction;
+    public float healthIncreaseCooldown;
+    public float staminaIncreaseCooldown;
+    public float hungerIncreaseCooldown;
+    public float thirstIncreaseCooldown;
+    public float temperatureIncreaseCooldown;
 
-    public bool allowHealthIncrement;
-    public bool allowStaminaIncrement;
-    public bool allowHungerIncrement;
-    public bool allowThirstIncrement;
-    public bool allowTemperatureIncrement;
+    public float healthReductionCooldown;
+    public float staminaReductionCooldown;
+    public float hungerReductionCooldown;
+    public float thirstReductionCooldown;
+    public float temperatureReductionCooldown;
+
+    public bool startHealthIncrement;
+    public bool startStaminaIncrement;
+    public bool startHungerIncrement;
+    public bool startThirstIncrement;
+    public bool startTemperatureIncrement;
 
     public bool startHealthReduction;
     public bool startStaminaReduction;
@@ -42,6 +48,11 @@ public class PlayerHealth : NetworkBehaviour
     public bool startTemperatureReduction;
 
     public void Start()
+    {
+        SetInitialReferences();
+    }
+
+    void SetInitialReferences()
     {
         GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
         healthBarContent = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
@@ -56,105 +67,34 @@ public class PlayerHealth : NetworkBehaviour
         currentThirst = (int)(thirstBarContent.fillAmount * 100);
         currentTemperature = (int)(temperatureBarContent.fillAmount * 100);
 
-        startHealthReduction = true;
-        startStaminaReduction = true;
+        startHealthIncrement = false;
+        startStaminaIncrement = false;
+        startHungerIncrement = false;
+        startThirstIncrement = false;
+        startTemperatureIncrement = false;
+
+        startHealthReduction = false;
+        startStaminaReduction = false;
         startHungerReduction = true;
         startThirstReduction = true;
         startTemperatureReduction = true;
 
-        //allowHealthReduction = true;
-        //allowStaminaReduction = true;
-        allowHungerReduction = true;
-        allowThirstReduction = true;
-        allowTemperatureReduction = true;
+        healthIncreaseCooldown = 0f;
+        staminaIncreaseCooldown = 0f;
+        hungerIncreaseCooldown = 0f;
+        thirstIncreaseCooldown = 0f;
+        temperatureIncreaseCooldown = 0f;
+
+        healthReductionCooldown = 0f;
+        staminaReductionCooldown = 0f;
+        hungerReductionCooldown = 0f;
+        thirstReductionCooldown = 0f;
+        temperatureReductionCooldown = 0f;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-        if (startHungerReduction)
-        {
-            if (allowHungerReduction)
-            {
-                allowHungerReduction = false;
-                StartCoroutine(ReduceHunger(1, 3f));
-            }
-        }
-        else
-        {
-            if (allowHungerIncrement)
-            {
-                allowHungerIncrement = false;
-                StartCoroutine(IncreaseHunger(1, 1f));
-            }
-        }
-
-        if (startThirstReduction)
-        {
-            if (allowThirstReduction)
-            {
-                allowThirstReduction = false;
-                StartCoroutine(ReduceThirst(1, 2f));
-            }
-        }
-        else
-        {
-            if (allowThirstIncrement)
-            {
-                allowThirstIncrement = false;
-                StartCoroutine(IncreaseThirst(1, 1f));
-            }
-        }
-
-        if (startTemperatureReduction)
-        {
-            if (allowTemperatureReduction)
-            {
-                allowTemperatureReduction = false;
-                StartCoroutine(LowerTemperature(1, 1f));
-            }
-        }
-        else
-        {
-            if (allowTemperatureIncrement)
-            {
-                allowTemperatureIncrement = false;
-                StartCoroutine(IncreaseTemperature(1, 1f));
-            }
-        }
-
-        if (startStaminaReduction)
-        {
-            if (allowStaminaReduction)
-            {
-                allowStaminaReduction = false;
-                StartCoroutine(ReduceStamina(1, 1f));
-            }
-        }
-        else
-        {
-            if (allowStaminaIncrement)
-            {
-                allowStaminaIncrement = false;
-                StartCoroutine(IncreaseStamina(1, 1f));
-            }
-        }
-
-        if (startHealthReduction)
-        {
-            if (allowHealthReduction)
-            {
-                allowHealthReduction = false;
-                StartCoroutine(ReduceHealth(1, 1f));
-            }
-        }
-        else
-        {
-            if (allowHealthIncrement)
-            {
-                allowHealthIncrement = false;
-                StartCoroutine(IncreaseHealth(1, 1f));
-            }
-        }
+        IncrmentOrDecreaseStatsOverTime();
     }
 
     public void TakeDamage(int amount)
@@ -176,87 +116,183 @@ public class PlayerHealth : NetworkBehaviour
         healthBar.sizeDelta = new Vector2(health, healthBar.sizeDelta.y);
     }
 
-    IEnumerator IncreaseHealth(int amount, float frequency)
+    // Controls wether to reduce or increment health, stamina, hunger, thirst and temperature over time
+    public void IncrmentOrDecreaseStatsOverTime()
     {
-        yield return new WaitForSeconds(frequency);
-        currentHealth += amount;
+        if (startHungerReduction)
+        {
+            if (hungerReductionCooldown <= Time.time)
+            {
+                ReduceHunger(1, 3f);
+            }
+        }
+        else if (startHungerIncrement)
+        {
+            if (hungerIncreaseCooldown <= Time.time)
+            {
+                IncreaseHunger(1, 1f);
+            }
+        }
+
+        if (startThirstReduction)
+        {
+            if (thirstReductionCooldown <= Time.time)
+            {
+                ReduceThirst(1, 2f);
+            }
+        }
+        else if (startThirstIncrement)
+        {
+            if (thirstIncreaseCooldown <= Time.time)
+            {
+                IncreaseThirst(1, 1f);
+            }
+        }
+
+        if (startTemperatureReduction)
+        {
+            if (temperatureReductionCooldown <= Time.time)
+            {
+                LowerTemperature(1, 1f);
+            }
+        }
+        else if (startTemperatureIncrement)
+        {
+            if (temperatureIncreaseCooldown <= Time.time)
+            {
+                IncreaseTemperature(1, 1f);
+            }
+        }
+
+        if (startStaminaReduction)
+        {
+            if (staminaReductionCooldown <= Time.time)
+            {
+                ReduceStamina(1, 1f);
+            }
+        }
+        else if (startStaminaIncrement)
+        {
+            if (staminaIncreaseCooldown <= Time.time)
+            {
+                IncreaseStamina(1, 1f);
+            }
+        }
+
+        if (startHealthReduction)
+        {
+            if (healthReductionCooldown <= Time.time)
+            {
+                ReduceHealth(1, 1f);
+            }
+        }
+        else if (startHealthIncrement)
+        {
+            if (healthIncreaseCooldown <= Time.time)
+            {
+                IncreaseHealth(1, 1f);
+            }
+        }
     }
 
-    IEnumerator ReduceHealth(int amount, float frequency)
+    // increase health over time
+    void IncreaseHealth(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
+        currentHealth += amount;
+
+        healthIncreaseCooldown = Time.time + frequency;
+    }
+
+    // reduce health over time
+    void ReduceHealth(int amount, float frequency)
+    {
+        Debug.Log("reducing hp by: " + amount);
+
         currentHealth -= amount;
         healthBarContent.fillAmount -= (amount / 100f);
         GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
-        allowHealthReduction = true;
+
+        healthReductionCooldown = Time.time + frequency;
     }
 
-    IEnumerator IncreaseHunger(int amount, float frequency)
+    // increase hunger over time (or the lack of it, increase is actually good with this stat
+    void IncreaseHunger(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         currentHunger += amount;
+
+        hungerIncreaseCooldown = Time.time + frequency;
     }
 
-    IEnumerator ReduceHunger(int amount, float frequency)
+    // reduce hunger over time (except for temperature bar, when bar fillAmount is reduced its bad for the player)
+    void ReduceHunger(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         if (currentHunger > 0)
         {
             currentHunger -= amount;
             hungerBarContent.fillAmount -= (amount / 100f);
         }
-        else StartCoroutine(ReduceStamina(2, 1f));
+        else ReduceStamina(2, frequency);
 
-        allowHungerReduction = true;
+        hungerReductionCooldown = Time.time + frequency;
     }
 
-    IEnumerator IncreaseThirst(int amount, float frequency)
+    // increase thirst over time
+    void IncreaseThirst(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         currentThirst += amount;
+
+        thirstIncreaseCooldown = Time.time + frequency;
     }
 
-    IEnumerator ReduceThirst(int amount, float frequency)
+    // reduce thirst over time
+    void ReduceThirst(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         if (currentThirst > 0)
         {
             currentThirst -= amount;
             thirstBarContent.fillAmount -= (amount / 100f);
         }
-        else StartCoroutine(ReduceStamina(1, 1f));
+        else ReduceStamina(1, frequency);
 
-        allowThirstReduction = true;
+        thirstReductionCooldown = Time.time + frequency;
     }
 
-    IEnumerator IncreaseStamina(int amount, float frequency)
+    // increase stamina over time
+    void IncreaseStamina(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         currentStamina += amount;
+
+        staminaIncreaseCooldown = Time.time + frequency;
     }
 
-    IEnumerator ReduceStamina(int amount, float frequency)
+    // reduce stamina over time
+    void ReduceStamina(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         if (currentStamina > 0)
         {
             currentStamina -= amount;
             staminaBarContent.fillAmount -= (amount / 100f);
         }
-        else StartCoroutine(ReduceHealth(1, 1f));
+        else {
+            currentStamina = 0;
+            staminaBarContent.fillAmount = 0;
+            ReduceHealth(1, frequency);
+        }
 
-        allowStaminaReduction = true;
+        staminaReductionCooldown = Time.time + frequency;
     }
 
-    IEnumerator IncreaseTemperature(int amount, float frequency)
+    // increase temperature over time
+    void IncreaseTemperature(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         currentTemperature -= amount;
+
+        temperatureIncreaseCooldown = Time.time + frequency;
     }
 
-    IEnumerator LowerTemperature(int amount, float frequency)
+    // decrease temperature over time
+    void LowerTemperature(int amount, float frequency)
     {
-        yield return new WaitForSeconds(frequency);
         if (currentTemperature < 100)
         {
             currentTemperature += amount;
@@ -264,25 +300,67 @@ public class PlayerHealth : NetworkBehaviour
         }
         if (currentTemperature >= 100)
         {
-            StartCoroutine(ReduceStamina(5, 1f));
+            ReduceStamina(5, frequency);
         }
         else if (currentTemperature >= 80)
         {
-            StartCoroutine(ReduceStamina(4, 1f));
+            ReduceStamina(4, frequency);
         }
         else if (currentTemperature >= 60)
         {
-            StartCoroutine(ReduceStamina(3, 1f));
+            ReduceStamina(3, frequency);
         }
         else if (currentTemperature >= 40)
         {
-            StartCoroutine(ReduceStamina(2, 1f));
+            ReduceStamina(2, frequency);
         }
         else if (currentTemperature >= 20)
         {
-            StartCoroutine(ReduceStamina(1, 1f));
+            ReduceStamina(1, frequency);
         }
 
-        allowTemperatureReduction = true;
+        temperatureReductionCooldown = Time.time + frequency;
+    }
+
+    // instantly increase health
+    void InstantlyIncreaseHealth(int amount)
+    {
+        currentHealth += amount;
+        healthBarContent.fillAmount += (amount / 100f);
+    }
+
+    // instantly reduce health
+    void InstantlyReduceHealth(int amount)
+    {
+        currentHealth -= amount;
+        healthBarContent.fillAmount -= (amount / 100f);
+    }
+
+    // instantly increase stamina
+    void InstantlyIncreaseStamina(int amount)
+    {
+        currentStamina += amount;
+        staminaBarContent.fillAmount += (amount / 100f);
+    }
+
+    // instantly reduce stamina
+    void InstantlyReduceStamina(int amount)
+    {
+        currentStamina -= amount;
+        staminaBarContent.fillAmount -= (amount / 100f);
+    }
+
+    // instantly increase temperature
+    void InstantlyIncreaseTemperature(int amount)
+    {
+        currentTemperature += amount;
+        temperatureBarContent.fillAmount += (amount / 100f);
+    }
+
+    // instantly reduce temperature
+    void InstantlyReduceTemperature(int amount)
+    {
+        currentTemperature -= amount;
+        temperatureBarContent.fillAmount -= (amount / 100f);
     }
 }
