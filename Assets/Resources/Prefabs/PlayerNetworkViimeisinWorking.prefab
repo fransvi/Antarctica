@@ -1591,7 +1591,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1023719769097318}
   m_LocalRotation: {x: -0.34639397, y: -0, z: -0, w: 0.9380892}
-  m_LocalPosition: {x: -12.827524, y: -4.455, z: 0.4105968}
+  m_LocalPosition: {x: -20.824419, y: -4.455, z: 0.07172087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4358581687156544}
@@ -3190,6 +3190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentItems: []
   _lantern: {fileID: 1386387850989894}
+  _compass: {fileID: 0}
 --- !u!114 &114922783484548676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3341,6 +3342,7 @@ MonoBehaviour:
   playerCamera: {fileID: 20727564956231346}
   playerUi: {fileID: 0}
   playerHealth: 0
+  inVehicle: 0
   pName: player
   playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114940348070149342

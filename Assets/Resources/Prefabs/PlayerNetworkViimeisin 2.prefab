@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 114290574513513124}
   - component: {fileID: 114145685637292314}
   - component: {fileID: 114885509757012920}
+  - component: {fileID: 114780770190754640}
   m_Layer: 0
   m_Name: PlayerNetworkViimeisin 2
   m_TagString: Player
@@ -4511,6 +4512,26 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114780770190754640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178771245328552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151f25885e1c86648a8722449d0887b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCam: {fileID: 0}
+  FPSCon: {fileID: 0}
+  PlayerModel: {fileID: 0}
+  PlayerHealthBar: {fileID: 0}
+  PlayerColliders: {fileID: 0}
+  Player: {fileID: 0}
+  Vehicle: {fileID: 0}
+  carParent: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!114 &114792103332892068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4767,6 +4788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentItems: []
   _lantern: {fileID: 0}
+  _compass: {fileID: 0}
 --- !u!114 &114922783484548676
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4918,6 +4940,7 @@ MonoBehaviour:
   playerCamera: {fileID: 20727564956231346}
   playerUi: {fileID: 0}
   playerHealth: 0
+  inVehicle: 0
   pName: player
   playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114947960072824538
@@ -5020,6 +5043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff366ada6e2634a43b5af581a9790e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equiped: 0
   euipButton: {fileID: 114975484054181418}
   dropButton: {fileID: 114792103332892068}
 --- !u!114 &114984113073885710
