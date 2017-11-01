@@ -8,9 +8,6 @@ TagManager:
   - Door
   - WorldProbe
   - Item
-  - Fire
-  - Vehicle
-  - VehicleBase
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,6 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public Camera playerCamera;
     public GameObject playerUi;
     public int playerHealth;
-    public bool inVehicle;
 
     [SyncVar]
     public string pName = "player";
@@ -21,11 +20,6 @@ public class NetworkPlayerSetup : NetworkBehaviour
     {
 
         //Might cause lag TODO: better implementation
-        if (inVehicle)
-        {
-            
-        }
-
         
     }
 
@@ -40,7 +34,6 @@ public class NetworkPlayerSetup : NetworkBehaviour
             //r.material.color = playerColor;
         }
     }
-
 
 
     public override void OnStartLocalPlayer()
@@ -85,7 +78,6 @@ public class NetworkPlayerSetup : NetworkBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-
 
 
     void Awake()

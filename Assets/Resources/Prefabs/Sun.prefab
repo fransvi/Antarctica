@@ -39,8 +39,6 @@ GameObject:
   - component: {fileID: 108109738760927128}
   - component: {fileID: 114034049921410318}
   - component: {fileID: 114688003839618912}
-  - component: {fileID: 114877259513451122}
-  - component: {fileID: 114588090802997758}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -107,20 +105,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -137,30 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   water: {fileID: 23143069512825744, guid: da38b92eccf0de744af8e629e349b3cc, type: 2}
-  activeCamera: {fileID: 0}
   stars: {fileID: 4517560361715584, guid: cebf01441b9f4fd459eb1d109f6fd822, type: 2}
   worldProbe: {fileID: 4681015503067082, guid: 83424b66ba4293847b77f9f623e02edf, type: 2}
---- !u!114 &114588090802997758
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1995813551931066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114688003839618912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,40 +219,8 @@ MonoBehaviour:
   fogScale: 1
   dayAtmosphereThickness: 1.25
   nightAtmosphereThickness: 1.4
-  dayRotateSpeed: {x: -0.2, y: 0, z: 0}
-  nightRotateSpeed: {x: -0.3, y: 0, z: 0}
---- !u!114 &114877259513451122
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1995813551931066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 241
-    i1: 247
-    i2: 165
-    i3: 148
-    i4: 174
-    i5: 82
-    i6: 194
-    i7: 244
-    i8: 202
-    i9: 55
-    i10: 58
-    i11: 209
-    i12: 199
-    i13: 194
-    i14: 248
-    i15: 6
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  dayRotateSpeed: {x: -2, y: 0, z: 0}
+  nightRotateSpeed: {x: -3, y: 0, z: 0}
 --- !u!198 &198146522472634936
 ParticleSystem:
   m_ObjectHideFlags: 1
