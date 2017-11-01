@@ -63,7 +63,7 @@ public class ActionBar : MonoBehaviour {
     {
         Transform apu = GameObject.Find("Equipment").transform;
 
-        if (apu.GetChild(0).gameObject.activeInHierarchy)
+        if (equiped == true)
         {
             Destroy(apu.GetChild(0).gameObject);
         }
