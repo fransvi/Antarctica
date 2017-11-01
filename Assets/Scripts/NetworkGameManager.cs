@@ -53,7 +53,10 @@ public class NetworkGameManager : NetworkBehaviour
         }
         if(playerDead)
         {
-            StartCoroutine(ReturnToLobby());
+
+            //TODO: Knockdown system calculates before quitting scene
+            //Also: Does not recognize the player entering vehicle yet
+            //StartCoroutine(ReturnToLobby());
         }
     }
 
