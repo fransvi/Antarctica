@@ -6,7 +6,9 @@ public class PlayerEquip : MonoBehaviour {
 
     public GameObject[] _currentItems;
     public GameObject _lantern;
-    private bool _active = false;
+    public GameObject _compass;
+    private bool _lanternActive = false;
+    private bool _compassActive = false;
 
 	// Use this for initialization
 	void Start () {
@@ -15,17 +17,28 @@ public class PlayerEquip : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!_active && Input.GetKeyUp(KeyCode.T))
+        if (!_lanternActive && Input.GetKeyUp(KeyCode.T))
         {
             _lantern.SetActive(true);
             _lantern.GetComponent<LanternScript>()._isActive = true;
-            _active = true;
+            _lanternActive = true;
         }
-        else if(_active && Input.GetKeyUp(KeyCode.T))
+        else if(_lanternActive && Input.GetKeyUp(KeyCode.T))
         {
             _lantern.SetActive(false);
             _lantern.GetComponent<LanternScript>()._isActive = false;
-            _active = false;
+            _lanternActive = false;
+        }
+        if(!_compassActive && Input.GetKeyUp(KeyCode.Y))
+        {
+            _compass.SetActive(true);
+            //_compass.GetComponent<CompassScript>().isActive = true;
+            _compassActive = true;
+        }else if(_compassActive && Input.GetKeyUp(KeyCode.Y))
+        {
+            _compass.SetActive(false);
+            //_compass.GetComponent<CompassScript>()._isActive = false;
+            _compassActive = false;
         }
 		
 	}
