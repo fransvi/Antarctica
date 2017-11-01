@@ -63,11 +63,15 @@ public class ActionBar : MonoBehaviour {
     {
         Transform apu = GameObject.Find("Equipment").transform;
 
-        Destroy(apu.GetChild(0).gameObject);
+        if (apu.GetChild(0).gameObject.activeInHierarchy)
+        {
+            Destroy(apu.GetChild(0).gameObject);
+        }
+       
         equiped = false;
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
 
-        GameObject itemtodrop = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), new Vector3(0, 0, 1) * Time.deltaTime, Quaternion.identity);
+        GameObject itemtodrop = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu.transform.position + Vector3.forward, Quaternion.identity);
     }
 }
