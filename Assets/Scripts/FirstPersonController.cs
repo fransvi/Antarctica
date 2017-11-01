@@ -46,6 +46,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Inventory inv;
         private Tooltip tooltip;
+        private ActionBar actionbar;
         private GameObject inventorypanel;
         bool inventoryActive = false;
         public Transform bulletSpawn; 
@@ -73,6 +74,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan p‰‰sy inventory objektiin
             tooltip = inv.GetComponent<Tooltip>();
+            actionbar = inv.GetComponent<ActionBar>();
         }
 
 
@@ -120,6 +122,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     m_MouseLook.SetCursorLock(true);
                     tooltip.Deactivate();
+                    actionbar.Deactivate();
                     inventorypanel.SetActive(false);
                     inventoryActive = false;
                 }

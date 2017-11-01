@@ -44,6 +44,10 @@ public class Inventory : MonoBehaviour
         {
             AddItem(0);
         }
+        else if (Input.GetKeyDown(KeyCode.O))
+        {
+            RemoveItem(0);
+        }
     }
 
     //Lisää esineprefabin ja asettaa arvot annetun id perusteella
@@ -87,5 +91,42 @@ public class Inventory : MonoBehaviour
 
             }
         }
+    }
+
+    public void RemoveItem(int id)
+    {
+        Item itemToRemove = database.FetchItemById(id);
+        if (itemToRemove.Stackable && items.Contains(itemToRemove))
+        {
+            for (int j = 0; j < items.Count; j++)
+            {
+                if (items[j].ID == id)
+                {
+                    ItemData data = slots[j].transform.GetChild(0).GetComponent<ItemData>();
+                    data.amount--;
+                    data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
+                    if (data.amount == 0)
+                    {
+                        Destroy(slots[j].transform.GetChild(0).gameObject);
+                        items[j] = new Item();
+                        break;
+                    }
+                    if (data.amount == 1)
+                    {
+                        slots[j].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "";
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+        else
+            for (int i = 0; i < items.Count; i++)
+                if (items[i].ID != -1 && items[i].ID == id)
+                {
+                    Destroy(slots[i].transform.GetChild(0).gameObject);
+                    items[i] = new Item();
+                    break;
+                }
     }
 }

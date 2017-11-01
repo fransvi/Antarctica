@@ -17,15 +17,17 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Inventory inv;
     private Tooltip tooltip;
     private PlayerEquip equip;
+    private ActionBar actionbar;
+    private bool equiped;
 
 
     // Use this for initialization
     void Start()
     {
-
-
+        equiped = false;
         inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
         tooltip = inv.GetComponent<Tooltip>();
+        actionbar = inv.GetComponent<ActionBar>();
 
     }
 
@@ -83,10 +85,27 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (item != null)//tsekkaus onko asia jota halutaan käyttää esine 
         {
-            Transform apu = GameObject.Find("Equipment").transform;
+            Debug.Log("onesine");
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                Transform apu = GameObject.Find("Equipment").transform;
+                if (actionbar.equiped == false)
+                {
+                    GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + eventData.pointerPress.name), apu);
+                    apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+                    actionbar.equiped = true;
+                }
+                else if(actionbar.equiped == true)
+                {
+                    Destroy(apu.GetChild(0).gameObject);
+                    actionbar.equiped = false;
+                }
 
-            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + eventData.pointerPress.name), apu);
-            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            }
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                actionbar.Activate(item);
+            }
         }
     }
 }
