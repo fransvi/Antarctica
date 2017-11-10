@@ -44,9 +44,8 @@ public class ActionBar : MonoBehaviour {
     {
         _item = item;
         Transform apu = GameObject.Find("Equipment").transform;
-        if (equiped == false)
+        if (equiped == false && item.ID != apu.GetChild(0).GetComponent<ItemPick>().id)
         {
-            Debug.Log("asdasd");
             GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
             Debug.Log(_item.Title);
             apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;

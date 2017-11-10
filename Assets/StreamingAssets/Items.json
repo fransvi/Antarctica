@@ -5,7 +5,7 @@
 		"weight": 0.2,
 		"description": "Points to north",
 		"stackable": false,
-		"slug": "compass_item"
+		"slug": "Kompassi_Inventory"
 	},
 	{
 		"id": 1,
@@ -13,6 +13,6 @@
 		"weight": 1,
 		"description": "Lights the way",
 		"stackable": true, 
-		"slug": "lantern_item"
+		"slug": "Lyhty_Inventory"
 	}
 ]
