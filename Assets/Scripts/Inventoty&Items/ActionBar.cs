@@ -10,9 +10,11 @@ public class ActionBar : MonoBehaviour {
     public bool equiped;
     private ItemData data;
     private Inventory inv;
+    private PlayerHealth health;
 
     public Button euipButton;
     public Button dropButton;
+    public Button consumeButton;
 
     void Start()
     {
@@ -23,11 +25,24 @@ public class ActionBar : MonoBehaviour {
 
         Button btn = euipButton.GetComponent<Button>();
         Button btn2 = dropButton.GetComponent<Button>();
+        Button btn3 = consumeButton.GetComponent<Button>();
         btn.onClick.AddListener(() => { EquipItem(_item);});
         btn2.onClick.AddListener(() => { DropItem(_item);});
+        btn3.onClick.AddListener(() => { ConsumeItem(_item); });
     }
 
-    public void Activate (Item item) {
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.B)){
+
+            this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyReduceHealth(20);
+            
+            //health.InstantlyReduceHealth(1);
+        }
+    }
+
+    public void Activate (Item item)
+    {
 
         _item = item;
         actionbar.SetActive(true);
@@ -35,7 +50,8 @@ public class ActionBar : MonoBehaviour {
 
     }
 
-	public void Deactivate () {
+	public void Deactivate ()
+    {
 
         actionbar.SetActive(false);
 
@@ -56,6 +72,21 @@ public class ActionBar : MonoBehaviour {
             Destroy(apu.GetChild(0).gameObject);
             equiped = false;
         }
+    }
+
+    void ConsumeItem(Item item)
+    {
+        Debug.Log("Consumed");
+        //_item = item;
+        //Transform apu = GameObject.Find("Equipment").transform;
+
+        this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHealth(item.Healthamount);
+        Debug.Log("Heatlh incfeased" + item.Healthamount);
+
+
+        inv.RemoveItem(item.ID);
+        actionbar.SetActive(false);
+
     }
 
     void DropItem(Item item)

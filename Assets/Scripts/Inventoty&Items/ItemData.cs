@@ -15,7 +15,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public int slotLocation;
     public Transform apu;
 
-     
+    
     //private Transform originalSlot;
     private Inventory inv;
     private Tooltip tooltip;

@@ -42,11 +42,11 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            AddItem(0);
+            AddItem(2);
         }
         else if (Input.GetKeyDown(KeyCode.O))
         {
-            RemoveItem(0);
+            RemoveItem(2);
         }
     }
 

@@ -47,9 +47,13 @@ public class PlayerHealth : NetworkBehaviour
     public bool startThirstReduction;
     public bool startTemperatureReduction;
 
+    private AudioSource audioSource;
+    public AudioClip eating;
+
     public void Start()
     {
         SetInitialReferences();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void SetInitialReferences()
@@ -323,14 +327,16 @@ public class PlayerHealth : NetworkBehaviour
     }
 
     // instantly increase health
-    void InstantlyIncreaseHealth(int amount)
+   public void InstantlyIncreaseHealth(int amount)
     {
         currentHealth += amount;
         healthBarContent.fillAmount += (amount / 100f);
+
+        audioSource.PlayOneShot(eating);
     }
 
     // instantly reduce health
-    void InstantlyReduceHealth(int amount)
+    public void InstantlyReduceHealth(int amount)
     {
         currentHealth -= amount;
         healthBarContent.fillAmount -= (amount / 100f);

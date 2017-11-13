@@ -1,18 +1,27 @@
 [
-	{
-		"id": 0,
-		"title": "Compass",
-		"weight": 0.2,
-		"description": "Points to north",
-		"stackable": false,
-		"slug": "Kompassi_Inventory"
-	},
-	{
-		"id": 1,
-		"title": "Lantern",
-		"weight": 1,
-		"description": "Lights the way",
-		"stackable": true, 
-		"slug": "Lyhty_Inventory"
-	}
+  {
+    "id": 0,
+    "title": "Compass",
+    "weight": 0.2,
+    "description": "Points to north",
+    "stackable": false,
+    "slug": "Kompassi_Inventory"
+  },
+  {
+    "id": 1,
+    "title": "Lantern",
+    "weight": 1,
+    "description": "Lights the way",
+    "stackable": true,
+    "slug": "Lyhty_Inventory"
+  },
+  {
+    "id": 2,
+    "title": "Choco",
+    "weight": 0.3,
+    "description": "Gets you back on track",
+    "stackable": true,
+    "healthamount" :  20,
+    "slug": "Choco_Inventory"
+  }
 ]
