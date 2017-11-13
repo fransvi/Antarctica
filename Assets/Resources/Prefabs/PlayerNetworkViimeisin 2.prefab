@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 114145685637292314}
   - component: {fileID: 114885509757012920}
   - component: {fileID: 114780770190754640}
+  - component: {fileID: 114301582013931534}
   m_Layer: 0
   m_Name: PlayerNetworkViimeisin 2
   m_TagString: Player
@@ -3018,7 +3019,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 700
   field of view: 80
   orthographic: 0
   orthographic size: 5
@@ -3766,6 +3767,17 @@ MonoBehaviour:
   param3: 
   param4: 
   param5: 
+--- !u!114 &114301582013931534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178771245328552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3f937fcc8c945439e6ea14e012081d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114318249854771004
 MonoBehaviour:
   m_ObjectHideFlags: 1
