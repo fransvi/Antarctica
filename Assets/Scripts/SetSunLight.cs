@@ -10,13 +10,14 @@ public class SetSunLight : MonoBehaviour
     public Camera activeCamera;
     public Transform stars;
     public Transform worldProbe;
+    Vector3 tvec;
 
     // Use this for initialization
     void Start()
     {
 
         sky = RenderSettings.skybox;
-
+        tvec = Camera.main.transform.position;
     }
 
     bool lighton = false;
@@ -26,7 +27,7 @@ public class SetSunLight : MonoBehaviour
     {
         
         stars.transform.rotation = transform.rotation;
-        Vector3 tvec = Camera.main.transform.position;
+        
         worldProbe.transform.position = tvec;
 
         water.GetComponent<MeshRenderer>().sharedMaterial.mainTextureOffset = new Vector2(Time.time / 100, 0);
