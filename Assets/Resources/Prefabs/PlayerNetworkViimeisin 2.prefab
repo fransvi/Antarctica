@@ -1182,6 +1182,9 @@ GameObject:
   - component: {fileID: 20727564956231346}
   - component: {fileID: 81503021717917444}
   - component: {fileID: 114854278210912240}
+  - component: {fileID: 114252491178234344}
+  - component: {fileID: 114974041947056152}
+  - component: {fileID: 124161642905598452}
   m_Layer: 0
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
@@ -2260,7 +2263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1839986350929222
 GameObject:
   m_ObjectHideFlags: 1
@@ -3501,7 +3504,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.419538, y: 0.5, z: -7.9643793}
+  m_LocalPosition: {x: 18.698889, y: 0.5, z: 13.279784}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419989092079774}
@@ -4826,7 +4829,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.03
-  far clip plane: 700
+  far clip plane: 4000
   field of view: 80
   orthographic: 0
   orthographic size: 5
@@ -5511,6 +5514,38 @@ MonoBehaviour:
   _snowParticles: {fileID: 0}
   _fogParticles: {fileID: 0}
   _windForce: 0
+--- !u!114 &114252491178234344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410074938973554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e658a558b0d40b24dae8cbeef624b136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceFog: 0
+  useRadialDistance: 0
+  heightFog: 1
+  height: 200
+  heightDensity: 0.002
+  startDistance: 200
+  AffectSkyBox: 1
+  Advanced:
+    UseScattering: 0
+    Turbidity: 100
+    WorldScale: 12.91
+    Rayleigh: 12
+    ScatteringSize: 0.819
+    ScatteringIntensity: 5
+    Bias: 1.2
+    contrast: 5.1
+    luminance: 0.05
+    lumaAmount: -0.33
+    Falloff: 0
+    BoostColor: 1
+  fogShader: {fileID: 4800000, guid: b4895d693f4ad2947933ccd9748133fb, type: 3}
 --- !u!114 &114280381462691128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6758,6 +6793,29 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114974041947056152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410074938973554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 1
+  screenBlendMode: 0
+  sunTransform: {fileID: 0}
+  radialBlurIterations: 2
+  sunColor: {r: 1, g: 1, b: 1, a: 1}
+  sunThreshold: {r: 0.87, g: 0.74, b: 0.65, a: 1}
+  sunShaftBlurRadius: 2.09
+  sunShaftIntensity: 0.55
+  maxRadius: 0.75
+  useDepthTexture: 1
+  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
+  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
 --- !u!114 &114975484054181418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6925,6 +6983,13 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!124 &124161642905598452
+Behaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410074938973554}
+  m_Enabled: 1
 --- !u!136 &136113889331264458
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -15170,7 +15235,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674554483416306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.9643793}
+  m_LocalPosition: {x: 0, y: 0, z: -24.896133}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224018227426879876}
@@ -15473,7 +15538,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587858584347474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.9643793}
+  m_LocalPosition: {x: 0, y: 0, z: 8.20282}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224302043570398214}
