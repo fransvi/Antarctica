@@ -51,6 +51,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         bool inventoryActive = false;
         public Transform bulletSpawn; 
         public GameObject bulletPrefab;
+        public GameObject inventoryCanvas;
 
         public bool paused =false;
 
@@ -69,10 +70,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-            inventorypanel = GameObject.Find("InventoryPanel");
+            Transform[] transforms = GetComponentsInChildren<Transform>();
+            foreach (Transform t in transforms)
+            {
+                if (t.name == "InventoryPanel")
+                {
+                    inventorypanel = t.gameObject;
+                }
+                if (t.name == "Inventory")
+                {
+                    inv = t.gameObject.GetComponent<Inventory>();  // Halutaaan p‰‰sy inventory objektiin
+                }
+            }
+
+            //inventorypanel = GameObject.Find("InventoryPanel");
+            //GameObject inventory = GameObject.Find("Inventory");
+
+            inv.GetComponent<Inventory>().AddSlots();
             inventorypanel.SetActive(false);
 
-            inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan p‰‰sy inventory objektiin
             tooltip = inv.GetComponent<Tooltip>();
             actionbar = inv.GetComponent<ActionBar>();
         }
@@ -117,6 +133,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_MouseLook.SetCursorLock(false);
                     inventorypanel.SetActive(true);
                     inventoryActive = true;
+
                 }
                 else if (inventoryActive == true)
                 {

@@ -68,6 +68,8 @@ public class NetworkPlayerSetup : NetworkBehaviour
         //}
 
         GetComponent<NetworkAnimator>().SetParameterAutoSend(0, true);
+
+ 
     }
 
     public override void PreStartClient()

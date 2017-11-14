@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class RaycastShooting : NetworkBehaviour
+public class RaycastShooting : MonoBehaviour
 {
 
     public int gunDamage = 1;
@@ -31,7 +31,15 @@ public class RaycastShooting : NetworkBehaviour
 
         isGrabbed = false;
 
-        inv = GameObject.Find("Inventory").GetComponent<Inventory>();
+        Transform[] transforms = transform.parent.parent.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            if (t.name == "Inventory")
+            {
+                inv = t.gameObject.GetComponent<Inventory>();
+            }
+        }
+
     }
 
     public void CmdShootRayCast()

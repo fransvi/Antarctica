@@ -21,12 +21,30 @@ public class Inventory : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        database = GetComponent<ItemDatabase>();
+        //database = GetComponent<ItemDatabase>();
 
-        slotAmount = 20;
-        inventoryPanel = GameObject.Find("InventoryPanel");//Etsii tallentaa kyseiset gameobjektit muuttujiin
-        slotPanel = GameObject.Find("SlotPanel");
+        //slotAmount = 20;
+       // inventoryPanel = GameObject.Find("InventoryPanel");//Etsii tallentaa kyseiset gameobjektit muuttujiin
+       // slotPanel = GameObject.Find("SlotPanel");
 
+        /*
+        Transform[] transforms = transform.parent.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            Debug.Log(t.name);
+            if (t.name == "SlotPanel")
+            {
+                slotPanel = t.gameObject;
+            }
+            if(t.name == "InventoryPanel")
+            {
+                inventoryPanel = t.gameObject;
+            }
+        }
+
+        Debug.Log(slotPanel);
+        Debug.Log(inventoryPanel);
+        
         for (int i = 0; i < 20; i++)
         {
             items.Add(new Item());
@@ -34,7 +52,34 @@ public class Inventory : MonoBehaviour
             slots[i].GetComponent<Slot>().id = i; // asetetaan kyseisen slotin id-muuttujaan id-numero
             slots[i].transform.SetParent(slotPanel.transform);//asetetaan uudet slotit olemaan slotPanelin lapsia
         }
+        */
 
+    }
+
+    public void AddSlots()
+    {
+
+        slotAmount = 20;
+        Transform[] transforms = transform.parent.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            if (t.name == "SlotPanel")
+            {
+                slotPanel = t.gameObject;
+            }
+            if (t.name == "InventoryPanel")
+            {
+                inventoryPanel = t.gameObject;
+            }
+        }
+        database = transform.GetComponent<ItemDatabase>();
+        for (int i = 0; i < 20; i++)
+        {
+            items.Add(new Item());
+            slots.Add(Instantiate(inventorySlot));//luodaan uusia slotteja listaan
+            slots[i].GetComponent<Slot>().id = i; // asetetaan kyseisen slotin id-muuttujaan id-numero
+            slots[i].transform.SetParent(slotPanel.transform);//asetetaan uudet slotit olemaan slotPanelin lapsia
+        }
     }
 
     private void Update()
@@ -53,6 +98,7 @@ public class Inventory : MonoBehaviour
     //Lisää esineprefabin ja asettaa arvot annetun id perusteella
     public void AddItem(int id)
     {
+        database = GetComponent<ItemDatabase>();
         Item itemToAdd = database.FetchItemById(id);// täyttää kyseisen esineobjektin sillä kyseisellä id:llä olevan esineen databasesta
         if (items.Contains(itemToAdd) && itemToAdd.Stackable)//Tarkistetaan onko kyseinen esine jo inventoryssa ja onko se stackable
         {
@@ -75,6 +121,7 @@ public class Inventory : MonoBehaviour
             {
                 if (items[i].ID == -1)//tsekkaa onko esine olemsassa
                 {
+                    Debug.Log("Adding:::" + id + " item to slot " + i);
                     items[i] = itemToAdd;//vie kyseisen inventoryn paikkaan haetun esineen
                     GameObject itemObj = Instantiate(inventoryItem); //luo fyysisen kopion esineprefabista
                     itemObj.GetComponent<ItemData>().item = itemToAdd; //Asettaa tiedon itemdata-luokan item muuttujalle siitä mikä esine luotiin
