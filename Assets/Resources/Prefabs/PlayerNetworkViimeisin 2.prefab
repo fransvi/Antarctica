@@ -2263,7 +2263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1839986350929222
 GameObject:
   m_ObjectHideFlags: 1
@@ -3504,7 +3504,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.698889, y: 0.5, z: 13.279784}
+  m_LocalPosition: {x: 3.2704272, y: 27.076904, z: 50.114048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419989092079774}
@@ -5513,6 +5513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _snowParticles: {fileID: 0}
   _fogParticles: {fileID: 0}
+  _stars: {fileID: 0}
   _windForce: 0
 --- !u!114 &114252491178234344
 MonoBehaviour:
@@ -6635,7 +6636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_RunSpeed: 100
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 5
   m_StickToGroundForce: 10
@@ -8585,7 +8586,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 400
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -11342,7 +11343,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1228425557
+  randomSeed: -164988765
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -15235,7 +15236,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674554483416306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -24.896133}
+  m_LocalPosition: {x: 0, y: 0, z: -50.854412}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224018227426879876}
@@ -15538,7 +15539,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587858584347474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8.20282}
+  m_LocalPosition: {x: 0, y: 0, z: 3.776123}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224302043570398214}
