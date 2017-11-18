@@ -3504,7 +3504,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2704272, y: 27.076904, z: 50.114048}
+  m_LocalPosition: {x: -9.064666, y: 0.5, z: -5.304147}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419989092079774}
@@ -5527,7 +5527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFog: 0
-  useRadialDistance: 0
+  useRadialDistance: 1
   heightFog: 1
   height: 200
   heightDensity: 0.002
@@ -5535,11 +5535,11 @@ MonoBehaviour:
   AffectSkyBox: 1
   Advanced:
     UseScattering: 0
-    Turbidity: 100
+    Turbidity: 456
     WorldScale: 12.91
     Rayleigh: 12
     ScatteringSize: 0.819
-    ScatteringIntensity: 5
+    ScatteringIntensity: 1
     Bias: 1.2
     contrast: 5.1
     luminance: 0.05
@@ -8026,7 +8026,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 213521858
+  randomSeed: -1604917289
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8422,7 +8422,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 3000
+    maxNumParticles: 50000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -8586,7 +8586,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 400
+      scalar: 1500
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10333,7 +10333,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 3
     type: 1
     collisionMode: 0
@@ -11343,7 +11343,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -164988765
+  randomSeed: 139949324
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11903,7 +11903,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 75
+      scalar: 500
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -15236,7 +15236,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674554483416306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -50.854412}
+  m_LocalPosition: {x: 0, y: 0, z: 0.02764684}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224018227426879876}
@@ -15539,7 +15539,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587858584347474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.776123}
+  m_LocalPosition: {x: 0, y: 0, z: 1.1935186}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224302043570398214}
