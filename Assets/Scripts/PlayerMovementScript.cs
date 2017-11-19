@@ -6,11 +6,12 @@ using UnityEngine;
 public class PlayerMovementScript : NetworkBehaviour {
 
     public Animator playerAnimator;
-
+    private Animator fpsAnimator;
 
 	// Use this for initialization
 	void Start () {
 
+        fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
 
     }
 
@@ -39,20 +40,24 @@ public class PlayerMovementScript : NetworkBehaviour {
             {
                 //playerAnimator.SetBool("isWalking", false);
                 playerAnimator.SetBool("isRunning", true);
+                fpsAnimator.SetBool("Moving", true);
             }
             // if any movement button is pressed without left shift, our character walks
             else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
             {
                 playerAnimator.SetBool("isWalking", true);
+                fpsAnimator.SetBool("Moving", true);
             }
             // sidestep animations added
             else if(Input.GetKey(KeyCode.A))
             {
                 playerAnimator.SetBool("isSidesteppingL", true);
+                fpsAnimator.SetBool("Moving", true);
             }
             else if (Input.GetKey(KeyCode.D))
             {
                 playerAnimator.SetBool("isSidesteppingR", true);
+                fpsAnimator.SetBool("Moving", true);
             }
             // when any movement button is lifted, its checked wether any movement button is still held down or not. If not, controller return to idle.
             if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
@@ -63,6 +68,7 @@ public class PlayerMovementScript : NetworkBehaviour {
                     playerAnimator.SetBool("isRunning", false);
                     playerAnimator.SetBool("isSidesteppingR", false);
                     playerAnimator.SetBool("isSidesteppingL", false);
+                    fpsAnimator.SetBool("Moving", false);
                 }
 
             }

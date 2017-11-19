@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 09acfddcffb3c1347bda9263d3f1aa62
-timeCreated: 1510653137
+guid: 5857b8704dde24a479b2d78fbed82988
+timeCreated: 1511119954
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -39,31 +39,35 @@ ModelImporter:
     100062: 4-3.L_end 1
     100064: Arm.L
     100066: Arm.L 1
-    100068: Bone
-    100070: Bone 1
-    100072: Bone 2
-    100074: Bone_end
-    100076: Bone_end 1
-    100078: Bone_end 2
-    100080: Cube.000
-    100082: Cube.001
-    100084: Hand.L
-    100086: Hand.L 1
-    100088: HandLeft
-    100090: HandRight
-    100092: //RootNode
-    100094: Kompassi
-    100096: Kompassi_Taulu
-    100098: Lyhty
-    100100: Lyhty.001
-    100102: Suklaa
-    100104: SuklaaPatukka
-    100106: Thumb.L
-    100108: Thumb.L 1
-    100110: Thumb2.L
-    100112: Thumb2.L 1
-    100114: Thumb2.L_end
-    100116: Thumb2.L_end 1
+    100068: Armature
+    100070: Bone
+    100072: Bone 1
+    100074: Bone 2
+    100076: Bone 3
+    100078: Bone_end
+    100080: Bone_end 1
+    100082: Bone_end 2
+    100084: Bone_end 3
+    100086: Cube.000
+    100088: Cube.001
+    100090: Hand.L
+    100092: Hand.L 1
+    100094: HandLeft
+    100096: HandRight
+    100098: //RootNode
+    100100: Kompassi
+    100102: Kompassi_Taulu
+    100104: Lyhty
+    100106: Lyhty.001
+    100108: Suklaa
+    100110: SuklaaPatukka
+    100112: Termos
+    100114: Thumb.L
+    100116: Thumb.L 1
+    100118: Thumb2.L
+    100120: Thumb2.L 1
+    100122: Thumb2.L_end
+    100124: Thumb2.L_end 1
     400000: 1-1.L
     400002: 1-1.L 1
     400004: 1-2.L
@@ -98,98 +102,142 @@ ModelImporter:
     400062: 4-3.L_end 1
     400064: Arm.L
     400066: Arm.L 1
-    400068: Bone
-    400070: Bone 1
-    400072: Bone 2
-    400074: Bone_end
-    400076: Bone_end 1
-    400078: Bone_end 2
-    400080: Cube.000
-    400082: Cube.001
-    400084: Hand.L
-    400086: Hand.L 1
-    400088: HandLeft
-    400090: HandRight
-    400092: //RootNode
-    400094: Kompassi
-    400096: Kompassi_Taulu
-    400098: Lyhty
-    400100: Lyhty.001
-    400102: Suklaa
-    400104: SuklaaPatukka
-    400106: Thumb.L
-    400108: Thumb.L 1
-    400110: Thumb2.L
-    400112: Thumb2.L 1
-    400114: Thumb2.L_end
-    400116: Thumb2.L_end 1
-    4300000: Lyhty.001
-    4300002: Kompassi_Taulu
-    4300004: Suklaa
-    4300006: Cube.000
-    4300008: Cube.001
-    7400000: Lyhty|Cube.001Action
-    7400002: Lyhty|KompassiEsiin(kompassi)
-    7400004: Lyhty|KompassiIdle(kompassi)
-    7400006: Lyhty|KompassiRun(Kompassi)
-    7400008: Lyhty|LyhtyEsiin(Lyhty)
-    7400010: Lyhty|LyhtyIdle(lyhty)
-    7400012: Lyhty|RunLyhty(Lyhty)
-    7400014: Lyhty|SuklaaIdle
-    7400016: Lyhty|SuklaapatukkaEsiin
-    7400018: Lyhty|SuklaaRun
-    7400020: Kompassi|Cube.001Action
-    7400022: Kompassi|KompassiEsiin(kompassi)
-    7400024: Kompassi|KompassiIdle(kompassi)
-    7400026: Kompassi|KompassiRun(Kompassi)
-    7400028: Kompassi|LyhtyEsiin(Lyhty)
-    7400030: Kompassi|LyhtyIdle(lyhty)
-    7400032: Kompassi|RunLyhty(Lyhty)
-    7400034: Kompassi|SuklaaIdle
-    7400036: Kompassi|SuklaapatukkaEsiin
-    7400038: Kompassi|SuklaaRun
-    7400040: SuklaaPatukka|Cube.001Action
-    7400042: SuklaaPatukka|KompassiEsiin(kompassi)
-    7400044: SuklaaPatukka|KompassiIdle(kompassi)
-    7400046: SuklaaPatukka|KompassiRun(Kompassi)
-    7400048: SuklaaPatukka|LyhtyEsiin(Lyhty)
-    7400050: SuklaaPatukka|LyhtyIdle(lyhty)
-    7400052: SuklaaPatukka|RunLyhty(Lyhty)
-    7400054: SuklaaPatukka|SuklaaIdle
-    7400056: SuklaaPatukka|SuklaapatukkaEsiin
-    7400058: SuklaaPatukka|SuklaaRun
-    7400060: HandRight|Cube.001Action
-    7400062: HandRight|IdleEmptyLeft
-    7400064: HandRight|IdleEmptyRight
-    7400066: HandRight|KompassiEsiin(Hand)
-    7400068: HandRight|KompassiIdle(Hand)
-    7400070: HandRight|KompassiRUn(Hand)
-    7400072: HandRight|LyhtyEsiin
-    7400074: HandRight|LyhtyIdle(Hand)
-    7400076: HandRight|PoisValoaSaatamasta
-    7400078: HandRight|RunLyhty(Hand)
-    7400080: HandRight|RunWalkEmptyLeft
-    7400082: HandRight|RunWalkEmptyRIght
-    7400084: HandRight|SaadetaanValoa
-    7400086: HandLeft|Cube.001Action
-    7400088: HandLeft|IdleEmptyLeft
-    7400090: HandLeft|IdleEmptyRight
-    7400092: HandLeft|KompassiEsiin(Hand)
-    7400094: HandLeft|KompassiIdle(Hand)
-    7400096: HandLeft|KompassiRUn(Hand)
-    7400098: HandLeft|LyhtyEsiin
-    7400100: HandLeft|LyhtyIdle(Hand)
-    7400102: HandLeft|PoisValoaSaatamasta
-    7400104: HandLeft|RunLyhty(Hand)
-    7400106: HandLeft|RunWalkEmptyLeft
-    7400108: HandLeft|RunWalkEmptyRIght
-    7400110: HandLeft|SaadetaanValoa
+    400068: Armature
+    400070: Bone
+    400072: Bone 1
+    400074: Bone 2
+    400076: Bone 3
+    400078: Bone_end
+    400080: Bone_end 1
+    400082: Bone_end 2
+    400084: Bone_end 3
+    400086: Cube.000
+    400088: Cube.001
+    400090: Hand.L
+    400092: Hand.L 1
+    400094: HandLeft
+    400096: HandRight
+    400098: //RootNode
+    400100: Kompassi
+    400102: Kompassi_Taulu
+    400104: Lyhty
+    400106: Lyhty.001
+    400108: Suklaa
+    400110: SuklaaPatukka
+    400112: Termos
+    400114: Thumb.L
+    400116: Thumb.L 1
+    400118: Thumb2.L
+    400120: Thumb2.L 1
+    400122: Thumb2.L_end
+    400124: Thumb2.L_end 1
+    4300000: Termos
+    4300002: Lyhty.001
+    4300004: Kompassi_Taulu
+    4300006: Suklaa
+    4300008: Cube.000
+    4300010: Cube.001
+    7400000: Armature|Cube.001Action
+    7400002: Armature|Juonti(Termos)
+    7400004: Armature|KompassiEsiin(kompassi)
+    7400006: Armature|KompassiIdle(kompassi)
+    7400008: Armature|KompassiRun(Kompassi)
+    7400010: Armature|LyhtyEsiin(Lyhty)
+    7400012: Armature|LyhtyIdle(lyhty)
+    7400014: Armature|RunLyhty(Lyhty)
+    7400016: Armature|SuklaaIdle
+    7400018: Armature|SuklaapatukkaEsiin
+    7400020: Armature|SuklaaRun
+    7400022: "Armature|Sy\xF6nti(SUklaa)"
+    7400024: Armature|TermosIdle(Termos)
+    7400026: Armature|TermosJuoksu(Termos)
+    7400028: Lyhty|Cube.001Action
+    7400030: Lyhty|Juonti(Termos)
+    7400032: Lyhty|KompassiEsiin(kompassi)
+    7400034: Lyhty|KompassiIdle(kompassi)
+    7400036: Lyhty|KompassiRun(Kompassi)
+    7400038: Lyhty|LyhtyEsiin(Lyhty)
+    7400040: Lyhty|LyhtyIdle(lyhty)
+    7400042: Lyhty|RunLyhty(Lyhty)
+    7400044: Lyhty|SuklaaIdle
+    7400046: Lyhty|SuklaapatukkaEsiin
+    7400048: Lyhty|SuklaaRun
+    7400050: "Lyhty|Sy\xF6nti(SUklaa)"
+    7400052: Lyhty|TermosIdle(Termos)
+    7400054: Lyhty|TermosJuoksu(Termos)
+    7400056: Kompassi|Cube.001Action
+    7400058: Kompassi|Juonti(Termos)
+    7400060: Kompassi|KompassiEsiin(kompassi)
+    7400062: Kompassi|KompassiIdle(kompassi)
+    7400064: Kompassi|KompassiRun(Kompassi)
+    7400066: Kompassi|LyhtyEsiin(Lyhty)
+    7400068: Kompassi|LyhtyIdle(lyhty)
+    7400070: Kompassi|RunLyhty(Lyhty)
+    7400072: Kompassi|SuklaaIdle
+    7400074: Kompassi|SuklaapatukkaEsiin
+    7400076: Kompassi|SuklaaRun
+    7400078: "Kompassi|Sy\xF6nti(SUklaa)"
+    7400080: Kompassi|TermosIdle(Termos)
+    7400082: Kompassi|TermosJuoksu(Termos)
+    7400084: SuklaaPatukka|Cube.001Action
+    7400086: SuklaaPatukka|Juonti(Termos)
+    7400088: SuklaaPatukka|KompassiEsiin(kompassi)
+    7400090: SuklaaPatukka|KompassiIdle(kompassi)
+    7400092: SuklaaPatukka|KompassiRun(Kompassi)
+    7400094: SuklaaPatukka|LyhtyEsiin(Lyhty)
+    7400096: SuklaaPatukka|LyhtyIdle(lyhty)
+    7400098: SuklaaPatukka|RunLyhty(Lyhty)
+    7400100: SuklaaPatukka|SuklaaIdle
+    7400102: SuklaaPatukka|SuklaapatukkaEsiin
+    7400104: SuklaaPatukka|SuklaaRun
+    7400106: "SuklaaPatukka|Sy\xF6nti(SUklaa)"
+    7400108: SuklaaPatukka|TermosIdle(Termos)
+    7400110: SuklaaPatukka|TermosJuoksu(Termos)
+    7400112: HandRight|Cube.001Action
+    7400114: HandRight|IdleEmptyLeft
+    7400116: HandRight|IdleEmptyRight
+    7400118: HandRight|Juonti(Termos)
+    7400120: HandRight|KompassiEsiin(Hand)
+    7400122: HandRight|KompassiIdle(Hand)
+    7400124: HandRight|KompassiRUn(Hand)
+    7400126: HandRight|LyhtyEsiin
+    7400128: HandRight|LyhtyIdle(Hand)
+    7400130: HandRight|NapinPaino(Hand)
+    7400132: "HandRight|NapinV\xE4\xE4nt\xF6(Hand)"
+    7400134: HandRight|PoisValoaSaatamasta
+    7400136: HandRight|RunLyhty(Hand)
+    7400138: HandRight|RunWalkEmptyLeft
+    7400140: HandRight|RunWalkEmptyRIght
+    7400142: HandRight|SaadetaanValoa
+    7400144: "HandRight|Sy\xF6nti/Juonti(Hand)"
+    7400146: HandRight|TermosIdle(Termos)
+    7400148: HandRight|TermosJuoksu(Termos)
+    7400150: HandLeft|Cube.001Action
+    7400152: HandLeft|IdleEmptyLeft
+    7400154: HandLeft|IdleEmptyRight
+    7400156: HandLeft|Juonti(Termos)
+    7400158: HandLeft|KompassiEsiin(Hand)
+    7400160: HandLeft|KompassiIdle(Hand)
+    7400162: HandLeft|KompassiRUn(Hand)
+    7400164: HandLeft|LyhtyEsiin
+    7400166: HandLeft|LyhtyIdle(Hand)
+    7400168: HandLeft|NapinPaino(Hand)
+    7400170: "HandLeft|NapinV\xE4\xE4nt\xF6(Hand)"
+    7400172: HandLeft|PoisValoaSaatamasta
+    7400174: HandLeft|RunLyhty(Hand)
+    7400176: HandLeft|RunWalkEmptyLeft
+    7400178: HandLeft|RunWalkEmptyRIght
+    7400180: HandLeft|SaadetaanValoa
+    7400182: "HandLeft|Sy\xF6nti/Juonti(Hand)"
+    7400184: HandLeft|TermosIdle(Termos)
+    7400186: HandLeft|TermosJuoksu(Termos)
     9500000: //RootNode
     13700000: Cube.000
     13700002: Cube.001
     13700004: Kompassi_Taulu
     13700006: Lyhty.001
     13700008: Suklaa
+    13700010: Termos
   materials:
     importMaterials: 1
     materialName: 0
@@ -215,10 +263,430 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
+      name: Armature|Cube.001Action
+      takeName: Armature|Cube.001Action
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Juonti(Termos)
+      takeName: Armature|Juonti(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|KompassiEsiin(kompassi)
+      takeName: Armature|KompassiEsiin(kompassi)
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|KompassiIdle(kompassi)
+      takeName: Armature|KompassiIdle(kompassi)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|KompassiRun(Kompassi)
+      takeName: Armature|KompassiRun(Kompassi)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|LyhtyEsiin(Lyhty)
+      takeName: Armature|LyhtyEsiin(Lyhty)
+      firstFrame: 0
+      lastFrame: 57
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|LyhtyIdle(lyhty)
+      takeName: Armature|LyhtyIdle(lyhty)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|RunLyhty(Lyhty)
+      takeName: Armature|RunLyhty(Lyhty)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|SuklaaIdle
+      takeName: Armature|SuklaaIdle
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|SuklaapatukkaEsiin
+      takeName: Armature|SuklaapatukkaEsiin
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|SuklaaRun
+      takeName: Armature|SuklaaRun
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "Armature|Sy\xF6nti(SUklaa)"
+      takeName: "Armature|Sy\xF6nti(SUklaa)"
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|TermosIdle(Termos)
+      takeName: Armature|TermosIdle(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|TermosJuoksu(Termos)
+      takeName: Armature|TermosJuoksu(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: Lyhty|Cube.001Action
       takeName: Lyhty|Cube.001Action
       firstFrame: 0
       lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lyhty|Juonti(Termos)
+      takeName: Lyhty|Juonti(Termos)
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -281,7 +749,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -309,7 +777,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -421,7 +889,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -477,7 +945,91 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "Lyhty|Sy\xF6nti(SUklaa)"
+      takeName: "Lyhty|Sy\xF6nti(SUklaa)"
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lyhty|TermosIdle(Termos)
+      takeName: Lyhty|TermosIdle(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Lyhty|TermosJuoksu(Termos)
+      takeName: Lyhty|TermosJuoksu(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -499,6 +1051,34 @@ ModelImporter:
       takeName: Kompassi|Cube.001Action
       firstFrame: 0
       lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Kompassi|Juonti(Termos)
+      takeName: Kompassi|Juonti(Termos)
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -645,7 +1225,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -673,7 +1253,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -701,7 +1281,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -757,7 +1337,91 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "Kompassi|Sy\xF6nti(SUklaa)"
+      takeName: "Kompassi|Sy\xF6nti(SUklaa)"
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Kompassi|TermosIdle(Termos)
+      takeName: Kompassi|TermosIdle(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Kompassi|TermosJuoksu(Termos)
+      takeName: Kompassi|TermosJuoksu(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -779,6 +1443,34 @@ ModelImporter:
       takeName: SuklaaPatukka|Cube.001Action
       firstFrame: 0
       lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SuklaaPatukka|Juonti(Termos)
+      takeName: SuklaaPatukka|Juonti(Termos)
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -841,7 +1533,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -869,7 +1561,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -925,7 +1617,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -953,7 +1645,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1055,6 +1747,90 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: "SuklaaPatukka|Sy\xF6nti(SUklaa)"
+      takeName: "SuklaaPatukka|Sy\xF6nti(SUklaa)"
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SuklaaPatukka|TermosIdle(Termos)
+      takeName: SuklaaPatukka|TermosIdle(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SuklaaPatukka|TermosJuoksu(Termos)
+      takeName: SuklaaPatukka|TermosJuoksu(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: HandRight|Cube.001Action
       takeName: HandRight|Cube.001Action
       firstFrame: 0
@@ -1093,7 +1869,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1122,6 +1898,34 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandRight|Juonti(Termos)
+      takeName: HandRight|Juonti(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1279,6 +2083,62 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: HandRight|NapinPaino(Hand)
+      takeName: HandRight|NapinPaino(Hand)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "HandRight|NapinV\xE4\xE4nt\xF6(Hand)"
+      takeName: "HandRight|NapinV\xE4\xE4nt\xF6(Hand)"
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: HandRight|PoisValoaSaatamasta
       takeName: HandRight|PoisValoaSaatamasta
       firstFrame: 0
@@ -1345,7 +2205,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1395,6 +2255,90 @@ ModelImporter:
       takeName: HandRight|SaadetaanValoa
       firstFrame: 0
       lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "HandRight|Sy\xF6nti/Juonti(Hand)"
+      takeName: "HandRight|Sy\xF6nti/Juonti(Hand)"
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandRight|TermosIdle(Termos)
+      takeName: HandRight|TermosIdle(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandRight|TermosJuoksu(Termos)
+      takeName: HandRight|TermosJuoksu(Termos)
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1485,7 +2429,35 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandLeft|Juonti(Termos)
+      takeName: HandLeft|Juonti(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1541,7 +2513,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1569,7 +2541,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1625,7 +2597,63 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandLeft|NapinPaino(Hand)
+      takeName: HandLeft|NapinPaino(Hand)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "HandLeft|NapinV\xE4\xE4nt\xF6(Hand)"
+      takeName: "HandLeft|NapinV\xE4\xE4nt\xF6(Hand)"
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1681,7 +2709,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1737,7 +2765,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -1759,6 +2787,90 @@ ModelImporter:
       takeName: HandLeft|SaadetaanValoa
       firstFrame: 0
       lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: "HandLeft|Sy\xF6nti/Juonti(Hand)"
+      takeName: "HandLeft|Sy\xF6nti/Juonti(Hand)"
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandLeft|TermosIdle(Termos)
+      takeName: HandLeft|TermosIdle(Termos)
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: HandLeft|TermosJuoksu(Termos)
+      takeName: HandLeft|TermosJuoksu(Termos)
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
