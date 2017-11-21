@@ -1230,7 +1230,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Kompassi|KompassiEsiin(kompassi)
+  m_Name: otaKompassi
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1351,7 +1351,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Armature|KompassiEsiin(kompassi)
+  m_Name: otaTermos
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1472,7 +1472,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SuklaaPatukka|SuklaapatukkaEsiin
+  m_Name: otaSuklaa
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1496,7 +1496,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Lyhty|LyhtyEsiin(Lyhty)
+  m_Name: otaLyhty
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

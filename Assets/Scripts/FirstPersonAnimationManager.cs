@@ -19,6 +19,8 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         suklaa = transform.GetChild(0).GetChild(2).GetChild(9).gameObject;
         termos = transform.GetChild(0).GetChild(2).GetChild(11).gameObject;
 
+        TakeChocolate();
+
     }
 	
 	// Update is called once per frame
@@ -57,6 +59,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         suklaa.SetActive(false);
         termos.SetActive(false);
 
+        fpsAnimator.Play("otaLyhty", fpsAnimator.GetLayerIndex("LyhtyLayer"), 0f);
         fpsAnimator.SetBool("LyhtyActive", true);
     }
 
@@ -67,6 +70,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         suklaa.SetActive(false);
         termos.SetActive(false);
 
+        fpsAnimator.Play("otaKompassi", fpsAnimator.GetLayerIndex("KompassiLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
     }
 
@@ -77,6 +81,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         suklaa.SetActive(true);
         termos.SetActive(false);
 
+        fpsAnimator.Play("otaSuklaa", fpsAnimator.GetLayerIndex("SuklaaLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
     }
 
@@ -87,6 +92,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         suklaa.SetActive(false);
         termos.SetActive(true);
 
+        fpsAnimator.Play("otaTermos", fpsAnimator.GetLayerIndex("TermosLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
     }
 
@@ -98,6 +104,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
     public void Eat()
     {
         fpsAnimator.SetTrigger("Syo");
+        // delay, sitten resetItemHold() ja EmptyHands()
     }
 
     public void Click()
