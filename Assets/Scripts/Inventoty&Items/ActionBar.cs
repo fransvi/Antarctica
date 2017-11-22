@@ -12,7 +12,7 @@ public class ActionBar : MonoBehaviour {
     private Inventory inv;
     private PlayerHealth health;
 
-    public Button euipButton;
+    public Button equipButton;
     public Button dropButton;
     public Button consumeButton;
 
@@ -20,15 +20,18 @@ public class ActionBar : MonoBehaviour {
     {
         inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
         actionbar = GameObject.Find("ActionBar");
-        actionbar.SetActive(false);
         equiped = false;
 
-        Button btn = euipButton.GetComponent<Button>();
+
+        Button btn = equipButton.GetComponent<Button>();
         Button btn2 = dropButton.GetComponent<Button>();
         Button btn3 = consumeButton.GetComponent<Button>();
-        btn.onClick.AddListener(() => { EquipItem(_item);});
-        btn2.onClick.AddListener(() => { DropItem(_item);});
+        btn.onClick.AddListener(() => { EquipItem(_item); });
+        btn2.onClick.AddListener(() => { DropItem(_item); });
         btn3.onClick.AddListener(() => { ConsumeItem(_item); });
+        actionbar.SetActive(false);
+        //data.equiped = false;
+
     }
 
     private void Update()
@@ -36,8 +39,6 @@ public class ActionBar : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.B)){
 
             this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyReduceHealth(20);
-            
-            //health.InstantlyReduceHealth(1);
         }
     }
 
@@ -58,14 +59,20 @@ public class ActionBar : MonoBehaviour {
     }
     void EquipItem(Item item)
     {
+        Debug.Log(equiped);
         _item = item;
         Transform apu = GameObject.Find("Equipment").transform;
-        if (equiped == false && item.ID != apu.GetChild(0).GetComponent<ItemPick>().id)
+        if (equiped == false)
         {
             GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
-            Debug.Log(_item.Title);
             apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
             equiped = true;
+        }
+        else if (item.ID != apu.GetChild(0).GetComponent<ItemPick>().id)
+        {
+            Destroy(apu.GetChild(0).gameObject);
+            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
+            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
         }
         else if (equiped == true)
         {
@@ -79,9 +86,9 @@ public class ActionBar : MonoBehaviour {
         Debug.Log("Consumed");
         //_item = item;
         //Transform apu = GameObject.Find("Equipment").transform;
-
+        this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHunger(item.Healthamount);
         this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHealth(item.Healthamount);
-        Debug.Log("Heatlh incfeased" + item.Healthamount);
+        Debug.Log("Heatlh increased" + item.Healthamount + " and Hunger increased" + item.Healthamount);
 
 
         inv.RemoveItem(item.ID);
@@ -93,15 +100,15 @@ public class ActionBar : MonoBehaviour {
     {
         Transform apu = GameObject.Find("Equipment").transform;
 
-        if (equiped == true)
+        if (data.equiped == true)
         {
             Destroy(apu.GetChild(0).gameObject);
         }
-       
-        equiped = false;
+
+        data.equiped = false;
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
 
-        GameObject itemtodrop = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu.transform.position + Vector3.forward, Quaternion.identity);
+        GameObject itemtodrop = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity);
     }
 }

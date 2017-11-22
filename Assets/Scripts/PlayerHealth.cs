@@ -210,7 +210,7 @@ public class PlayerHealth : NetworkBehaviour
     // reduce health over time
     void ReduceHealth(int amount, float frequency)
     {
-        Debug.Log("reducing hp by: " + amount);
+        //Debug.Log("reducing hp by: " + amount);
 
         currentHealth -= amount;
         healthBarContent.fillAmount -= (amount / 100f);
@@ -220,7 +220,7 @@ public class PlayerHealth : NetworkBehaviour
     }
 
     // increase hunger over time (or the lack of it, increase is actually good with this stat
-    void IncreaseHunger(int amount, float frequency)
+   public void IncreaseHunger(int amount, float frequency)
     {
         currentHunger += amount;
 
@@ -331,8 +331,6 @@ public class PlayerHealth : NetworkBehaviour
     {
         currentHealth += amount;
         healthBarContent.fillAmount += (amount / 100f);
-
-        audioSource.PlayOneShot(eating);
     }
 
     // instantly reduce health
@@ -340,6 +338,13 @@ public class PlayerHealth : NetworkBehaviour
     {
         currentHealth -= amount;
         healthBarContent.fillAmount -= (amount / 100f);
+    }
+
+    public void InstantlyIncreaseHunger(int amount)
+    {
+        currentHunger += amount;
+        hungerBarContent.fillAmount += (amount / 100f);
+        audioSource.PlayOneShot(eating);
     }
 
     // instantly increase stamina

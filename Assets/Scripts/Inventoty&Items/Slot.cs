@@ -7,15 +7,18 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IDropHandler {
 
     private Inventory inventory;
+    private ItemData data;
     public int id;
+    public bool equiped;
 
 
     // Use this for initialization
     void Start () {
 
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
-		
-	}
+        equiped = false;
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,8 +42,24 @@ public class Slot : MonoBehaviour, IDropHandler {
             // tämä kohta hoitaa sitä tapahtumaa, kun slotissa on esine. Esineet vaihtavat paikkaa
             Transform item = this.transform.GetChild(0);
             item.GetComponent<ItemData>().slotLocation = droppedItem.slotLocation;
+            Debug.Log("asdasdasdasfsfdbadfb" + item.GetComponent<ItemData>().slotLocation);
+
+            Debug.Log(inventory.slots[droppedItem.slotLocation].GetComponent<Slot>().equiped);
+            Debug.Log(droppedItem.slotLocation != ItemData.previousSlot);
+
+            if (inventory.slots[droppedItem.slotLocation].GetComponent<Slot>().equiped == true || inventory.slots[ItemData.previousSlot].GetComponent<Slot>().equiped == true)
+            {
+                if (droppedItem.slotLocation != ItemData.previousSlot)
+                {
+                    Debug.Log("Bissee");
+                    droppedItem.changeOutline(inventory.slots[droppedItem.slotLocation].GetComponent<Slot>());
+                }
+            }
+
             item.transform.SetParent(inventory.slots[droppedItem.slotLocation].transform);
             item.transform.position = inventory.slots[droppedItem.slotLocation].transform.position;
+            
+
 
             inventory.items[droppedItem.slotLocation] = item.GetComponent<ItemData>().item;
             inventory.items[id] = droppedItem.item;
