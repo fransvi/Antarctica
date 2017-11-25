@@ -15,7 +15,6 @@ public class NetworkSyncTransform : NetworkBehaviour
     private float _posThreshold = 0.1f;
     [SerializeField]
     private float _rotThreshold = 1f;
-
     [SyncVar]
     private Vector3 _lastPosition;
 
@@ -29,6 +28,7 @@ public class NetworkSyncTransform : NetworkBehaviour
     {
         if (isLocalPlayer)
             return;
+        //playerCamera = GetComponentInChildren<Camera>().gameObject;
         InterpolatePosition();
         InterpolateRotation();
         InterpolateCamRotation();

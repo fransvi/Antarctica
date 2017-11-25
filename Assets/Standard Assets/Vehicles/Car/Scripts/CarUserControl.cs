@@ -2,38 +2,81 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Vehicles.Car;
 
-namespace UnityStandardAssets.Vehicles.Car
-{
-    [RequireComponent(typeof (CarController))]
-    public class CarUserControl : NetworkBehaviour
+public class CarUserControl : NetworkBehaviour
     {
-        private CarController m_Car; // the car controller we want to use
+        private GameObject vehicle; // the car controller we want to use
+        private float h;
+        private float v;
+        private float handbrake;
 
 
         private void Awake()
         {
             // get the car controller
-            m_Car = GetComponent<CarController>();
+            vehicle = GameObject.Find("SnowMobile");
         }
 
+        public void FullBrake()
+        {
+            CmdStop(vehicle.GetComponent<NetworkIdentity>().netId);
+        }
+
+        public void ResetBrake()
+        {
+            CmdResetBrake(vehicle.GetComponent<NetworkIdentity>().netId);
+        }
+
+        [Command]
+        private void CmdStop(NetworkInstanceId netId)
+        {
+            RpcStop(netId);
+        }
+
+        [ClientRpc]
+        private void RpcStop(NetworkInstanceId netId)
+        {
+            GameObject car = ClientScene.FindLocalObject(netId);
+            car.GetComponent<CarController>().SlowdownCar();
+        }
+        [Command]
+        private void CmdResetBrake(NetworkInstanceId netId)
+        {
+            RpcResetBrake(netId);
+        }
+
+        [ClientRpc]
+        private void RpcResetBrake(NetworkInstanceId netId)
+        {
+            GameObject car = ClientScene.FindLocalObject(netId);
+            //car.GetComponent<CarController>().ResetBrake();
+        }
+
+
+        [Command]
+        private void CmdMove(float h, float v, float hb, NetworkInstanceId netId)
+        {
+            RpcMove(h, v, hb, netId);
+        }
+        [ClientRpc]
+        private void RpcMove(float h, float v, float hb, NetworkInstanceId netId)
+        {
+            GameObject car = ClientScene.FindLocalObject(netId);
+            car.GetComponent<CarController>().Move(h, v, v, hb);
+        }
 
 
         private void FixedUpdate()
         {
-            if (!transform.Find("PlayerNetworkViimeisin 2(Clone)").GetComponent<NetworkIdentity>().isLocalPlayer)
-            {
-                return;
-            }
+            vehicle = GameObject.Find("SnowMobile");
             // pass the input to the car!
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            float v = CrossPlatformInputManager.GetAxis("Vertical");
-#if !MOBILE_INPUT
-            float handbrake = CrossPlatformInputManager.GetAxis("Jump");
-            m_Car.Move(h, v, v, handbrake);
-#else
-            m_Car.Move(h, v, v, 0f);
-#endif
+            h = CrossPlatformInputManager.GetAxis("Horizontal");
+            v = CrossPlatformInputManager.GetAxis("Vertical");
+            handbrake = CrossPlatformInputManager.GetAxis("Jump");
+            CmdMove(h, v, handbrake, vehicle.GetComponent<NetworkIdentity>().netId);
+            //vehicle.GetComponent<CarController>().Move(h, v, v, handbrake);
+
         }
-    }
+    
 }

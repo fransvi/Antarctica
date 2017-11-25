@@ -47,7 +47,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
     {
 
         gameObject.layer = LayerMask.NameToLayer("LocalPlayer");
-
+        playerCamera = GetComponentInChildren<Camera>();
 
         //Enable Components
         foreach (Behaviour component in componentsToEnable)

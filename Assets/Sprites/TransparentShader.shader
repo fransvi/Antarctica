@@ -34,7 +34,7 @@
 			{
 				half4 c = tex2D(_MainTex, IN.uv_MainTex);
 				o.Albedo = c.rgb;
-				o.Alpha = _Alpha;
+				o.Alpha = c.a;
 			}
 			ENDCG
 	}

@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
@@ -16,7 +18,7 @@ namespace UnityStandardAssets.Vehicles.Car
         KPH
     }
 
-    public class CarController : MonoBehaviour
+    public class CarController : NetworkBehaviour
     {
         [SerializeField] private CarDriveType m_CarDriveType = CarDriveType.FourWheelDrive;
         [SerializeField] private WheelCollider[] m_WheelColliders = new WheelCollider[4];
@@ -88,6 +90,25 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_GearNum++;
             }
         }
+        public void SlowdownCar()
+        {
+            StartCoroutine(SlowCar());
+        }
+        private IEnumerator SlowCar()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                m_WheelColliders[i].brakeTorque = Mathf.Infinity;
+            }
+            yield return new WaitForSeconds(3f);
+            for (int i = 0; i < 4; i++)
+            {
+                m_WheelColliders[i].brakeTorque = 0f;
+            }
+
+        }
+
+
 
 
         // simple function to add a curved bias towards 1 for a value in the 0-1 range
@@ -124,9 +145,13 @@ namespace UnityStandardAssets.Vehicles.Car
             var revsRangeMax = ULerp(m_RevRangeBoundary, 1f, gearNumFactor);
             Revs = ULerp(revsRangeMin, revsRangeMax, m_GearFactor);
         }
-
-
-        public void Move(float steering, float accel, float footbrake, float handbrake)
+        [Command]
+        void CmdMove(float steering, float accel, float footbrake, float handbrake)
+        {
+            RpcMove(steering, accel, footbrake, handbrake);
+        }
+        [ClientRpc]
+        void RpcMove(float steering, float accel, float footbrake, float handbrake)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -136,16 +161,15 @@ namespace UnityStandardAssets.Vehicles.Car
                 m_WheelMeshes[i].transform.position = position;
                 m_WheelMeshes[i].transform.rotation = quat;
             }
-
             //clamp input values
             steering = Mathf.Clamp(steering, -1, 1);
             AccelInput = accel = Mathf.Clamp(accel, 0, 1);
-            BrakeInput = footbrake = -1*Mathf.Clamp(footbrake, -1, 0);
+            BrakeInput = footbrake = -1 * Mathf.Clamp(footbrake, -1, 0);
             handbrake = Mathf.Clamp(handbrake, 0, 1);
 
             //Set the steer on the front wheels.
             //Assuming that wheels 0 and 1 are the front wheels.
-            m_SteerAngle = steering*m_MaximumSteerAngle;
+            m_SteerAngle = steering * m_MaximumSteerAngle;
             m_WheelColliders[0].steerAngle = m_SteerAngle;
             m_WheelColliders[1].steerAngle = m_SteerAngle;
 
@@ -157,7 +181,7 @@ namespace UnityStandardAssets.Vehicles.Car
             //Assuming that wheels 2 and 3 are the rear wheels.
             if (handbrake > 0f)
             {
-                var hbTorque = handbrake*m_MaxHandbrakeTorque;
+                var hbTorque = handbrake * m_MaxHandbrakeTorque;
                 m_WheelColliders[2].brakeTorque = hbTorque;
                 m_WheelColliders[3].brakeTorque = hbTorque;
             }
@@ -169,6 +193,12 @@ namespace UnityStandardAssets.Vehicles.Car
             AddDownForce();
             CheckForWheelSpin();
             TractionControl();
+        }
+
+
+        public void Move(float steering, float accel, float footbrake, float handbrake)
+        {
+            CmdMove(steering, accel, footbrake, handbrake);
         }
 
 

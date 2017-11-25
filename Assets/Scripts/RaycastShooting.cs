@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class RaycastShooting : MonoBehaviour
+public class RaycastShooting : NetworkBehaviour
 {
 
     public int gunDamage = 1;
@@ -27,11 +27,11 @@ public class RaycastShooting : MonoBehaviour
     {
         laserLine = GetComponent<LineRenderer>();
 
-        fpsCam = GetComponentInParent<Camera>();
+        fpsCam = GetComponentInChildren<Camera>();
 
         isGrabbed = false;
 
-        Transform[] transforms = transform.parent.parent.GetComponentsInChildren<Transform>();
+        Transform[] transforms = GetComponentsInChildren<Transform>();
         foreach (Transform t in transforms)
         {
             if (t.name == "Inventory")
@@ -42,7 +42,19 @@ public class RaycastShooting : MonoBehaviour
 
     }
 
-    public void CmdShootRayCast()
+    [Command]
+    void CmdHitObject(Vector3 dir, NetworkInstanceId netId)
+    {
+        RpcHitObject(dir, netId);
+    }
+    [ClientRpc]
+    void RpcHitObject(Vector3 dir, NetworkInstanceId netId)
+    {
+        GameObject obj = ClientScene.FindLocalObject(netId);
+        obj.GetComponent<Rigidbody>().AddForce(dir * 2, ForceMode.Impulse);
+    }
+
+    public void ShootRayCast()
     {
 
 
@@ -64,8 +76,9 @@ public class RaycastShooting : MonoBehaviour
         {
             if (h.transform.CompareTag("Interactable"))
             {
-
-                h.rigidbody.AddForce(-h.normal * hitForce);
+                GameObject obj = h.transform.gameObject;
+                CmdHitObject(Vector3.up, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
+                //h.rigidbody.AddForce(-h.normal * hitForce);
                 laserLine.SetPosition(1, h.point);
             }
             if (h.transform.CompareTag("Door"))
@@ -127,7 +140,7 @@ public class RaycastShooting : MonoBehaviour
  
             if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
             {
-                CmdShootRayCast();
+                ShootRayCast();
             }
 
     }
