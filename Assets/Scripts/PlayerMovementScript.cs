@@ -7,12 +7,16 @@ public class PlayerMovementScript : NetworkBehaviour {
 
     public Animator playerAnimator;
     private Animator fpsAnimator;
+    private FirstPersonAnimationManager fpsAnimManager;
+
+    [SerializeField]
+    private string itemHeld;
 
 	// Use this for initialization
 	void Start () {
 
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
-
+        fpsAnimManager = GetComponent<FirstPersonAnimationManager>();
     }
 
     //Timer for jump animation
@@ -78,9 +82,34 @@ public class PlayerMovementScript : NetworkBehaviour {
                 playerAnimator.SetBool("isRunning", false);
             }
 
-            
-
+            if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld != "Lantern")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Lantern";
+                fpsAnimManager.TakeLantern();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld != "Compass")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Compass";
+                fpsAnimManager.TakeCompass();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld != "Chocolate")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Chocolate";
+                fpsAnimManager.TakeChocolate();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld != "Thermos")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Thermos";
+                fpsAnimManager.TakeThermos();
+            }
         }
-
 	}
 }
