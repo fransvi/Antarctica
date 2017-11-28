@@ -69,6 +69,10 @@ public class CarUserControl : NetworkBehaviour
 
         private void FixedUpdate()
         {
+            if (Input.GetKeyUp(KeyCode.L))
+            {
+                
+            }
             vehicle = GameObject.Find("SnowMobile");
             // pass the input to the car!
             h = CrossPlatformInputManager.GetAxis("Horizontal");

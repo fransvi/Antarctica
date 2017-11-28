@@ -39,6 +39,10 @@ namespace UnityStandardAssets.Vehicles.Car
         [SerializeField] private float m_SlipLimit;
         [SerializeField] private float m_BrakeTorque;
 
+        public bool _hasDriver;
+        public bool _hasPassanger;
+        public GameObject _lights;
+
         private Quaternion[] m_WheelMeshLocalRotations;
         private Vector3 m_Prevpos, m_Pos;
         private float m_SteerAngle;
@@ -60,6 +64,7 @@ namespace UnityStandardAssets.Vehicles.Car
         // Use this for initialization
         private void Start()
         {
+            //_lights.SetActive(false);
             m_WheelMeshLocalRotations = new Quaternion[4];
             for (int i = 0; i < 4; i++)
             {
@@ -109,7 +114,10 @@ namespace UnityStandardAssets.Vehicles.Car
         }
 
 
-
+        public void SetLights(bool b)
+        {
+            _lights.gameObject.SetActive(b);
+        }
 
         // simple function to add a curved bias towards 1 for a value in the 0-1 range
         private static float CurveFactor(float factor)

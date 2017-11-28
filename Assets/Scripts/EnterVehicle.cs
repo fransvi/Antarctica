@@ -78,6 +78,7 @@ public class EnterVehicle : NetworkBehaviour
         // Removes the  authority of this object network instance id to the client
         NetworkServer.objects[netInstanceId].RemoveClientAuthority(connectionToClient);
     }
+
     void Update()
     {
 
@@ -91,41 +92,80 @@ public class EnterVehicle : NetworkBehaviour
         }
         if (inVehicle && Input.GetKeyUp(KeyCode.F))
         {
-
-
+            carParent = transform.Find("SnowMobile");
             if (cam.enabled == true)
             {
-                //CmdRemoveObjectAuthority(GetComponent<NetworkIdentity>().netId);
-                Player = this.gameObject;
-                cam.enabled = false;
-                Player.GetComponent<FirstPersonController>().enabled = true;
-                PlayerModel.SetActive(true);
-                //PlayerHealthBar.SetActive(true);
-                playerCam.enabled = true;
-                Player.GetComponent<CarUserControl>().FullBrake();
-                Player.GetComponent<CarUserControl>().enabled = false;
-                inVehicle = false;
-                //CmdEnableModel();
+
+                if (carParent.gameObject.GetComponent<CarController>()._hasDriver)
+                {
+                    //CmdRemoveObjectAuthority(GetComponent<NetworkIdentity>().netId);
+                    Player = this.gameObject;
+                    cam.enabled = false;
+                    Player.GetComponent<FirstPersonController>().enabled = true;
+                    PlayerModel.SetActive(true);
+                    //PlayerHealthBar.SetActive(true);
+                    playerCam.enabled = true;
+                    Player.GetComponent<CarUserControl>().FullBrake();
+                    Player.GetComponent<CarUserControl>().enabled = false;
+                    carParent.GetComponent<CarController>()._hasDriver = false;
+                    inVehicle = false;
+                    //CmdEnableModel();
+                }
+                else
+                {
+                    //CmdRemoveObjectAuthority(GetComponent<NetworkIdentity>().netId);
+                    Player = this.gameObject;
+                    cam.enabled = false;
+                    Player.GetComponent<FirstPersonController>().enabled = true;
+                    PlayerModel.SetActive(true);
+                    //PlayerHealthBar.SetActive(true);
+                    playerCam.enabled = true;
+                    Player.GetComponent<CarUserControl>().FullBrake();
+                    Player.GetComponent<CarUserControl>().enabled = false;
+                    carParent.GetComponent<CarController>()._hasPassanger = false;
+                    inVehicle = false;
+                    //CmdEnableModel();
+                }
 
             }
 
         }
         else if (!inVehicle && Input.GetKeyUp(KeyCode.F))
         {
+            carParent = transform.Find("SnowMobile");
             if (cam.enabled == false)
             {
-                //CmdAssignObjectAuthority(GetComponent<NetworkIdentity>().netId);
-                Player = this.gameObject;
-                cam.enabled = true;
-                Player.GetComponent<FirstPersonController>().enabled = false;
-                PlayerModel.SetActive(false);
-                //PlayerHealthBar.SetActive(false);
-                playerCam.enabled = false;
-                guiEnable = false;
-                Player.GetComponent<CarUserControl>().enabled = true;
+                if (carParent.gameObject.GetComponent<CarController>()._hasDriver)
+                {
+                    //CmdAssignObjectAuthority(GetComponent<NetworkIdentity>().netId);
+                    Player = this.gameObject;
+                    cam.enabled = true;
+                    Player.GetComponent<FirstPersonController>().enabled = false;
+                    PlayerModel.SetActive(false);
+                    //PlayerHealthBar.SetActive(false);
+                    playerCam.enabled = false;
+                    guiEnable = false;
+                    //Player.GetComponent<CarUserControl>().enabled = true;
+                    carParent.GetComponent<CarController>()._hasPassanger = true;
+                    inVehicle = true;
+                    //CmdDisableModel();
+                }
+                else
+                {
 
-                inVehicle = true;
-                //CmdDisableModel();
+                    //CmdAssignObjectAuthority(GetComponent<NetworkIdentity>().netId);
+                    Player = this.gameObject;
+                    cam.enabled = true;
+                    Player.GetComponent<FirstPersonController>().enabled = false;
+                    PlayerModel.SetActive(false);
+                    //PlayerHealthBar.SetActive(false);
+                    playerCam.enabled = false;
+                    guiEnable = false;
+                    Player.GetComponent<CarUserControl>().enabled = true;
+                    carParent.GetComponent<CarController>()._hasDriver = true;
+                    inVehicle = true;
+                    //CmdDisableModel();
+                }
 
             }
         }
