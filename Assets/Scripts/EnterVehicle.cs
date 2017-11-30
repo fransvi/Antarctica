@@ -16,8 +16,7 @@ public class EnterVehicle : NetworkBehaviour
     public GameObject Player;
     [SyncVar]
     public GameObject Vehicle;
-    [SyncVar]
-    public Transform carParent;
+    public GameObject carParent;
     bool guiEnable = false;
     public Camera cam;
     public GameObject hands;
@@ -86,17 +85,17 @@ public class EnterVehicle : NetworkBehaviour
         if (Vehicle == null)
         {
             Vehicle = GameObject.FindWithTag("Vehicle");
-            carParent = transform.Find("SnowMobile");
+            //carParent = transform.Find("SnowMobile");
             cam = Vehicle.GetComponentInChildren<Camera>();
             cam.enabled = false;
         }
         if (inVehicle && Input.GetKeyUp(KeyCode.F))
         {
-            carParent = transform.Find("SnowMobile");
+            //carParent = transform.Find("SnowMobile");
             if (cam.enabled == true)
             {
 
-                if (carParent.gameObject.GetComponent<CarController>()._hasDriver)
+                if (carParent.GetComponent<CarSeats>()._hasDriver)
                 {
                     //CmdRemoveObjectAuthority(GetComponent<NetworkIdentity>().netId);
                     Player = this.gameObject;
@@ -132,10 +131,11 @@ public class EnterVehicle : NetworkBehaviour
         }
         else if (!inVehicle && Input.GetKeyUp(KeyCode.F))
         {
-            carParent = transform.Find("SnowMobile");
+            //carParent = transform.Find("SnowMobile");
             if (cam.enabled == false)
             {
-                if (carParent.gameObject.GetComponent<CarController>()._hasDriver)
+                Debug.Log(carParent);
+                if (carParent.GetComponent<CarSeats>()._hasDriver)
                 {
                     //CmdAssignObjectAuthority(GetComponent<NetworkIdentity>().netId);
                     Player = this.gameObject;

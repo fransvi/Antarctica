@@ -54,6 +54,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject inventoryCanvas;
 
         public bool paused =false;
+        public bool MouseLockFPSC = false;
 
 
         // Use this for initialization
@@ -101,7 +102,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             if (!paused)
             {
-                RotateView();
+                if (!MouseLockFPSC)
+                {
+                    RotateView();
+                }
+
 
                 // the jump state needs to read here to make sure it is not missed
                 if (!m_Jump)
@@ -334,8 +339,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_MouseLook.lockCursor = false;
         }
+        public void LockMouseLook()
+        {
+            m_MouseLook.lockCursor = true;
+        }
 
- 
+
 
         private void RotateView()
         {

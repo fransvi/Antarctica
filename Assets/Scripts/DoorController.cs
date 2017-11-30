@@ -5,18 +5,27 @@ using UnityEngine;
 public class DoorController : MonoBehaviour {
 
     private Animator _animator = null;
+    public bool _isOpen = false;
 
-	// Use this for initialization
+
 	void Start () {
         _animator = GetComponent<Animator>();
-	}
-	
+
+    }
+ 
     public void OpenDoor()
     {
-        _animator.SetBool("isOpen", true);
+        _animator.SetTrigger("OpenDoor");
     }
     public void CloseDoor()
     {
-        _animator.SetBool("isOpen", false);
+        _animator.enabled = true;
+        _isOpen = false;
+    }
+
+    public void PauseAnim()
+    {
+        _isOpen = true;
+        _animator.enabled = false;
     }
 }

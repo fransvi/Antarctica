@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class RaycastShooting : NetworkBehaviour
 {
@@ -23,6 +24,8 @@ public class RaycastShooting : NetworkBehaviour
 
     private Inventory inv;
 
+    private bool viewingText;
+
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
@@ -43,15 +46,62 @@ public class RaycastShooting : NetworkBehaviour
     }
 
     [Command]
-    void CmdHitObject(Vector3 dir, NetworkInstanceId netId)
+    void CmdHitObject(int id, NetworkInstanceId netId)
     {
-        RpcHitObject(dir, netId);
+        RpcHitObject(id, netId);
     }
     [ClientRpc]
-    void RpcHitObject(Vector3 dir, NetworkInstanceId netId)
+    void RpcHitObject(int id, NetworkInstanceId netId)
     {
         GameObject obj = ClientScene.FindLocalObject(netId);
-        obj.GetComponent<Rigidbody>().AddForce(dir * 2, ForceMode.Impulse);
+        switch (id)
+        {
+            case 1:
+                if (obj.GetComponent<LightSwitch>())
+                {
+                    LightSwitch light = obj.GetComponent<LightSwitch>();
+                    if (light._isActive)
+                    {
+                        light.Activate(false);
+                    }
+                    else
+                    {
+                        light.Activate(true);
+                    }
+                }
+                else if (obj.GetComponent<PowerGeneratorScript>())
+                {
+                    PowerGeneratorScript pg = obj.GetComponent<PowerGeneratorScript>();
+                    if (pg._powerOn)
+                    {
+                        pg.DisablePower();
+                    }
+                    else
+                    {
+                        pg.EnablePower();
+                    }
+                }
+
+                break;
+            case 2:
+                DoorController door = obj.GetComponent<DoorController>();
+                if (door._isOpen)
+                {
+                    door.CloseDoor();
+                }
+                else
+                {
+                    door.GetComponent<Animator>().SetTrigger("OpenDoor");
+                }
+ 
+                break;
+            case 3:
+                NetworkServer.Destroy(obj); //Itemi lootattu tuhotaan scenestä
+                break;
+            default:
+                
+                break;
+        }
     }
 
     public void ShootRayCast()
@@ -72,19 +122,39 @@ public class RaycastShooting : NetworkBehaviour
 
         hits = Physics.RaycastAll(rayOrigin, fpsCam.transform.forward, weaponRange);
 
+        //RaycastHittien toiminnat idllä:
+        //0 = Yleinen
+        //1 = Valo
+        //2 = Ovi
+        //3 = Item
         foreach (RaycastHit h in hits)
         {
             if (h.transform.CompareTag("Interactable"))
             {
-                GameObject obj = h.transform.gameObject;
-                CmdHitObject(Vector3.up, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
-                //h.rigidbody.AddForce(-h.normal * hitForce);
+                if (!viewingText)
+                {
+                    GetComponent<FirstPersonController>().MouseLockFPSC = true;
+                    h.transform.gameObject.GetComponent<InteractableObject>().ShowText(true);
+                    viewingText = true;
+                }
+                else
+                {
+                    GetComponent<FirstPersonController>().MouseLockFPSC = false;
+                    h.transform.gameObject.GetComponent<InteractableObject>().ShowText(false);
+                    viewingText = false;
+                }
+                //h.transform.gameObject.GetComponent<InteractableObject>().ShowText(true);
+                
+            }
+            if (h.transform.CompareTag("Switch"))
+            {
+                CmdHitObject(1, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
                 laserLine.SetPosition(1, h.point);
             }
             if (h.transform.CompareTag("Door"))
             {
-                Debug.Log("Door hit");
-                
+                CmdHitObject(2, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
+                laserLine.SetPosition(1, h.point);
                 if (h.transform.GetComponent<Animator>().GetBool("isOpen"))
                 {
                     h.transform.GetComponent<DoorController>().CloseDoor();
@@ -96,11 +166,8 @@ public class RaycastShooting : NetworkBehaviour
             }
             if (h.transform.CompareTag("Item"))
             {
-                Debug.Log("Item hit");
-                
+                CmdHitObject(3, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
                 inv.AddItem(h.transform.GetComponent<ItemPick>().id);
-                
-                Destroy(h.transform.gameObject);
 
             }
 
