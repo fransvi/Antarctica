@@ -8,6 +8,7 @@ public class PlayerMovementScript : NetworkBehaviour {
     public Animator playerAnimator;
     private Animator fpsAnimator;
     private FirstPersonAnimationManager fpsAnimManager;
+    public bool allowItemChange;
 
     [SerializeField]
     private string itemHeld;
@@ -17,6 +18,7 @@ public class PlayerMovementScript : NetworkBehaviour {
 
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
         fpsAnimManager = GetComponent<FirstPersonAnimationManager>();
+        allowItemChange = true;
     }
 
     //Timer for jump animation
@@ -82,33 +84,45 @@ public class PlayerMovementScript : NetworkBehaviour {
                 playerAnimator.SetBool("isRunning", false);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld != "Lantern")
+            if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld != "Lantern" && allowItemChange)
             {
                 fpsAnimManager.ResetItemHold();
                 fpsAnimManager.ResetIdleAnimInstantly();
                 itemHeld = "Lantern";
                 fpsAnimManager.TakeLantern();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld != "Compass")
+            if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld != "Compass" && allowItemChange)
             {
                 fpsAnimManager.ResetItemHold();
                 fpsAnimManager.ResetIdleAnimInstantly();
                 itemHeld = "Compass";
                 fpsAnimManager.TakeCompass();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld != "Chocolate")
+            if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld != "Chocolate" && allowItemChange)
             {
                 fpsAnimManager.ResetItemHold();
                 fpsAnimManager.ResetIdleAnimInstantly();
                 itemHeld = "Chocolate";
                 fpsAnimManager.TakeChocolate();
             }
-            if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld != "Thermos")
+            if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld != "Thermos" && allowItemChange)
             {
                 fpsAnimManager.ResetItemHold();
                 fpsAnimManager.ResetIdleAnimInstantly();
                 itemHeld = "Thermos";
                 fpsAnimManager.TakeThermos();
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (!fpsAnimator.GetCurrentAnimatorStateInfo(4).IsName("otaSuklaa") && !fpsAnimator.GetCurrentAnimatorStateInfo(4).IsName("SuklaaPatukka|Syönti(SUklaa)") && itemHeld == "Chocolate")
+                {
+                    fpsAnimManager.Eat();
+                }
+                else if (!fpsAnimator.GetCurrentAnimatorStateInfo(5).IsName("otaTermos") && !fpsAnimator.GetCurrentAnimatorStateInfo(5).IsName("Armature|Juonti(Termos)") && itemHeld == "Thermos")
+                {
+                    fpsAnimManager.Drink();
+                }
             }
         }
 	}

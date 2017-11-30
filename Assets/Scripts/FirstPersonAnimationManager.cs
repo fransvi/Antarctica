@@ -9,6 +9,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
     private GameObject suklaa;
     private GameObject termos;
     private Animator fpsAnimator;
+    private PlayerMovementScript pms;
 
     string itemTaken;
     bool syncing;
@@ -18,6 +19,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 	void Start () {
 
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
+        pms = GetComponent<PlayerMovementScript>();
         kompassi = transform.GetChild(0).GetChild(2).GetChild(6).gameObject;
         lyhty = transform.GetChild(0).GetChild(2).GetChild(8).gameObject;
         suklaa = transform.GetChild(0).GetChild(2).GetChild(9).gameObject;
@@ -43,6 +45,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 
     public void EmptyHands()
     {
+        itemTaken = "";
         kompassi.SetActive(false);
         lyhty.SetActive(false);
         suklaa.SetActive(false);
@@ -158,8 +161,27 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 
     public void Eat()
     {
-        fpsAnimator.SetTrigger("Syo");
-        // delay, sitten resetItemHold() ja EmptyHands()
+        pms.allowItemChange = false;
+        fpsAnimator.Play("SuklaaPatukka|Syönti(SUklaa)", fpsAnimator.GetLayerIndex("SuklaaLayer"), 0f);
+        Invoke("ResetItemHold", 0.5f);
+        Invoke("EmptyHands", 0.5f);
+        Invoke("ResetIdleAnimInstantly", 0.5f);
+        Invoke("AllowItemChangeAgain", 0.5f);
+    }
+
+    public void Drink()
+    {
+        pms.allowItemChange = false;
+        fpsAnimator.Play("Armature|Juonti(Termos)", fpsAnimator.GetLayerIndex("TermosLayer"), 0f);
+        Invoke("ResetItemHold", 0.5f);
+        Invoke("EmptyHands", 0.5f);
+        Invoke("ResetIdleAnimInstantly", 0.5f);
+        Invoke("AllowItemChangeAgain", 0.5f);
+    }
+
+    void AllowItemChangeAgain()
+    {
+        pms.allowItemChange = true;
     }
 
     public void Click()
@@ -171,5 +193,4 @@ public class FirstPersonAnimationManager : MonoBehaviour {
     {
         fpsAnimator.SetTrigger("Vaanto");
     }
-
 }
