@@ -31,12 +31,12 @@ public class ItemDatabase : MonoBehaviour {
     void ConstructItemDatabase()
     {
         //Käy läpi kaikki Item.json tiedostossa olevat esineet
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), float.Parse(itemData[i]["weight"].ToString()),
                 itemData[i]["description"].ToString(),(bool)itemData[i]["stackable"], itemData[i]["slug"].ToString()));
         }
-        for (int i = 2; i < 3; i++)
+        for (int i = 3; i < 4; i++)
         {
             database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), float.Parse(itemData[i]["weight"].ToString()),
                 itemData[i]["description"].ToString(), (bool)itemData[i]["stackable"], (int)(itemData[i]["healthamount"]), itemData[i]["slug"].ToString()));
