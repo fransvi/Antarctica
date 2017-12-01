@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class Tooltip : MonoBehaviour {
     private Item _item;
     private string data;
-    private GameObject tooltip;
+    public GameObject tooltip;
 
     void Start()
     {
-        tooltip = GameObject.Find("Tooltip");
+        //tooltip = GameObject.Find("Tooltip");
         tooltip.SetActive(false);
     }
 
@@ -19,7 +19,7 @@ public class Tooltip : MonoBehaviour {
 
         if (tooltip.activeSelf)
         {
-            tooltip.transform.position = Input.mousePosition;
+            tooltip.transform.localPosition = Input.mousePosition - new Vector3(470, 137, 0);//Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
         }
     }
 

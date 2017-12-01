@@ -109,6 +109,9 @@ MonoBehaviour:
   id: 0
   amount: 0
   slotLocation: 0
+  apu: {fileID: 0}
+  actionbar: {fileID: 0}
+  equiped: 0
 --- !u!114 &114571693590669332
 MonoBehaviour:
   m_ObjectHideFlags: 1

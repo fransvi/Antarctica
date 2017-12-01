@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class ActionBar : MonoBehaviour {
 
-    private GameObject actionbar;
+    public GameObject actionbar;
     private Item _item;
     public bool equiped;
     private ItemData data;
     private Inventory inv;
     private PlayerHealth health;
 
+    private Slot _slot;
     public Button equipButton;
     public Button dropButton;
     public Button consumeButton;
@@ -19,14 +20,14 @@ public class ActionBar : MonoBehaviour {
     void Start()
     {
         inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
-        actionbar = GameObject.Find("ActionBar");
+        //actionbar = GameObject.Find("ActionBar");
         equiped = false;
 
 
         Button btn = equipButton.GetComponent<Button>();
         Button btn2 = dropButton.GetComponent<Button>();
         Button btn3 = consumeButton.GetComponent<Button>();
-        btn.onClick.AddListener(() => { EquipItem(_item); });
+        btn.onClick.AddListener(() => { EquipItem(_item, _slot); });
         btn2.onClick.AddListener(() => { DropItem(_item); });
         btn3.onClick.AddListener(() => { ConsumeItem(_item); });
         actionbar.SetActive(false);
@@ -42,12 +43,13 @@ public class ActionBar : MonoBehaviour {
         }
     }
 
-    public void Activate (Item item)
+    public void Activate (Item item, Slot slot)
     {
 
         _item = item;
+        _slot = slot;
         actionbar.SetActive(true);
-        actionbar.transform.position = Input.mousePosition;
+        actionbar.transform.localPosition = Input.mousePosition - new Vector3(470, 137, 0);
 
     }
 
@@ -57,35 +59,46 @@ public class ActionBar : MonoBehaviour {
         actionbar.SetActive(false);
 
     }
-    void EquipItem(Item item)
+    public void EquipItem(Item item, Slot slot)
     {
-        Debug.Log(equiped);
         _item = item;
+        _slot = slot;
+
+        //data.EquipItem(item, slot, equiped);
+        Debug.Log("asdasd" + slot.id);
         Transform apu = GameObject.Find("Equipment").transform;
+
+        data = slot.GetComponentInChildren<ItemData>();
+        data.slotLocation = slot.id;
         if (equiped == false)
         {
+            
             GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
             apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            data.changeOutline(slot);
             equiped = true;
+            Debug.Log("actionar equiped " + equiped);
         }
         else if (item.ID != apu.GetChild(0).GetComponent<ItemPick>().id)
         {
             Destroy(apu.GetChild(0).gameObject);
+            Debug.Log("gg"); 
             GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
             apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            data.changeOutline(slot);
         }
         else if (equiped == true)
         {
             Destroy(apu.GetChild(0).gameObject);
+            data.changeOutline(slot);
             equiped = false;
         }
+        ItemData.previousSlot = data.slotLocation;
     }
 
     void ConsumeItem(Item item)
     {
-        Debug.Log("Consumed");
-        //_item = item;
-        //Transform apu = GameObject.Find("Equipment").transform;
+
         this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHunger(item.Healthamount);
         this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHealth(item.Healthamount);
         Debug.Log("Heatlh increased" + item.Healthamount + " and Hunger increased" + item.Healthamount);
@@ -100,15 +113,17 @@ public class ActionBar : MonoBehaviour {
     {
         Transform apu = GameObject.Find("Equipment").transform;
 
-        if (data.equiped == true)
+        if (equiped == true)
         {
             Destroy(apu.GetChild(0).gameObject);
         }
 
-        data.equiped = false;
+        equiped = false;
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
 
         GameObject itemtodrop = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity);
     }
+
+
 }

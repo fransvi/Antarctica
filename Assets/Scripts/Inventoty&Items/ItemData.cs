@@ -15,46 +15,35 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public int slotLocation;
     public Transform apu;
 
-    
-    //private Transform originalSlot;
     private Inventory inv;
     private Tooltip tooltip;
     private PlayerEquip equip;
-    private ActionBar actionbar;
+    public ActionBar actionbar;
     private Slot slot;
-    public bool equiped;
+    [SerializeField]private bool equiped;
     public static int previousSlot;
 
 
     // Use this for initialization
     void Start()
     {
+       
+        Debug.Log("Tapahtuuvain kerran");
         apu = GameObject.Find("Equipment").transform;
-        
-        
-        //previousSlot = 0;
-        //equiped = false;
+        equiped = false;
         inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
         tooltip = inv.GetComponent<Tooltip>();
         actionbar = inv.GetComponent<ActionBar>();
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnBeginDrag(PointerEventData eventData)//tapahtuu kun esineen siirto alkaa
     {
         if (item != null)//tsekkaus onko asia jota halutaan siirtää esine
         {
-            //Debug.Log("jaka"+ eventData.selectedObject.gameObject.GetComponent<ItemData>().id);
-            
             this.transform.SetParent(this.transform.parent.parent);
             this.transform.position = eventData.position;//kerrotaan esineelle seurata kursoria
             GetComponent<CanvasGroup>().blocksRaycasts = false;
+            actionbar.Deactivate();
         }
     }
 
@@ -67,7 +56,8 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (item != null)//tsekkaus onko asia jota halutaan siirtää esine
         {
-            this.transform.position = eventData.position;//kerrotaan esineelle seurata kursoria
+
+            this.transform.localPosition = eventData.position - new Vector2(470,137);//kerrotaan esineelle seurata kursoria
 
         }
 
@@ -86,13 +76,13 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if ((inv.slots[previousSlot].GetComponent<Slot>().equiped == true) && (apu.GetChild(0).GetComponent<ItemPick>().id == gameObject.GetComponent<ItemData>().id))
         {
-            Debug.Log("kaljaa");
             changeOutline(inv.slots[slotLocation].GetComponent<Slot>());
             if(previousSlot == slotLocation)
             {
-                Debug.Log("Sagriaa");
+                Debug.Log("Holahola jallukola");
                 slot.GetComponent<Outline>().enabled = true;
                 slot.equiped = true;
+                equiped = true;
                 actionbar.equiped = true;
             }
                 
@@ -115,89 +105,111 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         
         if (item != null)//tsekkaus onko asia jota halutaan käyttää esine 
         {
-            //Debug.Log(inv.slots[previousSlot].GetComponent<Slot>().equiped);
             Debug.Log("onesine");
-            
+            slot = transform.GetComponentInParent<Slot>();
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                slot = transform.GetComponentInParent<Slot>();
+                EquipItem(item, slot);
 
-                Debug.Log("Viski " + slot.id);
-                Debug.Log(actionbar.equiped + " OLUTTA");
-                if ((slot.equiped == false && inv.slots[previousSlot].GetComponent<Slot>().equiped == false) && equiped == false)
-                {
-                    GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + eventData.pointerPress.name), apu);
-                    apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
-                    Debug.Log("asdasadasd");
-                    changeOutline(slot);
-                }
-                else if (slot.equiped == false && (inv.slots[previousSlot].GetComponent<Slot>().equiped == true))
-                {
-                    Debug.Log("JAllukola");
-                    //slot.equiped = true;
-
-                    Destroy(apu.GetChild(0).gameObject);
-                    GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + eventData.pointerPress.name), apu);
-                    apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
-                    changeOutline(slot);
-                }
-                else if(slot.equiped == true && actionbar.equiped == true)
-                {
-                    Destroy(apu.GetChild(0).gameObject);
-                    //equiped = false;
-                    //slot.equiped = false;
-                    changeOutline(slot);
-                }
-                else
-                {
-
-                    GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + eventData.pointerPress.name), apu);
-                    apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
-                    Debug.Log("eka kerta");
-                    previousSlot = slotLocation;
-                    changeOutline(slot);
-                }
-                previousSlot = slotLocation;
             }
             if (eventData.button == PointerEventData.InputButton.Right)
             {
-                actionbar.Activate(item);
+                actionbar.Activate(item, slot);
             }
         }
     }
 
-    public void changeOutline(Slot slot)
+    public void EquipItem(Item item, Slot slot)
     {
-        Debug.Log("edellinen slot " + previousSlot);
-        Debug.Log("nykyinen slot " + slotLocation);
-        Debug.Log(slot.equiped);
-        Debug.Log((previousSlot == slotLocation && slot.equiped == false));
+
+        Debug.Log("Viski " + slot.equiped);
+        Debug.Log(equiped + " OLUTTA");
+        Debug.Log("Fernet branca "+ inv.slots[previousSlot].GetComponent<Slot>().id);
+
+        //actionbar.equiped = equiped;
 
 
-        if ((previousSlot == slotLocation && slot.equiped == false) && actionbar.equiped == false)
+        if ((slot.equiped == false && inv.slots[previousSlot].GetComponent<Slot>().equiped == false) && equiped == false)
         {
-            slot.GetComponent<Outline>().enabled = true;
-            slot.equiped = true;
+            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + item.Title), apu);
+            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            changeOutline(slot);
             actionbar.equiped = true;
         }
+        else if (slot.equiped == false && (inv.slots[previousSlot].GetComponent<Slot>().equiped == true))
+        {
+
+            Destroy(apu.GetChild(0).gameObject);
+            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + item.Title), apu);
+            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            changeOutline(slot);
+        }
+        else if (slot.equiped == true && equiped == true)
+        {
+            Destroy(apu.GetChild(0).gameObject);
+            changeOutline(slot);
+            actionbar.equiped = false;
+        }
+        else
+        {
+
+            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + item.Title), apu);
+            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            Debug.Log("eka kerta");
+            previousSlot = slotLocation;
+            changeOutline(slot);
+        }
+        previousSlot = slotLocation;
+
+
+    }
+
+
+    public void changeOutline(Slot slot)
+    {
+
+        Debug.Log("edellinen slot " + previousSlot);
+        Debug.Log("nykyinen slot " + slotLocation);
+        Debug.Log(equiped);
+        Debug.Log((previousSlot == slotLocation && slot.equiped == false));
+        Debug.Log((previousSlot == slotLocation && slot.equiped == false) && equiped == false);
+
+
+        if ((previousSlot == slotLocation && slot.equiped == false) && equiped == false)
+        {
+            Debug.Log("pitäisi käydä");
+            slot.GetComponent<Outline>().enabled = true;
+            slot.equiped = true;
+            equiped = true;
+        }
         
-        else if ((previousSlot == slotLocation && slot.equiped == true) && actionbar.equiped == true)
+        else if ((previousSlot == slotLocation && slot.equiped == true) && equiped == true)
         {
             Debug.Log("ei pitäisi käudä");
             slot.GetComponent<Outline>().enabled = false;
             slot.equiped = false;
-            actionbar.equiped = false;
+            equiped = false;
         }
-        else if ((previousSlot != slotLocation && slot.equiped == false) && actionbar.equiped == false)
+        else if ((previousSlot != slotLocation && slot.equiped == false) && equiped == false)
         {
             Debug.Log("ääääää");
             slot.GetComponent<Outline>().enabled = true;
             slot.GetComponent<Slot>().equiped = true;
-            inv.slots[previousSlot].GetComponent<Outline>().enabled = false;
+            Debug.Log("asd " + inv.slots[previousSlot]);
+            Debug.Log("asd " + inv.slots[previousSlot].GetComponent<Slot>().equiped);
+
             inv.slots[previousSlot].GetComponent<Slot>().equiped = false;
-            actionbar.equiped = true;
+
+            if (inv.slots[previousSlot].transform.childCount != 0)
+            {
+                inv.slots[previousSlot].GetComponentInChildren<ItemData>().equiped = false;
+            }
+            
+            inv.slots[previousSlot].GetComponent<Outline>().enabled = false;
+
+            equiped = true;
         }
-        else if ((previousSlot != slotLocation && slot.equiped == false) && actionbar.equiped == true)
+        else if ((previousSlot != slotLocation && slot.equiped == false) && equiped == true)
         {
             Debug.Log("öööööö");
             slot.GetComponent<Outline>().enabled = true;

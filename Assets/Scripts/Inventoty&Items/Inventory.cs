@@ -76,9 +76,13 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             items.Add(new Item());
-            slots.Add(Instantiate(inventorySlot));//luodaan uusia slotteja listaan
+            GameObject obj = Instantiate(inventorySlot);
+           
+            slots.Add(obj);//luodaan uusia slotteja listaan
             slots[i].GetComponent<Slot>().id = i; // asetetaan kyseisen slotin id-muuttujaan id-numero
             slots[i].transform.SetParent(slotPanel.transform);//asetetaan uudet slotit olemaan slotPanelin lapsia
+            slots[i].transform.localScale = new Vector3(1, 1, 1);
+            slots[i].transform.localPosition = new Vector3(slots[i].transform.localPosition.x, slots[i].transform.localPosition.y, 0);
         }
     }
 
@@ -131,6 +135,9 @@ public class Inventory : MonoBehaviour
                     itemObj.transform.SetParent(slots[i].transform); //Asettaa esineen olemaan slotin lapsi
                     itemObj.transform.position = slots[i].transform.position;
                     itemObj.GetComponent<Image>().sprite = itemToAdd.Sprite;// Asettaa prefabin source imagen olemaan esineen nimen mukainen Sprite
+                    itemObj.transform.localScale = new Vector3(1, 1, 1);
+                    itemObj.transform.localRotation = Quaternion.identity;
+                   // itemObj.transform.localPosition = new Vector3(itemObj.transform.localPosition.x, itemObj.transform.localPosition.y, 0);
                     itemObj.name = itemToAdd.Title;// Asettaa slotissa olevien esineiden nimeksi databasessa olevan nimen. Tämä näkyy inspectorissa
 
                     break;
