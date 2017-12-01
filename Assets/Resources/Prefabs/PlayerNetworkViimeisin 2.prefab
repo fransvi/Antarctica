@@ -280,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1108927565512022
 GameObject:
   m_ObjectHideFlags: 1
@@ -2144,6 +2144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4219325133463836}
   - component: {fileID: 114234986785759334}
+  - component: {fileID: 135941113839574778}
   m_Layer: 0
   m_Name: WeatherSystem
   m_TagString: Untagged
@@ -3418,7 +3419,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -381.3685, y: 16.573248, z: 33.76465}
+  m_LocalPosition: {x: -17.76156, y: 0.5, z: -19.77118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419989092079774}
@@ -4465,7 +4466,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5115,7 +5116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _snowParticles: {fileID: 0}
   _fogParticles: {fileID: 0}
-  _stars: {fileID: 0}
+  _stars: {fileID: 198358778355810862}
   _windForce: 0
 --- !u!114 &114252491178234344
 MonoBehaviour:
@@ -5639,18 +5640,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96468c245ae8e0d4f8f1c7a7b8b0542e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vehicle: {fileID: 1237631512170892, guid: 00935f0ce0ebca44f9e2d7293d1523ad, type: 2}
 --- !u!114 &114561879630251202
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f916a8c3fbcce542a9c325906ddc95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 95800039982862660}
+  allowItemChange: 0
   itemHeld: 
 --- !u!114 &114607168990164266
 MonoBehaviour:
@@ -5993,16 +5996,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151f25885e1c86648a8722449d0887b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCam: {fileID: 0}
-  FPSCon: {fileID: 0}
-  PlayerModel: {fileID: 0}
-  PlayerHealthBar: {fileID: 0}
-  PlayerColliders: {fileID: 0}
-  Player: {fileID: 0}
+  _playercam: {fileID: 0}
+  _fpsCon: {fileID: 0}
+  _playerModel: {fileID: 1785076906148652}
+  _playerHealthBar: {fileID: 1099850500828332}
+  _playerColliders: {fileID: 0}
+  _player: {fileID: 0}
   Vehicle: {fileID: 0}
-  carParent: {fileID: 1237631512170892, guid: 00935f0ce0ebca44f9e2d7293d1523ad, type: 2}
+  _carParent: {fileID: 1237631512170892, guid: 00935f0ce0ebca44f9e2d7293d1523ad, type: 2}
+  _handsModel: {fileID: 1248507870502688}
   cam: {fileID: 0}
-  hands: {fileID: 0}
+  _spawnPoint: {fileID: 1390520370269686, guid: 00935f0ce0ebca44f9e2d7293d1523ad,
+    type: 2}
 --- !u!114 &114792103332892068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6186,12 +6191,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410074938973554}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: a59f9c42accca96469b2a64372269dc4, type: 2}
 --- !u!114 &114855462551860016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6314,7 +6319,7 @@ MonoBehaviour:
     smooth: 0
     smoothTime: 5
     lockCursor: 1
-  m_UseFovKick: 1
+  m_UseFovKick: 0
   m_FovKick:
     Camera: {fileID: 0}
     originalFov: 0
@@ -6409,6 +6414,8 @@ MonoBehaviour:
   playerUi: {fileID: 0}
   playerHealth: 0
   inVehicle: 0
+  worldModel: {fileID: 1785076906148652}
+  viewModel: {fileID: 1248507870502688}
   pName: player
   playerColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114947960072824538
@@ -6733,6 +6740,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410074938973554}
   m_Enabled: 1
+--- !u!135 &135941113839574778
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829099822333016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.70686626
+  m_Center: {x: 0, y: 0.20686626, z: 0}
 --- !u!137 &137002470196946956
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -7691,7 +7710,7 @@ CharacterController:
   m_GameObject: {fileID: 1178771245328552}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
   m_Radius: 0.5
@@ -18341,7 +18360,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1674554483416306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 23.826996}
+  m_LocalPosition: {x: 0, y: 0, z: 18.591621}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224018227426879876}
@@ -18644,7 +18663,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1587858584347474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -105.298935}
+  m_LocalPosition: {x: 0, y: 0, z: 20.093658}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224302043570398214}

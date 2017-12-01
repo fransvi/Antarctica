@@ -42,6 +42,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public bool _hasDriver;
         public bool _hasPassanger;
         public GameObject _lights;
+        public bool _lightsOn = false;
 
         private Quaternion[] m_WheelMeshLocalRotations;
         private Vector3 m_Prevpos, m_Pos;
@@ -60,11 +61,15 @@ namespace UnityStandardAssets.Vehicles.Car
         public float MaxSpeed{get { return m_Topspeed; }}
         public float Revs { get; private set; }
         public float AccelInput { get; private set; }
+        public GameObject _particleSystem;
+        private bool fullBrakeActive = false;
+        private bool brakeResetNeeded = false;
+
 
         // Use this for initialization
         private void Start()
         {
-            //_lights.SetActive(false);
+            _lights.SetActive(false);
             m_WheelMeshLocalRotations = new Quaternion[4];
             for (int i = 0; i < 4; i++)
             {
@@ -97,19 +102,37 @@ namespace UnityStandardAssets.Vehicles.Car
         }
         public void SlowdownCar()
         {
-            StartCoroutine(SlowCar());
+            fullBrakeActive = true;
         }
-        private IEnumerator SlowCar()
+        public void BrakeReset()
         {
-            for (int i = 0; i < 4; i++)
+            brakeResetNeeded = true;
+        }
+
+        private void FixedUpdate()
+        {
+            if (fullBrakeActive)
             {
-                m_WheelColliders[i].brakeTorque = Mathf.Infinity;
+                for (int i = 0; i < 4; i++)
+                {
+                    m_WheelColliders[i].brakeTorque = Mathf.Infinity;
+                }
+                fullBrakeActive = false;
+
             }
-            yield return new WaitForSeconds(3f);
-            for (int i = 0; i < 4; i++)
-            {
-                m_WheelColliders[i].brakeTorque = 0f;
-            }
+
+           if (brakeResetNeeded)
+           {
+                 StartCoroutine(ResetWheels());
+                 brakeResetNeeded = false;
+           }
+
+            
+        }
+        IEnumerator ResetWheels()
+        {
+            CmdMove(0, -1, -1, 0);
+            yield return new WaitForSeconds(0.5f);
 
         }
 
@@ -117,6 +140,7 @@ namespace UnityStandardAssets.Vehicles.Car
         public void SetLights(bool b)
         {
             _lights.gameObject.SetActive(b);
+            _lightsOn = b;
         }
 
         // simple function to add a curved bias towards 1 for a value in the 0-1 range
@@ -161,6 +185,16 @@ namespace UnityStandardAssets.Vehicles.Car
         [ClientRpc]
         void RpcMove(float steering, float accel, float footbrake, float handbrake)
         {
+            if(accel < 0)
+            {
+                _particleSystem.GetComponent<ParticleSystem>().Stop();
+            }
+            else
+            {
+                _particleSystem.GetComponent<ParticleSystem>().Play();
+                
+            }
+
             for (int i = 0; i < 4; i++)
             {
                 Quaternion quat;
@@ -317,13 +351,13 @@ namespace UnityStandardAssets.Vehicles.Car
                 // is the tire slipping above the given threshhold
                 if (Mathf.Abs(wheelHit.forwardSlip) >= m_SlipLimit || Mathf.Abs(wheelHit.sidewaysSlip) >= m_SlipLimit)
                 {
-                    m_WheelEffects[i].EmitTyreSmoke();
+                    //m_WheelEffects[i].EmitTyreSmoke();
 
                     // avoiding all four tires screeching at the same time
                     // if they do it can lead to some strange audio artefacts
                     if (!AnySkidSoundPlaying())
                     {
-                        m_WheelEffects[i].PlayAudio();
+                        //m_WheelEffects[i].PlayAudio();
                     }
                     continue;
                 }
@@ -331,10 +365,10 @@ namespace UnityStandardAssets.Vehicles.Car
                 // if it wasnt slipping stop all the audio
                 if (m_WheelEffects[i].PlayingAudio)
                 {
-                    m_WheelEffects[i].StopAudio();
+                    //m_WheelEffects[i].StopAudio();
                 }
                 // end the trail generation
-                m_WheelEffects[i].EndSkidTrail();
+                //m_WheelEffects[i].EndSkidTrail();
             }
         }
 

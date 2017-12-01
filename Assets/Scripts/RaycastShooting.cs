@@ -91,7 +91,7 @@ public class RaycastShooting : NetworkBehaviour
                 }
                 else
                 {
-                    door.GetComponent<Animator>().SetTrigger("OpenDoor");
+                    door.OpenDoor();
                 }
  
                 break;
@@ -149,12 +149,25 @@ public class RaycastShooting : NetworkBehaviour
             if (h.transform.CompareTag("Switch"))
             {
                 CmdHitObject(1, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
+                if (h.transform.gameObject.GetComponent<PowerGeneratorScript>())
+                {
+                    PowerGeneratorScript pg = h.transform.gameObject.GetComponent<PowerGeneratorScript>();
+                    if (pg._powerOn)
+                    {
+                        pg.DisablePower();
+                    }
+                    else
+                    {
+                        pg.EnablePower();
+                    }
+                }
                 laserLine.SetPosition(1, h.point);
             }
             if (h.transform.CompareTag("Door"))
             {
                 CmdHitObject(2, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
                 laserLine.SetPosition(1, h.point);
+                
                 if (h.transform.GetComponent<Animator>().GetBool("isOpen"))
                 {
                     h.transform.GetComponent<DoorController>().CloseDoor();
@@ -163,6 +176,7 @@ public class RaycastShooting : NetworkBehaviour
                 {
                     h.transform.GetComponent<DoorController>().OpenDoor();
                 }
+                
             }
             if (h.transform.CompareTag("Item"))
             {

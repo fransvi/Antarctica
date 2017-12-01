@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
-    public class FirstPersonController : NetworkBehaviour
+    public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
@@ -98,14 +98,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            
 
-            if (!paused)
+            if (Input.GetKeyUp(KeyCode.N))
             {
-                if (!MouseLockFPSC)
-                {
-                    RotateView();
-                }
+                transform.position = new Vector3(0, 0, 0);
+            }
+            if (!paused && !MouseLockFPSC)
+            {
+                 RotateView();
+
 
 
                 // the jump state needs to read here to make sure it is not missed
@@ -163,6 +164,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void FixedUpdate()
         {
 
+
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
@@ -176,15 +178,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_MoveDir.x = desiredMove.x*speed;
             m_MoveDir.z = desiredMove.z*speed;
-            if (!paused)
+            if (!paused && !MouseLockFPSC)
             {
-                /*
-                if (Input.GetMouseButtonUp(0))
-                {
-                    CmdFire();
-                }
-                */
-
 
                 if (m_CharacterController.isGrounded)
                 {
@@ -242,26 +237,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             PlayFootStepAudio();
         }
-        /*
-        [Command]
-        void CmdFire()
-        {
-            // Create the Bullet from the Bullet Prefab
-            var bullet = (GameObject)Instantiate(
-                bulletPrefab,
-                bulletSpawn.position,
-                bulletSpawn.rotation);
 
-            // Add velocity to the bullet
-            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-
-            // Spawn the bullet on the Clients
-            NetworkServer.Spawn(bullet);
-            // Destroy the bullet after 2 seconds
-            Destroy(bullet, 2.0f);
-        }
-
-    */
         private void PlayFootStepAudio()
         {
             if (!m_CharacterController.isGrounded)

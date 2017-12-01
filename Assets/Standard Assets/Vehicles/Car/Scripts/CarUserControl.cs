@@ -6,7 +6,7 @@ using UnityStandardAssets.Vehicles.Car;
 
 public class CarUserControl : NetworkBehaviour
     {
-        private GameObject vehicle; // the car controller we want to use
+        public GameObject vehicle; // the car controller we want to use
         private float h;
         private float v;
         private float handbrake;
@@ -50,7 +50,7 @@ public class CarUserControl : NetworkBehaviour
         private void RpcResetBrake(NetworkInstanceId netId)
         {
             GameObject car = ClientScene.FindLocalObject(netId);
-            //car.GetComponent<CarController>().ResetBrake();
+            car.GetComponent<CarController>().BrakeReset();
         }
 
 
@@ -66,20 +66,38 @@ public class CarUserControl : NetworkBehaviour
             car.GetComponent<CarController>().Move(h, v, v, hb);
         }
 
+        [ClientRpc]
+        private void RpcLights(NetworkInstanceId netId)
+        {
+            GameObject car = ClientScene.FindLocalObject(netId);
+            if (car.GetComponent<CarController>()._lightsOn)
+            {
+                car.GetComponent<CarController>().SetLights(false);
+            }
+            else
+            {
+            car.GetComponent<CarController>().SetLights(true);
+            }
+
+        }
+        [Command]
+        private void CmdLights(NetworkInstanceId netId)
+        {
+            RpcLights(netId);
+        }
+
 
         private void FixedUpdate()
         {
+            vehicle = GameObject.Find("SnowMobile");
             if (Input.GetKeyUp(KeyCode.L))
             {
-                
+                CmdLights(vehicle.GetComponent<NetworkIdentity>().netId);
             }
-            vehicle = GameObject.Find("SnowMobile");
-            // pass the input to the car!
             h = CrossPlatformInputManager.GetAxis("Horizontal");
             v = CrossPlatformInputManager.GetAxis("Vertical");
             handbrake = CrossPlatformInputManager.GetAxis("Jump");
             CmdMove(h, v, handbrake, vehicle.GetComponent<NetworkIdentity>().netId);
-            //vehicle.GetComponent<CarController>().Move(h, v, v, handbrake);
 
         }
     

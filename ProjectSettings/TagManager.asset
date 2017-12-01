@@ -12,6 +12,7 @@ TagManager:
   - Vehicle
   - VehicleBase
   - Switch
+  - IgnoreSnow
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - LocalPlayer
   - Indoors
-  - 
+  - RemotePlayer
   - 
   - 
   - 

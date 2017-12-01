@@ -174,7 +174,7 @@ MonoBehaviour:
   maxIntensity: 0.6
   minIntensity: 0.5
   minPoint: -0.2
-  maxAmbient: 0.25
+  maxAmbient: 0.85
   minAmbient: 0.01
   minAmbientPoint: -0.2
   nightDayFogColor:

@@ -10,7 +10,8 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public GameObject playerUi;
     public int playerHealth;
     public bool inVehicle;
-
+    public GameObject worldModel;
+    public GameObject viewModel;
     [SyncVar]
     public string pName = "player";
 
@@ -39,6 +40,12 @@ public class NetworkPlayerSetup : NetworkBehaviour
         {
             //r.material.color = playerColor;
         }
+        if (!isLocalPlayer)
+        {
+            this.GetComponent<CharacterController>().enabled = false;
+            viewModel.SetActive(false);
+
+        }
     }
 
 
@@ -48,13 +55,12 @@ public class NetworkPlayerSetup : NetworkBehaviour
 
         gameObject.layer = LayerMask.NameToLayer("LocalPlayer");
         playerCamera = GetComponentInChildren<Camera>();
-
         //Enable Components
         foreach (Behaviour component in componentsToEnable)
         {
             component.enabled = true;
         }
-
+        worldModel.SetActive(false);
         //Enable Camera
         playerCamera.enabled = true;
         playerCamera.GetComponent<AudioListener>().enabled = true;

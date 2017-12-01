@@ -14,7 +14,6 @@ public class WeatherController : MonoBehaviour {
 
         _snowParticles = transform.Find("SnowParticleSystem").gameObject.GetComponent<ParticleSystem>();
         _fogParticles = transform.Find("FogParticleSystem").gameObject.GetComponent<ParticleSystem>();
-        _stars = transform.Find("Stars").gameObject.GetComponent<ParticleSystem>();
 
     }
 	
@@ -24,5 +23,26 @@ public class WeatherController : MonoBehaviour {
             var rotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
             transform.rotation = rotation;
 
+    }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "IgnoreSnow")
+        {
+            _snowParticles.Stop();
+            _snowParticles.Clear();
+
+            _fogParticles.Stop();
+            _fogParticles.Clear();
+        }
+    }
+
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "IgnoreSnow")
+        {
+            _snowParticles.Play();
+            _fogParticles.Play();
+        }
     }
 }
