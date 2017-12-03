@@ -40,7 +40,6 @@ public class FirstPersonAnimationManager : MonoBehaviour {
                 SyncItemHoldingAnimations(itemTaken);
             }
         }
-
 	}
 
     public void EmptyHands()
@@ -55,7 +54,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
     public void ResetIdleAnimInstantly()
     {
         fpsAnimator.Play("RightHandEmptyIdle", fpsAnimator.GetLayerIndex("RightHandLayer"), 0f);
-        fpsAnimator.Play("LeftHandEmptyIdle", fpsAnimator.GetLayerIndex("LeftHandLayer"), 0f);
+        fpsAnimator.Play("HandLeft|IdleEmptyRight", fpsAnimator.GetLayerIndex("LeftHandLayer"), 0f);
     }
 
     public void SyncItemHoldingAnimations(string item)
@@ -184,13 +183,33 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         pms.allowItemChange = true;
     }
 
+    void AllowClickAndTwistAgain()
+    {
+        pms.allowClick = true;
+        pms.allowTwist = true;
+    }
+
     public void Click()
     {
-        fpsAnimator.SetTrigger("Klikkaus");
+        pms.allowClick = false;
+        pms.allowTwist = false;
+        Debug.Log("click activated");
+        pms.allowItemChange = false;
+        fpsAnimator.Play("napinPaino", fpsAnimator.GetLayerIndex("RightHandLayer"), 0f);
+        Invoke("ResetIdleAnimInstantly", 0.8f);
+        Invoke("AllowItemChangeAgain", 0.8f);
+        Invoke("AllowClickAndTwistAgain", 0.8f);
     }
 
     public void Twist()
     {
-        fpsAnimator.SetTrigger("Vaanto");
+        pms.allowClick = false;
+        pms.allowTwist = false;
+        Debug.Log("twist activated");
+        pms.allowItemChange = false;
+        fpsAnimator.Play("napinVääntö", fpsAnimator.GetLayerIndex("RightHandLayer"), 0f);
+        Invoke("ResetIdleAnimInstantly", 1.2f);
+        Invoke("AllowItemChangeAgain", 1.2f);
+        Invoke("AllowClickAndTwistAgain", 1.2f);
     }
 }

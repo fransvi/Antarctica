@@ -211,12 +211,20 @@ public class PlayerHealth : NetworkBehaviour
     void ReduceHealth(int amount, float frequency)
     {
         //Debug.Log("reducing hp by: " + amount);
+        if (currentHealth > 0)
+        {
+            currentHealth -= amount;
+            healthBarContent.fillAmount -= (amount / 100f);
+            GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
 
-        currentHealth -= amount;
-        healthBarContent.fillAmount -= (amount / 100f);
-        GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
+            healthReductionCooldown = Time.time + frequency;
+        }
+        else KnockDownState();
+    }
 
-        healthReductionCooldown = Time.time + frequency;
+    void KnockDownState()
+    {
+        Debug.Log("KnockdownState");
     }
 
     // increase hunger over time (or the lack of it, increase is actually good with this stat
