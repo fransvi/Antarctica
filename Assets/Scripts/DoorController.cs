@@ -8,9 +8,15 @@ public class DoorController : MonoBehaviour {
     public bool _isOpen = false;
     public bool _isLocked;
     private bool _guiEnable = false;
+    public bool _requiresPower;
+    public bool _hasPower;
+    private string _doorLockedString = "The door is locked.";
+    private string _doorRequiresPower = "The door requires power to open.";
+    private string _doorInfo;
 
 
-	void Start () {
+
+    void Start () {
         _animator = GetComponent<Animator>();
 
     }
@@ -25,10 +31,28 @@ public class DoorController : MonoBehaviour {
     {
         if (!_isLocked)
         {
-            _animator.SetTrigger("OpenDoor");
+            if (_requiresPower)
+            {
+                if (_hasPower)
+                {
+                    _animator.SetTrigger("OpenDoor");
+                }
+                else
+                {
+                    _doorInfo = _doorRequiresPower;
+                    StartCoroutine(ShowText());
+                }
+
+            }
+            else
+            {
+                _animator.SetTrigger("OpenDoor");
+            }
+
         }
         else
         {
+            _doorInfo = _doorLockedString;
             StartCoroutine(ShowText());
         }
     }
@@ -53,7 +77,7 @@ public class DoorController : MonoBehaviour {
     {
         if (_guiEnable != false)
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), "The door is locked.");
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), _doorInfo);
         }
         else
         {

@@ -122,6 +122,7 @@ public class RaycastShooting : NetworkBehaviour
 
         hits = Physics.RaycastAll(rayOrigin, fpsCam.transform.forward, weaponRange);
 
+
         //RaycastHittien toiminnat idllä:
         //0 = Yleinen
         //1 = Valo
