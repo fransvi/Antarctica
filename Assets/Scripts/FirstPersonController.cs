@@ -55,11 +55,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public bool paused =false;
         public bool MouseLockFPSC = false;
+        public GameObject _mapObject;
+        private bool _mapActive = false;
+        public Animator _handsAnimator;
+
 
 
         // Use this for initialization
         private void Start()
         {
+            _mapObject.SetActive(false);
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
             m_OriginalCameraPosition = m_Camera.transform.localPosition;
@@ -102,6 +107,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (Input.GetKeyUp(KeyCode.N))
             {
                 transform.position = new Vector3(0, 0, 0);
+            }
+            if (Input.GetKeyUp(KeyCode.M))
+            {
+                if (!_mapActive){
+                    _mapObject.SetActive(true);
+                    MouseLockFPSC = true;
+                    _mapActive = true;
+                    _handsAnimator.speed = 0f;
+                }else{
+                    _mapObject.SetActive(false);
+                    MouseLockFPSC = false;
+                    _mapActive = false;
+                    _handsAnimator.speed = 1f;
+                }
+
             }
             if (!paused && !MouseLockFPSC)
             {

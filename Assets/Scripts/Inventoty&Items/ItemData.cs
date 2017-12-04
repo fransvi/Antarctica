@@ -14,6 +14,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public int amount;
     public int slotLocation;
     public Transform apu;
+    public Canvas _cameraCanvas;
 
     private Inventory inv;
     private Tooltip tooltip;
@@ -56,8 +57,9 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (item != null)//tsekkaus onko asia jota halutaan siirtää esine
         {
+            
 
-            this.transform.localPosition = eventData.position - new Vector2(470,137);//kerrotaan esineelle seurata kursoria
+            this.transform.position = FollowMouse(_cameraCanvas);//kerrotaan esineelle seurata kursoria
 
         }
 
@@ -117,6 +119,19 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 actionbar.Activate(item, slot);
             }
         }
+    }
+
+
+    public Vector3 FollowMouse(Canvas cameraCanvas)
+    {
+        _cameraCanvas = cameraCanvas;
+        _cameraCanvas = transform.GetComponentInParent<Canvas>();
+        Vector3 screenPos = Input.mousePosition;
+        screenPos.z = _cameraCanvas.planeDistance;
+        Camera renderCamera = _cameraCanvas.worldCamera;
+        Vector3 canvasPos = renderCamera.ScreenToWorldPoint(screenPos);
+
+        return canvasPos;
     }
 
     public void EquipItem(Item item, Slot slot)
