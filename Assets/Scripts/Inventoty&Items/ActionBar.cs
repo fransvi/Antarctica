@@ -11,6 +11,7 @@ public class ActionBar : MonoBehaviour {
     private ItemData data;
     private Inventory inv;
     private PlayerHealth health;
+    public Canvas cameraCanvas;
 
     private Slot _slot;
     public Button equipButton;
@@ -49,7 +50,12 @@ public class ActionBar : MonoBehaviour {
         _item = item;
         _slot = slot;
         actionbar.SetActive(true);
-        actionbar.transform.localPosition = Input.mousePosition - new Vector3(470, 137, 0);
+
+        Vector3 screenPos = Input.mousePosition;
+        screenPos.z = cameraCanvas.planeDistance;
+        Camera renderCamera = cameraCanvas.worldCamera;
+        Vector3 canvasPos = renderCamera.ScreenToWorldPoint(screenPos);
+        actionbar.transform.position = canvasPos;
 
     }
 

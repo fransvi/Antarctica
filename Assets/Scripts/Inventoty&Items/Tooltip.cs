@@ -7,6 +7,7 @@ public class Tooltip : MonoBehaviour {
     private Item _item;
     private string data;
     public GameObject tooltip;
+    public Canvas cameraCanvas;
 
     void Start()
     {
@@ -19,7 +20,18 @@ public class Tooltip : MonoBehaviour {
 
         if (tooltip.activeSelf)
         {
-            tooltip.transform.localPosition = Input.mousePosition - new Vector3(470, 137, 0);//Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
+
+            //var screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            //screenPoint.z = 10.0f; //distance of the plane from the camera
+            //tooltip.transform.position = Camera.main.ScreenToWorldPoint(screenPoint);
+
+            Vector3 screenPos = Input.mousePosition;
+            screenPos.z = cameraCanvas.planeDistance;
+            Camera renderCamera = cameraCanvas.worldCamera;
+            Vector3 canvasPos = renderCamera.ScreenToWorldPoint(screenPos);
+            tooltip.transform.position = canvasPos;
+
+            //tooltip.transform.position = Input.mousePosition;//Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
         }
     }
 
