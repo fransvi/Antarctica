@@ -86,68 +86,6 @@ public class PlayerMovementScript : NetworkBehaviour {
                 playerAnimator.SetBool("isRunning", false);
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld != "Lantern" && allowItemChange)
-            {
-                playerAnimator.SetBool("lanternActive", true);
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                itemHeld = "Lantern";
-                fpsAnimManager.TakeLantern();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld == "Lantern")
-            {
-                playerAnimator.SetBool("lanternActive", false);
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                fpsAnimManager.EmptyHands();
-                itemHeld = "";
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld != "Compass" && allowItemChange)
-            {
-                playerAnimator.SetBool("lanternActive", false);
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                itemHeld = "Compass";
-                fpsAnimManager.TakeCompass();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld == "Compass")
-            {
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                fpsAnimManager.EmptyHands();
-                itemHeld = "";
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld != "Chocolate" && allowItemChange)
-            {
-                playerAnimator.SetBool("lanternActive", false);
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                itemHeld = "Chocolate";
-                fpsAnimManager.TakeChocolate();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld == "Chocolate")
-            {
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                fpsAnimManager.EmptyHands();
-                itemHeld = "";
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld != "Thermos" && allowItemChange)
-            {
-                playerAnimator.SetBool("lanternActive", false);
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                itemHeld = "Thermos";
-                fpsAnimManager.TakeThermos();
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld == "Thermos")
-            {
-                fpsAnimManager.ResetItemHold();
-                fpsAnimManager.ResetIdleAnimInstantly();
-                fpsAnimManager.EmptyHands();
-                itemHeld = "";
-            }
-
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (!fpsAnimator.GetCurrentAnimatorStateInfo(4).IsName("otaSuklaa") && !fpsAnimator.GetCurrentAnimatorStateInfo(4).IsName("SuklaaPatukka|Syönti(SUklaa)") && itemHeld == "Chocolate")
@@ -174,4 +112,81 @@ public class PlayerMovementScript : NetworkBehaviour {
             }
         }
 	}
+
+    public void ActivateOrDisableLantern()
+    {
+        if (itemHeld != "Lantern" && allowItemChange)
+        {
+            playerAnimator.SetBool("lanternActive", true);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            itemHeld = "Lantern";
+            fpsAnimManager.TakeLantern();
+        }
+        else if (itemHeld == "Lantern")
+        {
+            playerAnimator.SetBool("lanternActive", false);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.EmptyHands();
+            itemHeld = "";
+        }
+    }
+
+    public void ActivateOrDisableCompass()
+    {
+        if (itemHeld != "Compass" && allowItemChange)
+        {
+            playerAnimator.SetBool("lanternActive", false);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            itemHeld = "Compass";
+            fpsAnimManager.TakeCompass();
+        }
+        else if (itemHeld == "Compass")
+        {
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.EmptyHands();
+            itemHeld = "";
+        }
+    }
+
+    public void ActivateOrDisableChocolate()
+    {
+        if (itemHeld != "Chocolate" && allowItemChange)
+        {
+            playerAnimator.SetBool("lanternActive", false);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            itemHeld = "Chocolate";
+            fpsAnimManager.TakeChocolate();
+        }
+        else if (itemHeld == "Chocolate")
+        {
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.EmptyHands();
+            itemHeld = "";
+        }
+    }
+
+    public void ActivateOrDisableTermos()
+    {
+        if (itemHeld != "Thermos" && allowItemChange)
+        {
+            playerAnimator.SetBool("lanternActive", false);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            itemHeld = "Thermos";
+            fpsAnimManager.TakeThermos();
+        }
+        else if (itemHeld == "Thermos")
+        {
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.EmptyHands();
+            itemHeld = "";
+        }
+    }
 }

@@ -20,7 +20,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
         pms = GetComponent<PlayerMovementScript>();
-        kompassi = transform.GetChild(0).GetChild(2).GetChild(6).gameObject;
+        kompassi = transform.GetChild(0).GetChild(2).GetChild(12).gameObject;
         lyhty = transform.GetChild(0).GetChild(2).GetChild(8).gameObject;
         suklaa = transform.GetChild(0).GetChild(2).GetChild(9).gameObject;
         termos = transform.GetChild(0).GetChild(2).GetChild(11).gameObject;
@@ -116,8 +116,9 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 
     public void TakeCompass()
     {
+        Invoke("ActivateTheCompass", 0.25f);
         itemTaken = "Compass";
-        kompassi.SetActive(true);
+        //kompassi.SetActive(true);
         lyhty.SetActive(false);
         suklaa.SetActive(false);
         termos.SetActive(false);
@@ -125,6 +126,11 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         fpsAnimator.Play("otaKompassi", fpsAnimator.GetLayerIndex("KompassiLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
         syncing = true;
+    }
+
+    public void ActivateTheCompass()
+    {
+        kompassi.SetActive(true);
     }
 
     public void TakeChocolate()
