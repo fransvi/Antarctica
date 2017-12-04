@@ -41,6 +41,11 @@ public class ItemDatabase : MonoBehaviour {
             database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), float.Parse(itemData[i]["weight"].ToString()),
                 itemData[i]["description"].ToString(), (bool)itemData[i]["stackable"], (int)(itemData[i]["healthamount"]), itemData[i]["slug"].ToString()));
         }
+        for (int i = 4; i < 5; i++)
+        {
+            database.Add(new Item((int)itemData[i]["id"], itemData[i]["title"].ToString(), float.Parse(itemData[i]["weight"].ToString()),
+                itemData[i]["description"].ToString(), (bool)itemData[i]["stackable"], (int)(itemData[i]["healthamount"]), (int)(itemData[i]["thirstamount"]), itemData[i]["slug"].ToString()));
+        }
 
 
     }
@@ -55,6 +60,7 @@ public class Item
     public string Description { get; set; }
     public bool Stackable { get; set;}
     public int Healthamount { get; set; }
+    public int Thirstamount { get; set; }
     public string Slug { get; set; }
     public Sprite Sprite { get; set; }
 
@@ -77,6 +83,18 @@ public class Item
         this.Description = description;
         this.Stackable = stackable;
         this.Healthamount = healthamount;
+        this.Slug = slug;
+        this.Sprite = Resources.Load<Sprite>("ItemSprites/Items/" + slug);
+    }
+    public Item(int id, string title, float weight, string description, bool stackable, int healthamount, int thirstamount, string slug)
+    {
+        this.ID = id;
+        this.Title = title;
+        this.Weight = weight;
+        this.Description = description;
+        this.Stackable = stackable;
+        this.Healthamount = healthamount;
+        this.Thirstamount = thirstamount;
         this.Slug = slug;
         this.Sprite = Resources.Load<Sprite>("ItemSprites/Items/" + slug);
     }

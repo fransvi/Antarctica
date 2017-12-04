@@ -146,7 +146,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
+    //Poistaa esineen id:n perusteella inventorysta
     public void RemoveItem(int id)
     {
         Item itemToRemove = database.FetchItemById(id);

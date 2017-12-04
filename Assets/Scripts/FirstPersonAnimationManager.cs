@@ -122,7 +122,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         lyhty.SetActive(false);
         suklaa.SetActive(false);
         termos.SetActive(false);
-
+        Debug.Log("kompaasasda");
         fpsAnimator.Play("otaKompassi", fpsAnimator.GetLayerIndex("KompassiLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
         syncing = true;

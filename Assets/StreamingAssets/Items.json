@@ -8,12 +8,12 @@
     "slug": "Kompassi_Inventory"
     },
     {
-        "id": 1,
-        "title": "Lantern",
-        "weight": 1,
-        "description": "Lights the way",
-        "stackable": true,
-        "slug": "Lyhty_Inventory"
+    "id": 1,
+    "title": "Lantern",
+    "weight": 1,
+    "description": "Lights the way",
+    "stackable": false,
+    "slug": "Lyhty_Inventory"
     },
     {
     "id": 2,
@@ -31,5 +31,15 @@
     "stackable": true,
     "healthamount" :  20,
     "slug": "Choco_Inventory"
+    },
+    {
+    "id": 4,
+    "title": "Termos",
+    "weight": 1.0,
+    "description": "",
+    "stackable": true,
+    "healthamount" :  30,
+	"thirstamount" :  80,
+    "slug": "Termos_Inventory"
     }
 ]

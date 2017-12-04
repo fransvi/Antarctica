@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class ActionBar : MonoBehaviour {
+public class ActionBar : NetworkBehaviour {
 
     public GameObject actionbar;
     private Item _item;
@@ -12,6 +13,7 @@ public class ActionBar : MonoBehaviour {
     private Inventory inv;
     private PlayerHealth health;
     public Canvas cameraCanvas;
+    public PlayerMovementScript equipAnimation;
 
     private Slot _slot;
     public Button equipButton;
@@ -30,7 +32,7 @@ public class ActionBar : MonoBehaviour {
         Button btn3 = consumeButton.GetComponent<Button>();
         btn.onClick.AddListener(() => { EquipItem(_item, _slot); });
         btn2.onClick.AddListener(() => { DropItem(_item); });
-        btn3.onClick.AddListener(() => { ConsumeItem(_item); });
+        btn3.onClick.AddListener(() => { ConsumeItem(_item, _slot); });
         actionbar.SetActive(false);
         //data.equiped = false;
 
@@ -71,7 +73,6 @@ public class ActionBar : MonoBehaviour {
         _slot = slot;
 
         //data.EquipItem(item, slot, equiped);
-        Debug.Log("asdasd" + slot.id);
         Transform apu = GameObject.Find("Equipment").transform;
 
         data = slot.GetComponentInChildren<ItemData>();
@@ -79,39 +80,50 @@ public class ActionBar : MonoBehaviour {
         if (equiped == false)
         {
             
-            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
-            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            //GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
+            //apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            equipAnimation.CheckItemAnimation(item.ID, data.equiped);
             data.changeOutline(slot);
             equiped = true;
             Debug.Log("actionar equiped " + equiped);
         }
-        else if (item.ID != apu.GetChild(0).GetComponent<ItemPick>().id)
+        else if (equiped == true && (inv.slots[ItemData.previousSlot].GetComponent<Slot>().equiped == true))
         {
-            Destroy(apu.GetChild(0).gameObject);
-            Debug.Log("gg"); 
-            GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
-            apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            //Destroy(apu.GetChild(0).gameObject);
+            //GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
+           
+            //apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
+            equipAnimation.CheckItemAnimation(item.ID, data.equiped);
             data.changeOutline(slot);
+            
         }
         else if (equiped == true)
         {
-            Destroy(apu.GetChild(0).gameObject);
+            //Destroy(apu.GetChild(0).gameObject);
+            equipAnimation.CheckItemAnimation(item.ID, data.equiped);
             data.changeOutline(slot);
             equiped = false;
         }
         ItemData.previousSlot = data.slotLocation;
     }
 
-    void ConsumeItem(Item item)
+    void ConsumeItem(Item item, Slot slot)
     {
+        if (equiped == true)
+        {
+            data = slot.GetComponentInChildren<ItemData>();
+            data.slotLocation = slot.id;
+            this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHunger(item.Healthamount);
+            this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHealth(item.Healthamount);
+            this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseThirst(item.Thirstamount);
+            Debug.Log("Heatlh increased" + item.Healthamount + " and Hunger increased" + item.Healthamount);
+            equipAnimation.CheckItemAnimation(item.ID, equiped);
+            data.changeOutline(slot);
 
-        this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHunger(item.Healthamount);
-        this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyIncreaseHealth(item.Healthamount);
-        Debug.Log("Heatlh increased" + item.Healthamount + " and Hunger increased" + item.Healthamount);
-
-
-        inv.RemoveItem(item.ID);
-        actionbar.SetActive(false);
+            inv.RemoveItem(item.ID);
+            actionbar.SetActive(false);
+            equiped = false;
+        }
 
     }
 
@@ -128,7 +140,7 @@ public class ActionBar : MonoBehaviour {
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
 
-        GameObject itemtodrop = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity);
+        Object itemtodrop = Network.Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity,0);
     }
 
 

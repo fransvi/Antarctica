@@ -354,6 +354,12 @@ public class PlayerHealth : NetworkBehaviour
         hungerBarContent.fillAmount += (amount / 100f);
         audioSource.PlayOneShot(eating);
     }
+    public void InstantlyIncreaseThirst(int amount)
+    {
+        currentThirst += amount;
+        thirstBarContent.fillAmount += (amount / 100f);
+        //audioSource.PlayOneShot(eating);
+    }
 
     // instantly increase stamina
     void InstantlyIncreaseStamina(int amount)

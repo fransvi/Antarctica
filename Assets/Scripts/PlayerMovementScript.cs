@@ -9,6 +9,7 @@ public class PlayerMovementScript : NetworkBehaviour {
     private Animator fpsAnimator;
     private FirstPersonAnimationManager fpsAnimManager;
     public bool allowItemChange;
+    public bool allowItemoff;
     public bool allowClick;
     public bool allowTwist;
 
@@ -21,6 +22,7 @@ public class PlayerMovementScript : NetworkBehaviour {
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
         fpsAnimManager = GetComponent<FirstPersonAnimationManager>();
         allowItemChange = true;
+        allowItemoff = false;
         allowClick = true;
         allowTwist = true;
     }
@@ -113,7 +115,7 @@ public class PlayerMovementScript : NetworkBehaviour {
         }
 	}
 
-    public void ActivateOrDisableLantern()
+    public void ActivateOrDisable()
     {
         if (itemHeld != "Lantern" && allowItemChange)
         {
@@ -188,5 +190,53 @@ public class PlayerMovementScript : NetworkBehaviour {
             fpsAnimManager.EmptyHands();
             itemHeld = "";
         }
+    }
+
+    public void CheckItemAnimation(int id, bool Itemonoff)
+    {
+
+        playerAnimator.SetBool("lanternActive", false);
+        fpsAnimManager.ResetItemHold();
+        fpsAnimManager.ResetIdleAnimInstantly();
+        fpsAnimManager.EmptyHands();
+
+
+        if ((allowItemChange == false) && (Itemonoff == true))
+        {
+            //playerAnimator.SetBool("lanternActive", false);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.EmptyHands();
+            allowItemChange = true;
+            itemHeld = "";
+            return;
+        }
+        if ((id == 0))
+        {
+            fpsAnimManager.TakeCompass();
+            allowItemChange = false;
+            return;
+        }
+        if ((id == 1))
+        {
+            playerAnimator.SetBool("lanternActive", true);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.TakeLantern();
+            allowItemChange = false;
+        }
+
+        if ((id == 3))
+        {
+            fpsAnimManager.TakeChocolate();
+            allowItemChange = false;
+        }
+
+        if ((id == 4))
+        {
+            fpsAnimManager.TakeThermos();
+            allowItemChange = false;
+        }
+
     }
 }
