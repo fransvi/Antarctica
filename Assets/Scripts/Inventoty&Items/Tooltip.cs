@@ -7,6 +7,7 @@ public class Tooltip : MonoBehaviour {
     private Item _item;
     private string data;
     public GameObject tooltip;
+    public Canvas _canvas;
 
     void Start()
     {
@@ -19,6 +20,11 @@ public class Tooltip : MonoBehaviour {
 
         if (tooltip.activeSelf)
         {
+
+            Vector2 pos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, Input.mousePosition, _canvas.worldCamera, out pos);
+            transform.position = _canvas.transform.TransformPoint(pos);
+
             tooltip.transform.localPosition = Input.mousePosition - new Vector3(470, 137, 0);//Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
         }
     }
