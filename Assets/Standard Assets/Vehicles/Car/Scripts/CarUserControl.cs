@@ -87,6 +87,7 @@ public class CarUserControl : NetworkBehaviour
         }
 
 
+
         private void FixedUpdate()
         {
             vehicle = GameObject.Find("SnowMobile");
@@ -97,8 +98,12 @@ public class CarUserControl : NetworkBehaviour
             h = CrossPlatformInputManager.GetAxis("Horizontal");
             v = CrossPlatformInputManager.GetAxis("Vertical");
             handbrake = CrossPlatformInputManager.GetAxis("Jump");
+        
+
+            
             CmdMove(h, v, handbrake, vehicle.GetComponent<NetworkIdentity>().netId);
 
-        }
+
+    }
     
 }

@@ -185,13 +185,13 @@ namespace UnityStandardAssets.Vehicles.Car
         [ClientRpc]
         void RpcMove(float steering, float accel, float footbrake, float handbrake)
         {
-            if(accel < 0)
+            if(accel > 0 && _hasDriver)
             {
-                _particleSystem.GetComponent<ParticleSystem>().Stop();
+                _particleSystem.GetComponent<ParticleSystem>().Play();
             }
             else
             {
-                _particleSystem.GetComponent<ParticleSystem>().Play();
+                _particleSystem.GetComponent<ParticleSystem>().Stop();
                 
             }
 

@@ -20,7 +20,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
         pms = GetComponent<PlayerMovementScript>();
-        kompassi = transform.GetChild(0).GetChild(2).GetChild(12).gameObject;
+        kompassi = transform.GetChild(0).GetChild(2).GetChild(6).gameObject;
         lyhty = transform.GetChild(0).GetChild(2).GetChild(8).gameObject;
         suklaa = transform.GetChild(0).GetChild(2).GetChild(9).gameObject;
         termos = transform.GetChild(0).GetChild(2).GetChild(11).gameObject;
@@ -100,7 +100,6 @@ public class FirstPersonAnimationManager : MonoBehaviour {
     {
         fpsAnimator.SetBool("Moving", true);
     }
-
     public void TakeLantern()
     {
         itemTaken = "Lantern";

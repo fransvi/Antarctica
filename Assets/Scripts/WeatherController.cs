@@ -25,24 +25,30 @@ public class WeatherController : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerStay(Collider col)
     {
         if (col.gameObject.tag == "IgnoreSnow")
         {
             _snowParticles.Stop();
-            _snowParticles.Clear();
-
             _fogParticles.Stop();
+            
+        }
+        /*
+        if(col.gameObject.tag == "RemoveParticles")
+        {
+            _snowParticles.Clear();
             _fogParticles.Clear();
         }
+        */
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider col)
     {
         if (col.gameObject.tag == "IgnoreSnow")
-        {
+        {;
             _snowParticles.Play();
             _fogParticles.Play();
         }
     }
+
 }

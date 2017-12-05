@@ -12,6 +12,8 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public bool inVehicle;
     public GameObject worldModel;
     public GameObject viewModel;
+    public bool isClients;
+    public bool isServers;
     [SyncVar]
     public string pName = "player";
 
@@ -20,7 +22,8 @@ public class NetworkPlayerSetup : NetworkBehaviour
 
     void Update()
     {
-
+        isClients = isClient;
+        isServers = isServer;
         //Might cause lag TODO: better implementation
         if (inVehicle)
         {
@@ -46,6 +49,23 @@ public class NetworkPlayerSetup : NetworkBehaviour
             viewModel.SetActive(false);
 
         }
+    }
+
+    public void ReloadWorldModels()
+    {
+        if (isLocalPlayer)
+        {
+            worldModel.SetActive(false);
+        }
+        else
+        {
+            worldModel.SetActive(true);
+        }
+    }
+
+    public void DisableWorldModel()
+    {
+        worldModel.SetActive(false);
     }
 
 

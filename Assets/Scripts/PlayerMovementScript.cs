@@ -35,11 +35,112 @@ public class PlayerMovementScript : NetworkBehaviour {
         playerAnimator.SetBool("isJumping", false);
     }
 	
+
+    [Command]
+    void CmdEquipLantern(NetworkInstanceId netId, bool b)
+    {
+        RpcEquipLantern(netId, b);
+    }
+    [ClientRpc]
+    void RpcEquipLantern(NetworkInstanceId netId, bool b)
+    {
+        if (b)
+        {
+            GameObject localPlayer = ClientScene.FindLocalObject(netId);
+            localPlayer.GetComponent<Animator>().SetBool("lanternActive", true);
+            localPlayer.GetComponent<FirstPersonAnimationManager>().ResetItemHold();
+            localPlayer.GetComponent<FirstPersonAnimationManager>().ResetIdleAnimInstantly();
+            itemHeld = "Lantern";
+            localPlayer.GetComponent<FirstPersonAnimationManager>().TakeLantern();
+        }
+        else
+        {
+            GameObject localPlayer = ClientScene.FindLocalObject(netId);
+            localPlayer.GetComponent<Animator>().SetBool("lanternActive", true);
+            localPlayer.GetComponent<FirstPersonAnimationManager>().ResetItemHold();
+            localPlayer.GetComponent<FirstPersonAnimationManager>().ResetIdleAnimInstantly();
+            localPlayer.GetComponent<FirstPersonAnimationManager>().EmptyHands();
+            itemHeld = "";
+  
+        }
+
+       
+    }
 	// Update is called once per frame
 	void Update () {
 
         if (gameObject.layer == LayerMask.NameToLayer("LocalPlayer")) {
 
+
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld != "Lantern" && allowItemChange)
+            {
+                CmdEquipLantern(GetComponent<NetworkIdentity>().netId, true);
+                        /*
+                playerAnimator.SetBool(lanternActive, true);
+               fpsAnimManager.ResetItemHold();
+               fpsAnimManager.ResetIdleAnimInstantly();
+               itemHeld = "Lantern";
+               fpsAnimManager.TakeLantern();
+               */
+
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld == "Lantern")
+            {
+                CmdEquipLantern(GetComponent<NetworkIdentity>().netId, false);
+                /*
+                playerAnimator.SetBool("lanternActive", false);
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                fpsAnimManager.EmptyHands();
+                itemHeld = "";
+                */
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld != "Compass" && allowItemChange)
+            {
+                playerAnimator.SetBool("lanternActive", false);
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Compass";
+                fpsAnimManager.TakeCompass();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld == "Compass")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                fpsAnimManager.EmptyHands();
+                itemHeld = "";
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld != "Chocolate" && allowItemChange)
+            {
+                playerAnimator.SetBool("lanternActive", false);
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Chocolate";
+                fpsAnimManager.TakeChocolate();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && itemHeld == "Chocolate")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                fpsAnimManager.EmptyHands();
+                itemHeld = "";
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld != "Thermos" && allowItemChange)
+            {
+                playerAnimator.SetBool("lanternActive", false);
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                itemHeld = "Thermos";
+                fpsAnimManager.TakeThermos();
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld == "Thermos")
+            {
+                fpsAnimManager.ResetItemHold();
+                fpsAnimManager.ResetIdleAnimInstantly();
+                fpsAnimManager.EmptyHands();
+                itemHeld = "";
+            }
             //Check jump before anything
             if (Input.GetKey(KeyCode.Space))
             {
@@ -223,6 +324,7 @@ public class PlayerMovementScript : NetworkBehaviour {
             fpsAnimManager.ResetItemHold();
             fpsAnimManager.ResetIdleAnimInstantly();
             fpsAnimManager.TakeLantern();
+            itemHeld = "Lantern";
             allowItemChange = false;
         }
 
