@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerHealth : NetworkBehaviour
 {
@@ -10,6 +11,12 @@ public class PlayerHealth : NetworkBehaviour
     public Image hungerBarContent;
     public Image thirstBarContent;
     public Image temperatureBarContent;
+    public PlayerMovementScript pms;
+    public FirstPersonController fpc;
+    public GameObject hands;
+    public float knockdownSeconds;
+    public bool knockdownCountDown;
+    public Animator playerAnimator;
 
     public const int maxHealth = 100;
 
@@ -58,6 +65,9 @@ public class PlayerHealth : NetworkBehaviour
 
     void SetInitialReferences()
     {
+        pms = GetComponent<PlayerMovementScript>();
+        playerAnimator = GetComponent<Animator>();
+        fpc = GetComponent<FirstPersonController>();
         GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
         healthBarContent = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
         staminaBarContent = transform.GetChild(5).GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>();
@@ -65,11 +75,11 @@ public class PlayerHealth : NetworkBehaviour
         thirstBarContent = transform.GetChild(5).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>();
         temperatureBarContent = transform.GetChild(5).GetChild(4).GetChild(0).GetChild(0).GetComponent<Image>();
 
-        currentHealth = (int)(healthBarContent.fillAmount * 100);
-        currentStamina = (int)(staminaBarContent.fillAmount * 100);
-        currentHunger = (int)(hungerBarContent.fillAmount * 100);
-        currentThirst = (int)(thirstBarContent.fillAmount * 100);
-        currentTemperature = (int)(temperatureBarContent.fillAmount * 100);
+        healthBarContent.fillAmount = currentHealth / 100f;
+        staminaBarContent.fillAmount = currentStamina / 100f;
+        hungerBarContent.fillAmount = currentHunger / 100f;
+        thirstBarContent.fillAmount = currentThirst / 100f;
+        temperatureBarContent.fillAmount = currentTemperature / 100f;
 
         startHealthIncrement = false;
         startStaminaIncrement = false;
@@ -81,7 +91,7 @@ public class PlayerHealth : NetworkBehaviour
         startStaminaReduction = false;
         startHungerReduction = true;
         startThirstReduction = true;
-        startTemperatureReduction = true;
+        startTemperatureReduction = false;
 
         healthIncreaseCooldown = 0f;
         staminaIncreaseCooldown = 0f;
@@ -94,11 +104,19 @@ public class PlayerHealth : NetworkBehaviour
         hungerReductionCooldown = 0f;
         thirstReductionCooldown = 0f;
         temperatureReductionCooldown = 0f;
+
+        knockdownSeconds = 0f;
+        knockdownCountDown = false;
     }
 
     public void FixedUpdate()
     {
         IncrmentOrDecreaseStatsOverTime();
+
+        if (knockdownCountDown)
+        {
+            knockdownSeconds += Time.deltaTime;
+        }
     }
 
     public void TakeDamage(int amount)
@@ -203,6 +221,7 @@ public class PlayerHealth : NetworkBehaviour
     void IncreaseHealth(int amount, float frequency)
     {
         currentHealth += amount;
+        healthBarContent.fillAmount = currentHealth / 100f;
 
         healthIncreaseCooldown = Time.time + frequency;
     }
@@ -214,7 +233,7 @@ public class PlayerHealth : NetworkBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= amount;
-            healthBarContent.fillAmount -= (amount / 100f);
+            healthBarContent.fillAmount = currentHealth / 100f;
             GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
 
             healthReductionCooldown = Time.time + frequency;
@@ -224,13 +243,40 @@ public class PlayerHealth : NetworkBehaviour
 
     void KnockDownState()
     {
-        Debug.Log("KnockdownState");
+        if (knockdownCountDown == false)
+        {
+            knockdownCountDown = true;
+            playerAnimator.Play("Armature|Knockdown");
+            Debug.Log("KnockdownState");
+            pms.allowMovement = false;
+            fpc.m_WalkSpeed = 0;
+            fpc.m_RunSpeed = 0;
+            hands.SetActive(false);
+            Invoke("Revive", 10f);
+        }
+    }
+
+    void Revive()
+    {
+        Debug.Log("Revived");
+        playerAnimator.Play("idle");
+        pms.allowMovement = true;
+        fpc.m_WalkSpeed = 5;
+        fpc.m_RunSpeed = 10;
+        hands.SetActive(true);
+        knockdownCountDown = false;
+        InstantlyIncreaseHealth(25);
+        InstantlyIncreaseStamina(50);
+        InstantlyIncreaseHunger(25);
+        InstantlyIncreaseThirst(25);
+        pms.ResetItems();
     }
 
     // increase hunger over time (or the lack of it, increase is actually good with this stat
    public void IncreaseHunger(int amount, float frequency)
     {
         currentHunger += amount;
+        hungerBarContent.fillAmount = currentHunger / 100f;
 
         hungerIncreaseCooldown = Time.time + frequency;
     }
@@ -241,7 +287,7 @@ public class PlayerHealth : NetworkBehaviour
         if (currentHunger > 0)
         {
             currentHunger -= amount;
-            hungerBarContent.fillAmount -= (amount / 100f);
+            hungerBarContent.fillAmount = currentHunger / 100f;
         }
         else ReduceStamina(2, frequency);
 
@@ -252,6 +298,7 @@ public class PlayerHealth : NetworkBehaviour
     void IncreaseThirst(int amount, float frequency)
     {
         currentThirst += amount;
+        thirstBarContent.fillAmount = currentThirst / 100f;
 
         thirstIncreaseCooldown = Time.time + frequency;
     }
@@ -262,7 +309,7 @@ public class PlayerHealth : NetworkBehaviour
         if (currentThirst > 0)
         {
             currentThirst -= amount;
-            thirstBarContent.fillAmount -= (amount / 100f);
+            thirstBarContent.fillAmount = currentThirst / 100f;
         }
         else ReduceStamina(1, frequency);
 
@@ -273,6 +320,7 @@ public class PlayerHealth : NetworkBehaviour
     void IncreaseStamina(int amount, float frequency)
     {
         currentStamina += amount;
+        staminaBarContent.fillAmount = currentStamina / 100f;
 
         staminaIncreaseCooldown = Time.time + frequency;
     }
@@ -283,7 +331,7 @@ public class PlayerHealth : NetworkBehaviour
         if (currentStamina > 0)
         {
             currentStamina -= amount;
-            staminaBarContent.fillAmount -= (amount / 100f);
+            staminaBarContent.fillAmount = currentStamina / 100f;
         }
         else {
             currentStamina = 0;
@@ -298,6 +346,7 @@ public class PlayerHealth : NetworkBehaviour
     void IncreaseTemperature(int amount, float frequency)
     {
         currentTemperature -= amount;
+        temperatureBarContent.fillAmount = currentTemperature / 100f;
 
         temperatureIncreaseCooldown = Time.time + frequency;
     }
@@ -308,7 +357,7 @@ public class PlayerHealth : NetworkBehaviour
         if (currentTemperature < 100)
         {
             currentTemperature += amount;
-            temperatureBarContent.fillAmount += (amount / 100f);
+            temperatureBarContent.fillAmount = currentTemperature / 100f;
         }
         if (currentTemperature >= 100)
         {
@@ -338,26 +387,26 @@ public class PlayerHealth : NetworkBehaviour
    public void InstantlyIncreaseHealth(int amount)
     {
         currentHealth += amount;
-        healthBarContent.fillAmount += (amount / 100f);
+        healthBarContent.fillAmount = currentHealth / 100f;
     }
 
     // instantly reduce health
     public void InstantlyReduceHealth(int amount)
     {
         currentHealth -= amount;
-        healthBarContent.fillAmount -= (amount / 100f);
+        healthBarContent.fillAmount = currentHealth / 100f;
     }
 
     public void InstantlyIncreaseHunger(int amount)
     {
         currentHunger += amount;
-        hungerBarContent.fillAmount += (amount / 100f);
+        hungerBarContent.fillAmount = currentHunger / 100f;
         audioSource.PlayOneShot(eating);
     }
     public void InstantlyIncreaseThirst(int amount)
     {
         currentThirst += amount;
-        thirstBarContent.fillAmount += (amount / 100f);
+        hungerBarContent.fillAmount = currentHunger / 100f;
         //audioSource.PlayOneShot(eating);
     }
 
@@ -365,27 +414,27 @@ public class PlayerHealth : NetworkBehaviour
     void InstantlyIncreaseStamina(int amount)
     {
         currentStamina += amount;
-        staminaBarContent.fillAmount += (amount / 100f);
+        staminaBarContent.fillAmount = currentStamina / 100f;
     }
 
     // instantly reduce stamina
     void InstantlyReduceStamina(int amount)
     {
         currentStamina -= amount;
-        staminaBarContent.fillAmount -= (amount / 100f);
+        staminaBarContent.fillAmount = currentStamina / 100f;
     }
 
     // instantly increase temperature
     void InstantlyIncreaseTemperature(int amount)
     {
         currentTemperature += amount;
-        temperatureBarContent.fillAmount += (amount / 100f);
+        temperatureBarContent.fillAmount = currentTemperature / 100f;
     }
 
     // instantly reduce temperature
     void InstantlyReduceTemperature(int amount)
     {
         currentTemperature -= amount;
-        temperatureBarContent.fillAmount -= (amount / 100f);
+        temperatureBarContent.fillAmount = currentTemperature / 100f;
     }
 }
