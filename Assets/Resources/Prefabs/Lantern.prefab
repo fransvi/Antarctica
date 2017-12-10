@@ -237,7 +237,7 @@ Light:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1353295993409000}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.9764706, g: 1, b: 0.5735294, a: 1}
@@ -281,7 +281,7 @@ MonoBehaviour:
   _light: {fileID: 0}
   _intensityTickAmount: 0.05
   _intensityTickTimer: 2
-  _isActive: 0
+  _isActive: 1
   _fuelAmount: 100
   _fuelReductionTick: 2.5
 --- !u!114 &114949521889582022
