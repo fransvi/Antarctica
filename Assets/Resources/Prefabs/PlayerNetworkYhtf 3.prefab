@@ -3451,7 +3451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78.14, y: -15, z: 54.873684}
+  m_LocalPosition: {x: 18, y: 2.76, z: 25.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4419989092079774}
@@ -5297,6 +5297,8 @@ MonoBehaviour:
   hitForce: 100
   gunEnd: {fileID: 4586231750240878}
   rayLength: 0
+  hasKey: 0
+  hasKeyCode: 0
 --- !u!114 &114301582013931534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5395,7 +5397,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
@@ -5616,6 +5618,7 @@ MonoBehaviour:
   startThirstReduction: 0
   startTemperatureReduction: 0
   eating: {fileID: 8300000, guid: e8c9fc02ec3453343bf5c84d670d21ff, type: 3}
+  isKnockedDown: 0
 --- !u!114 &114464459447981334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5761,14 +5764,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 22
-    m_Right: 19
-    m_Top: 40
-    m_Bottom: 40
+    m_Left: 20
+    m_Right: 20
+    m_Top: 20
+    m_Bottom: 20
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
+  m_CellSize: {x: 90, y: 90}
   m_Spacing: {x: 15, y: 15}
   m_Constraint: 0
   m_ConstraintCount: 4
@@ -6063,6 +6066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cdf3a0c39d4e6419d751d0cb718537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPointer: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &114759843736377998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6290,6 +6295,8 @@ MonoBehaviour:
   hitForce: 100
   gunEnd: {fileID: 0}
   rayLength: 0
+  hasKey: 0
+  hasKeyCode: 0
 --- !u!114 &114854278210912240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6523,6 +6530,7 @@ MonoBehaviour:
   inVehicle: 0
   worldModel: {fileID: 1785076906148652}
   viewModel: {fileID: 1248507870502688}
+  weatherSystem: {fileID: 0}
   isClients: 0
   isServers: 0
   pName: player
@@ -18607,10 +18615,10 @@ RectTransform:
   m_Father: {fileID: 224018227426879876}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05436149, y: 0.060000002}
-  m_AnchorMax: {x: 0.93540967, y: 0.8896585}
-  m_AnchoredPosition: {x: 1.5, y: -3.5}
-  m_SizeDelta: {x: 15, y: 7}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1.9986877, y: -18.49987}
+  m_SizeDelta: {x: -62, y: -93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224933531860158576
 RectTransform:
@@ -18647,7 +18655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.027180746, y: 0.8896585}
   m_AnchorMax: {x: 0.7451808, y: 0.97}
-  m_AnchoredPosition: {x: 2.300003, y: -0.7999878}
+  m_AnchoredPosition: {x: 2.2999878, y: -0.8000488}
   m_SizeDelta: {x: -5.1100006, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225211563204924214
