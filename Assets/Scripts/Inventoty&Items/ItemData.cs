@@ -31,9 +31,9 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
        
         Debug.Log("Tapahtuuvain kerran");
-        apu = GameObject.Find("Equipment").transform;
+        //apu = GameObject.Find("Equipment").transform;
         equiped = false;
-        inv = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
+        inv = transform.root.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
         tooltip = inv.GetComponent<Tooltip>();
         actionbar = inv.GetComponent<ActionBar>();
 

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class ActionBar : NetworkBehaviour {
+public class ActionBar : NetworkBehaviour
+{
 
     public GameObject actionbar;
     private Item _item;
@@ -40,13 +41,14 @@ public class ActionBar : NetworkBehaviour {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B)){
+        if (Input.GetKeyDown(KeyCode.B))
+        {
 
             this.gameObject.GetComponentInParent<PlayerHealth>().InstantlyReduceHealth(20);
         }
     }
 
-    public void Activate (Item item, Slot slot)
+    public void Activate(Item item, Slot slot)
     {
 
         _item = item;
@@ -61,7 +63,7 @@ public class ActionBar : NetworkBehaviour {
 
     }
 
-	public void Deactivate ()
+    public void Deactivate()
     {
 
         actionbar.SetActive(false);
@@ -79,7 +81,7 @@ public class ActionBar : NetworkBehaviour {
         data.slotLocation = slot.id;
         if (equiped == false)
         {
-            
+
             //GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
             //apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
             equipAnimation.CheckItemAnimation(item.ID, data.equiped);
@@ -91,11 +93,11 @@ public class ActionBar : NetworkBehaviour {
         {
             //Destroy(apu.GetChild(0).gameObject);
             //GameObject itemtoequip = Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), apu);
-           
+
             //apu.parent.GetComponent<PlayerEquip>()._lantern = itemtoequip;
             equipAnimation.CheckItemAnimation(item.ID, data.equiped);
             data.changeOutline(slot);
-            
+
         }
         else if (equiped == true)
         {
@@ -109,7 +111,7 @@ public class ActionBar : NetworkBehaviour {
 
     void ConsumeItem(Item item, Slot slot)
     {
-        if (equiped == true)
+        if (equiped == true && item.ID >= 3)
         {
             data = slot.GetComponentInChildren<ItemData>();
             data.slotLocation = slot.id;
@@ -126,26 +128,43 @@ public class ActionBar : NetworkBehaviour {
         }
 
     }
-
+    //[Command]
     void DropItem(Item item)
     {
-        Transform apu = GameObject.Find("Equipment").transform;
-        Transform hands = GameObject.Find("HANDS").transform;
-        Debug.Log("dasd " + item.Title);
+        // Debug.Log("dasd " + item.Title);
         if (equiped == true)
         {
-          //  Destroy(apu.GetChild(0).gameObject);
+            //  Destroy(apu.GetChild(0).gameObject);
         }
 
         equiped = false;
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
-        Debug.Log("dasd " + item.Title);
-        GameObject itemtodropnet = (GameObject)Instantiate(Resources.Load("Prefabs/" + item.Title), hands.transform.position, hands.transform.rotation);
-        NetworkServer.Spawn(itemtodropnet);
+        Debug.Log("dasd " + transform.position);
+        var go = (GameObject)Instantiate(
+           Resources.Load("Prefabs/" + item.Title), inv.transform.root.position + new Vector3(1, 0, 0), Quaternion.identity);
+
+
+        NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
         Debug.Log("dropped ");
-      //  Object itemtodrop = Network.Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity,0);
     }
+    //void DropItem(Item item)
+    //{
+    //    Debug.Log("dasd " + item.Title);
+    //    if (equiped == true)
+    //    {
+    //      //  Destroy(apu.GetChild(0).gameObject);
+    //    }
+
+    //    equiped = false;
+    //    inv.RemoveItem(item.ID);
+    //    actionbar.SetActive(false);
+    //    Debug.Log("dasd " + item.Title);
+    //    GameObject itemtodropnet = (GameObject)Instantiate(Resources.Load("Prefabs/" + item.Title), inv.transform.position, Quaternion.identity);
+    //    NetworkServer.Spawn(itemtodropnet);
+    //    Debug.Log("dropped ");
+    //  //  Object itemtodrop = Network.Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity,0);
+    //}
 
 
 }

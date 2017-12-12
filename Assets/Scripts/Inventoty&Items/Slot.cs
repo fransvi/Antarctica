@@ -15,7 +15,7 @@ public class Slot : MonoBehaviour, IDropHandler {
     // Use this for initialization
     void Start () {
 
-        inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
+        inventory = transform.root.Find("Inventory").GetComponent<Inventory>(); // Halutaaan pääsy inventory objektiin
         equiped = false;
 
     }
