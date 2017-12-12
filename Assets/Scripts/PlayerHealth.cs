@@ -71,11 +71,11 @@ public class PlayerHealth : NetworkBehaviour
         playerAnimator = GetComponent<Animator>();
         fpc = GetComponent<FirstPersonController>();
         GetComponentInParent<NetworkPlayerSetup>().playerHealth = currentHealth;
-        healthBarContent = transform.GetChild(5).GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>();
-        staminaBarContent = transform.GetChild(5).GetChild(1).GetChild(0).GetChild(0).GetComponent<Image>();
-        hungerBarContent = transform.GetChild(5).GetChild(2).GetChild(0).GetChild(0).GetComponent<Image>();
-        thirstBarContent = transform.GetChild(5).GetChild(3).GetChild(0).GetChild(0).GetComponent<Image>();
-        temperatureBarContent = transform.GetChild(5).GetChild(4).GetChild(0).GetChild(0).GetComponent<Image>();
+        healthBarContent = transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetComponent<Image>();
+        staminaBarContent = transform.GetChild(5).GetChild(0).GetChild(2).GetChild(0).GetComponent<Image>();
+        hungerBarContent = transform.GetChild(5).GetChild(0).GetChild(3).GetChild(0).GetComponent<Image>();
+        thirstBarContent = transform.GetChild(5).GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>();
+        temperatureBarContent = transform.GetChild(5).GetChild(0).GetChild(5).GetChild(0).GetComponent<Image>();
 
         healthBarContent.fillAmount = currentHealth / 100f;
         staminaBarContent.fillAmount = currentStamina / 100f;

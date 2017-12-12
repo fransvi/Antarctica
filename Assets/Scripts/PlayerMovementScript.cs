@@ -15,6 +15,8 @@ public class PlayerMovementScript : NetworkBehaviour {
 
     public bool allowMovement;
 
+    public Camera uiCam;
+
     [SerializeField]
     public string itemHeld;
 
@@ -231,6 +233,18 @@ public class PlayerMovementScript : NetworkBehaviour {
                     {
                         fpsAnimManager.Twist();
                     }
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (uiCam.gameObject.activeInHierarchy)
+                {
+                    uiCam.gameObject.SetActive(false);
+                }
+                else
+                {
+                    uiCam.gameObject.SetActive(true);
                 }
             }
         }
