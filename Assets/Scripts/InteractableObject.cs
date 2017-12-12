@@ -21,7 +21,7 @@ public class InteractableObject : MonoBehaviour {
     {
         if (_guiEnable != false)
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), _itemText);
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), _itemText);
         }
         else
         {

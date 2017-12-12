@@ -57,6 +57,8 @@ public class PlayerHealth : NetworkBehaviour
     private AudioSource audioSource;
     public AudioClip eating;
 
+    public bool isKnockedDown = false;
+
     public void Start()
     {
         SetInitialReferences();
@@ -245,25 +247,27 @@ public class PlayerHealth : NetworkBehaviour
     {
         if (knockdownCountDown == false)
         {
+            isKnockedDown = true;
             knockdownCountDown = true;
             playerAnimator.Play("Armature|Knockdown");
             Debug.Log("KnockdownState");
             pms.allowMovement = false;
             fpc.m_WalkSpeed = 0;
             fpc.m_RunSpeed = 0;
-            hands.SetActive(false);
+          //  hands.SetActive(false);
             Invoke("Revive", 10f);
         }
     }
 
-    void Revive()
+    public void Revive()
     {
         Debug.Log("Revived");
+        isKnockedDown = false;
         playerAnimator.Play("idle");
         pms.allowMovement = true;
         fpc.m_WalkSpeed = 5;
         fpc.m_RunSpeed = 10;
-        hands.SetActive(true);
+        //hands.SetActive(true);
         knockdownCountDown = false;
         InstantlyIncreaseHealth(25);
         InstantlyIncreaseStamina(50);

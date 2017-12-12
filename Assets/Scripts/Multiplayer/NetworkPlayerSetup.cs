@@ -12,6 +12,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public bool inVehicle;
     public GameObject worldModel;
     public GameObject viewModel;
+    public GameObject weatherSystem;
     public bool isClients;
     public bool isServers;
     [SyncVar]
@@ -38,6 +39,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
     {
 
         //Placeholder :: Set colour for player 
+        weatherSystem = GameObject.Find("WeatherSystem");
         Renderer[] rend = GetComponentsInChildren<Renderer>();
         foreach (Renderer r in rend)
         {
@@ -45,6 +47,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
         }
         if (!isLocalPlayer)
         {
+            weatherSystem.SetActive(false);
             this.GetComponent<CharacterController>().enabled = false;
             viewModel.SetActive(false);
 

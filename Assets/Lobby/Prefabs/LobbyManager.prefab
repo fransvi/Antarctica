@@ -2837,7 +2837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 127.0.0.1
+  m_Text: 127.
 --- !u!114 &11466428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3267,7 +3267,7 @@ MonoBehaviour:
   m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 1178771245328552, guid: cb074fd68de28224a9e46590e351ca37,
+  m_GamePlayerPrefab: {fileID: 1178771245328552, guid: a6174de33c56e574d9d8d36cd41f4f0b,
     type: 2}
   m_LobbyScene: lobbyScene
   m_PlayScene: gameScene

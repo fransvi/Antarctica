@@ -6,13 +6,16 @@ public class DoorController : MonoBehaviour {
 
     private Animator _animator = null;
     public bool _isOpen = false;
-    public bool _isLocked;
+    public bool _requiresKey;
     private bool _guiEnable = false;
     public bool _requiresPower;
     public bool _hasPower;
     private string _doorLockedString = "The door is locked.";
     private string _doorRequiresPower = "The door requires power to open.";
+    private string _doorRequiresKeyCode = "This door requires a keycode to open.";
     private string _doorInfo;
+    public bool _requiresKeyCode;
+
 
 
 
@@ -27,38 +30,48 @@ public class DoorController : MonoBehaviour {
         _guiEnable = false;
     }
 
-    public void OpenDoor()
+    public void OpenDoor(bool hasKey, bool hasKeyCode)
     {
-        if (!_isLocked)
+        if(_requiresPower && _requiresKeyCode)
         {
-            if (_requiresPower)
+            if (_hasPower)
             {
-                if (_hasPower)
+                if (hasKeyCode)
                 {
                     _animator.SetTrigger("OpenDoor");
                 }
                 else
                 {
-                    _doorInfo = _doorRequiresPower;
+                    _doorInfo = _doorRequiresKeyCode;
                     StartCoroutine(ShowText());
                 }
 
             }
             else
             {
+                _doorInfo = _doorRequiresPower;
+                StartCoroutine(ShowText());
+            }
+        }else if(_requiresKey && !_requiresPower && !_requiresKeyCode)
+        {
+            if (hasKey)
+            {
                 _animator.SetTrigger("OpenDoor");
             }
-
-        }
-        else
+            else
+            {
+                _doorInfo = _doorLockedString;
+                StartCoroutine(ShowText());
+            }
+        }else if(!_requiresKey && !_requiresKeyCode && !_requiresPower)
         {
-            _doorInfo = _doorLockedString;
-            StartCoroutine(ShowText());
+            _animator.SetTrigger("OpenDoor");
         }
+        
     }
     public void CloseDoor()
     {
-        if (!_isLocked)
+        if (!_requiresKey)
         {
             _animator.enabled = true;
             _isOpen = false;

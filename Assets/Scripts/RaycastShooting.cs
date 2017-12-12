@@ -26,6 +26,11 @@ public class RaycastShooting : NetworkBehaviour
 
     private bool viewingText;
 
+    public bool hasKey = false;
+    public bool hasKeyCode = false;
+    private bool _guiEnable = false;
+    private string _showText;
+
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
@@ -91,12 +96,30 @@ public class RaycastShooting : NetworkBehaviour
                 }
                 else
                 {
-                    door.OpenDoor();
+                    door.OpenDoor(hasKey, hasKeyCode);
                 }
  
                 break;
             case 3:
                 NetworkServer.Destroy(obj); //Itemi lootattu tuhotaan scenestä
+                break;
+            case 4:
+                if (obj.GetComponent<PlayerHealth>().isKnockedDown)
+                {
+                    obj.GetComponent<PlayerHealth>().Revive();
+                }
+                else
+                {
+                    Debug.Log("No revive needed.");
+                }
+                break;
+
+            case 5:
+                hasKey = true;
+                NetworkServer.Destroy(obj);
+                break;
+            case 6:
+                hasKeyCode = true;
                 break;
             default:
                 
@@ -175,15 +198,59 @@ public class RaycastShooting : NetworkBehaviour
                 }
                 else
                 {
-                    h.transform.GetComponent<DoorController>().OpenDoor();
+                    h.transform.GetComponent<DoorController>().OpenDoor(hasKey, hasKeyCode);
                 }
                 
             }
             if (h.transform.CompareTag("Item"))
             {
+                int id = h.transform.GetComponent<ItemPick>().id;
                 CmdHitObject(3, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
-                inv.AddItem(h.transform.GetComponent<ItemPick>().id);
+                inv.AddItem(id);
+                switch (id)
+                {
+                    case 0:
+                        _showText = "Compass picked up.";
+                        StartCoroutine(ShowText());
+                        break;
+                    case 1:
+                        _showText = "Lantern picked up.";
+                        StartCoroutine(ShowText());
+                        break;
+                    case 2:
+                        _showText = "Antenna picked up.";
+                        StartCoroutine(ShowText());
+                        break;
+                    case 3:
+                        _showText = "Choco picked up.";
+                        StartCoroutine(ShowText());
+                        break;
+                    case 4:
+                        _showText = "Termos picked up.";
+                        StartCoroutine(ShowText());
+                        break;
+                    default:
+                        break;
+                }
 
+                
+
+            }
+            if (h.transform.CompareTag("Player"))
+            {
+                CmdHitObject(4, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
+            }
+            if (h.transform.CompareTag("Key"))
+            {
+                _showText = "Key picked up.";
+                StartCoroutine(ShowText());
+                CmdHitObject(5, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
+            }
+            if (h.transform.CompareTag("KeyCode"))
+            {
+                _showText = "Keycode picked up.";
+                StartCoroutine(ShowText());
+                CmdHitObject(6, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
             }
 
             laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
@@ -216,14 +283,34 @@ public class RaycastShooting : NetworkBehaviour
         */
     }
 
+    IEnumerator ShowText()
+    {
+        _guiEnable = true;
+        yield return new WaitForSeconds(3f);
+        _guiEnable = false;
+    }
+
+    void OnGUI()
+    {
+        if(_guiEnable != false)
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), _showText);
+        }
+        else
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), " ");
+        }
+    }
 
     void Update()
     {
- 
+        if (isLocalPlayer)
+        {
             if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
             {
                 ShootRayCast();
             }
+        }
 
     }
 

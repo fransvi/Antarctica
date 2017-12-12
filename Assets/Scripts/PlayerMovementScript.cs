@@ -72,7 +72,7 @@ public class PlayerMovementScript : NetworkBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (gameObject.layer == LayerMask.NameToLayer("LocalPlayer")) {
+        if (isLocalPlayer) {
 
             if (allowMovement)
             {

@@ -130,6 +130,7 @@ public class ActionBar : NetworkBehaviour {
     void DropItem(Item item)
     {
         Transform apu = GameObject.Find("Equipment").transform;
+        Transform hands = GameObject.Find("HANDS").transform;
         Debug.Log("dasd " + item.Title);
         if (equiped == true)
         {
@@ -140,7 +141,7 @@ public class ActionBar : NetworkBehaviour {
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
         Debug.Log("dasd " + item.Title);
-        GameObject itemtodropnet = (GameObject)Instantiate(Resources.Load("Prefabs/" + item.Title), this.transform.position + Vector3.up, Quaternion.identity);
+        GameObject itemtodropnet = (GameObject)Instantiate(Resources.Load("Prefabs/" + item.Title), hands.transform.position, hands.transform.rotation);
         NetworkServer.Spawn(itemtodropnet);
         Debug.Log("dropped ");
       //  Object itemtodrop = Network.Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity,0);
