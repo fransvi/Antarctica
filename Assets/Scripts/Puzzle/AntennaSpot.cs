@@ -14,7 +14,7 @@ public class AntennaSpot : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Antenna(Clone)")
+        if(other.gameObject.tag == "Player" && other.gameObject.GetComponent<PlayerMovementScript>().itemHeld == "Antenna")
         {
             other.transform.root.GetComponent<NetworkRadio>().AntennaInPlace(radioId, true, other.transform.root.GetComponent<NetworkIdentity>().netId);
         }
@@ -22,7 +22,7 @@ public class AntennaSpot : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "Antenna(Clone)")
+        if (other.gameObject.tag == "Player" && other.gameObject.GetComponent<PlayerMovementScript>().itemHeld == "Antenna")
         {
             other.transform.root.GetComponent<NetworkRadio>().AntennaInPlace(radioId, false, other.transform.root.GetComponent<NetworkIdentity>().netId);
         }

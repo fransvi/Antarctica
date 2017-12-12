@@ -126,10 +126,14 @@ public class RadioPuzzle : MonoBehaviour
             playingAudio = 4;
             mid = 92.5f;
         }
-        else playingAudio = 5;
+        else
+        {
+            playingAudio = 5;
+        }
 
         float vol = (2.5f - Mathf.Abs(mid - a)) / 2.5f;
         if (vol > 0.90f) vol = 1;
+        if (vol < 0) vol = 0;
         volume = vol;
         activePlayer.GetComponent<NetworkRadio>().SetAudioInfo(GetComponent<NetworkIdentity>().netId, playingAudio, volume);
     }
@@ -147,7 +151,7 @@ public class RadioPuzzle : MonoBehaviour
             }
         }
         audioSource.volume = Mathf.Clamp(volume - addInterference, 0, 1);
-        interferenceSource.volume = Mathf.Clamp(volume + addInterference, 0, 1);
+        interferenceSource.volume = Mathf.Clamp((1-volume) + addInterference, 0, 1);
 
         if (volume - addInterference >= 1 && playingAudio == 3)
         {

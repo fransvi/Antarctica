@@ -16,7 +16,7 @@ public class PlayerMovementScript : NetworkBehaviour {
     public bool allowMovement;
 
     [SerializeField]
-    private string itemHeld;
+    public string itemHeld;
 
 	// Use this for initialization
 	void Start () {

@@ -399,7 +399,7 @@ Prefab:
         type: 2}
       propertyPath: m_PlayerPrefab
       value: 
-      objectReference: {fileID: 1178771245328552, guid: 6a2fd4d48e6375a4ebc321634b7e4968,
+      objectReference: {fileID: 1178771245328552, guid: a6174de33c56e574d9d8d36cd41f4f0b,
         type: 2}
     - target: {fileID: 4366473312960468, guid: 093e157a3fccc2a42bd5186017d81ca0, type: 2}
       propertyPath: m_LocalScale.y
