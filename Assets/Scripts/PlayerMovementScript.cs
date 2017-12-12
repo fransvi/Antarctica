@@ -145,6 +145,21 @@ public class PlayerMovementScript : NetworkBehaviour {
                     fpsAnimManager.EmptyHands();
                     itemHeld = "";
                 }
+                if (Input.GetKeyDown(KeyCode.Alpha5) && itemHeld != "Antenna" && allowItemChange)
+                {
+                    playerAnimator.SetBool("lanternActive", false);
+                    fpsAnimManager.ResetItemHold();
+                    fpsAnimManager.ResetIdleAnimInstantly();
+                    itemHeld = "Antenna";
+                    //fpsAnimManager.TakeThermos();
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld == "Antenna")
+                {
+                    fpsAnimManager.ResetItemHold();
+                    fpsAnimManager.ResetIdleAnimInstantly();
+                    fpsAnimManager.EmptyHands();
+                    itemHeld = "";
+                }
                 //Check jump before anything
                 if (Input.GetKey(KeyCode.Space))
                 {
@@ -261,6 +276,25 @@ public class PlayerMovementScript : NetworkBehaviour {
             fpsAnimManager.TakeCompass();
         }
         else if (itemHeld == "Compass")
+        {
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            fpsAnimManager.EmptyHands();
+            itemHeld = "";
+        }
+    }
+
+    public void ActivateOrDisableAntenna()
+    {
+        if (itemHeld != "Antenna" && allowItemChange)
+        {
+            playerAnimator.SetBool("lanternActive", false);
+            fpsAnimManager.ResetItemHold();
+            fpsAnimManager.ResetIdleAnimInstantly();
+            itemHeld = "Antenna";
+            //fpsAnimManager.TakeCompass();
+        }
+        else if (itemHeld == "Antenna")
         {
             fpsAnimManager.ResetItemHold();
             fpsAnimManager.ResetIdleAnimInstantly();

@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: c5fae7cce209da940ba59c580b673284
+timeCreated: 1513090066
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: 1-1.L
+    100002: 1-1.L 1
+    100004: 1-2.L
+    100006: 1-2.L 1
+    100008: 1-3.L
+    100010: 1-3.L 1
+    100012: 1-3.L_end
+    100014: 1-3.L_end 1
+    100016: 2-1.L
+    100018: 2-1.L 1
+    100020: 2-2.L
+    100022: 2-2.L 1
+    100024: 2-3.L
+    100026: 2-3.L 1
+    100028: 2-3.L_end
+    100030: 2-3.L_end 1
+    100032: 3-1.L
+    100034: 3-1.L 1
+    100036: 3-2.L
+    100038: 3-2.L 1
+    100040: 3-3.L
+    100042: 3-3.L 1
+    100044: 3-3.L_end
+    100046: 3-3.L_end 1
+    100048: 4-1.L
+    100050: 4-1.L 1
+    100052: 4-2.L
+    100054: 4-2.L 1
+    100056: 4-3.L
+    100058: 4-3.L 1
+    100060: 4-3.L_end
+    100062: 4-3.L_end 1
+    100064: Antenni
+    100066: Antenni.001
+    100068: Arm.L
+    100070: Arm.L 1
+    100072: Bone
+    100074: Bone 1
+    100076: Bone 2
+    100078: Bone 3
+    100080: Bone 4
+    100082: Bone_end
+    100084: Bone_end 1
+    100086: Bone_end 2
+    100088: Bone_end 3
+    100090: Bone_end 4
+    100092: Cube.000
+    100094: Cube.001
+    100096: Hand.L
+    100098: Hand.L 1
+    100100: HandLeft
+    100102: HandRight
+    100104: //RootNode
+    100106: Kompassi
+    100108: Kompassi_Taulu
+    100110: Lyhty
+    100112: Lyhty.001
+    100114: Suklaa
+    100116: SuklaaPatukka
+    100118: Termos
+    100120: TermosPullo
+    100122: Thumb.L
+    100124: Thumb.L 1
+    100126: Thumb2.L
+    100128: Thumb2.L 1
+    100130: Thumb2.L_end
+    100132: Thumb2.L_end 1
+    400000: 1-1.L
+    400002: 1-1.L 1
+    400004: 1-2.L
+    400006: 1-2.L 1
+    400008: 1-3.L
+    400010: 1-3.L 1
+    400012: 1-3.L_end
+    400014: 1-3.L_end 1
+    400016: 2-1.L
+    400018: 2-1.L 1
+    400020: 2-2.L
+    400022: 2-2.L 1
+    400024: 2-3.L
+    400026: 2-3.L 1
+    400028: 2-3.L_end
+    400030: 2-3.L_end 1
+    400032: 3-1.L
+    400034: 3-1.L 1
+    400036: 3-2.L
+    400038: 3-2.L 1
+    400040: 3-3.L
+    400042: 3-3.L 1
+    400044: 3-3.L_end
+    400046: 3-3.L_end 1
+    400048: 4-1.L
+    400050: 4-1.L 1
+    400052: 4-2.L
+    400054: 4-2.L 1
+    400056: 4-3.L
+    400058: 4-3.L 1
+    400060: 4-3.L_end
+    400062: 4-3.L_end 1
+    400064: Antenni
+    400066: Antenni.001
+    400068: Arm.L
+    400070: Arm.L 1
+    400072: Bone
+    400074: Bone 1
+    400076: Bone 2
+    400078: Bone 3
+    400080: Bone 4
+    400082: Bone_end
+    400084: Bone_end 1
+    400086: Bone_end 2
+    400088: Bone_end 3
+    400090: Bone_end 4
+    400092: Cube.000
+    400094: Cube.001
+    400096: Hand.L
+    400098: Hand.L 1
+    400100: HandLeft
+    400102: HandRight
+    400104: //RootNode
+    400106: Kompassi
+    400108: Kompassi_Taulu
+    400110: Lyhty
+    400112: Lyhty.001
+    400114: Suklaa
+    400116: SuklaaPatukka
+    400118: Termos
+    400120: TermosPullo
+    400122: Thumb.L
+    400124: Thumb.L 1
+    400126: Thumb2.L
+    400128: Thumb2.L 1
+    400130: Thumb2.L_end
+    400132: Thumb2.L_end 1
+    4300000: Antenni.001
+    4300002: Termos
+    4300004: Lyhty.001
+    4300006: Kompassi_Taulu
+    4300008: Suklaa
+    4300010: Cube.000
+    4300012: Cube.001
+    7400000: Antenni|Cube.001Action
+    7400002: "Antenni|EiMit\xE4\xE4n"
+    7400004: Antenni|Idle(Antenni)
+    7400006: Antenni|Juonti(Termos)
+    7400008: Antenni|KompassiEsiin(kompassi)
+    7400010: Antenni|KompassiIdle(kompassi)
+    7400012: Antenni|KompassiRun(Kompassi)
+    7400014: Antenni|LyhtyEsiin(Lyhty)
+    7400016: Antenni|LyhtyIdle(lyhty)
+    7400018: Antenni|Run(Antenni)
+    7400020: Antenni|RunLyhty(Lyhty)
+    7400022: Antenni|SuklaaIdle
+    7400024: Antenni|SuklaapatukkaEsiin
+    7400026: Antenni|SuklaaRun
+    7400028: "Antenni|Sy\xF6nti(SUklaa)"
+    7400030: Antenni|TermosIdle(Termos)
+    7400032: Antenni|TermosJuoksu(Termos)
+    7400034: TermosPullo|Cube.001Action
+    7400036: "TermosPullo|EiMit\xE4\xE4n"
+    7400038: TermosPullo|Idle(Antenni)
+    7400040: TermosPullo|Juonti(Termos)
+    7400042: TermosPullo|KompassiEsiin(kompassi)
+    7400044: TermosPullo|KompassiIdle(kompassi)
+    7400046: TermosPullo|KompassiRun(Kompassi)
+    7400048: TermosPullo|LyhtyEsiin(Lyhty)
+    7400050: TermosPullo|LyhtyIdle(lyhty)
+    7400052: TermosPullo|Run(Antenni)
+    7400054: TermosPullo|RunLyhty(Lyhty)
+    7400056: TermosPullo|SuklaaIdle
+    7400058: TermosPullo|SuklaapatukkaEsiin
+    7400060: TermosPullo|SuklaaRun
+    7400062: "TermosPullo|Sy\xF6nti(SUklaa)"
+    7400064: TermosPullo|TermosIdle(Termos)
+    7400066: TermosPullo|TermosJuoksu(Termos)
+    7400068: Lyhty|Cube.001Action
+    7400070: "Lyhty|EiMit\xE4\xE4n"
+    7400072: Lyhty|Idle(Antenni)
+    7400074: Lyhty|Juonti(Termos)
+    7400076: Lyhty|KompassiEsiin(kompassi)
+    7400078: Lyhty|KompassiIdle(kompassi)
+    7400080: Lyhty|KompassiRun(Kompassi)
+    7400082: Lyhty|LyhtyEsiin(Lyhty)
+    7400084: Lyhty|LyhtyIdle(lyhty)
+    7400086: Lyhty|Run(Antenni)
+    7400088: Lyhty|RunLyhty(Lyhty)
+    7400090: Lyhty|SuklaaIdle
+    7400092: Lyhty|SuklaapatukkaEsiin
+    7400094: Lyhty|SuklaaRun
+    7400096: "Lyhty|Sy\xF6nti(SUklaa)"
+    7400098: Lyhty|TermosIdle(Termos)
+    7400100: Lyhty|TermosJuoksu(Termos)
+    7400102: Kompassi|Cube.001Action
+    7400104: "Kompassi|EiMit\xE4\xE4n"
+    7400106: Kompassi|Idle(Antenni)
+    7400108: Kompassi|Juonti(Termos)
+    7400110: Kompassi|KompassiEsiin(kompassi)
+    7400112: Kompassi|KompassiIdle(kompassi)
+    7400114: Kompassi|KompassiRun(Kompassi)
+    7400116: Kompassi|LyhtyEsiin(Lyhty)
+    7400118: Kompassi|LyhtyIdle(lyhty)
+    7400120: Kompassi|Run(Antenni)
+    7400122: Kompassi|RunLyhty(Lyhty)
+    7400124: Kompassi|SuklaaIdle
+    7400126: Kompassi|SuklaapatukkaEsiin
+    7400128: Kompassi|SuklaaRun
+    7400130: "Kompassi|Sy\xF6nti(SUklaa)"
+    7400132: Kompassi|TermosIdle(Termos)
+    7400134: Kompassi|TermosJuoksu(Termos)
+    7400136: SuklaaPatukka|Cube.001Action
+    7400138: "SuklaaPatukka|EiMit\xE4\xE4n"
+    7400140: SuklaaPatukka|Idle(Antenni)
+    7400142: SuklaaPatukka|Juonti(Termos)
+    7400144: SuklaaPatukka|KompassiEsiin(kompassi)
+    7400146: SuklaaPatukka|KompassiIdle(kompassi)
+    7400148: SuklaaPatukka|KompassiRun(Kompassi)
+    7400150: SuklaaPatukka|LyhtyEsiin(Lyhty)
+    7400152: SuklaaPatukka|LyhtyIdle(lyhty)
+    7400154: SuklaaPatukka|Run(Antenni)
+    7400156: SuklaaPatukka|RunLyhty(Lyhty)
+    7400158: SuklaaPatukka|SuklaaIdle
+    7400160: SuklaaPatukka|SuklaapatukkaEsiin
+    7400162: SuklaaPatukka|SuklaaRun
+    7400164: "SuklaaPatukka|Sy\xF6nti(SUklaa)"
+    7400166: SuklaaPatukka|TermosIdle(Termos)
+    7400168: SuklaaPatukka|TermosJuoksu(Termos)
+    7400170: HandRight|Cube.001Action
+    7400172: "HandRight|EiMit\xE4\xE4n"
+    7400174: HandRight|IdleEmptyLeft
+    7400176: HandRight|IdleEmptyRight
+    7400178: HandRight|Juonti(Termos)
+    7400180: HandRight|KompassiEsiin(Hand)
+    7400182: HandRight|KompassiIdle(Hand)
+    7400184: HandRight|KompassiRUn(Hand)
+    7400186: HandRight|LyhtyEsiin
+    7400188: HandRight|LyhtyIdle(Hand)
+    7400190: HandRight|NapinPaino(Hand)
+    7400192: "HandRight|NapinV\xE4\xE4nt\xF6(Hand)"
+    7400194: HandRight|PoisValoaSaatamasta
+    7400196: HandRight|RunLyhty(Hand)
+    7400198: HandRight|RunWalkEmptyLeft
+    7400200: HandRight|RunWalkEmptyRIght
+    7400202: HandRight|SaadetaanValoa
+    7400204: "HandRight|Sy\xF6nti/Juonti(Hand)"
+    7400206: HandRight|TermosIdle(Termos)
+    7400208: HandRight|TermosJuoksu(Termos)
+    7400210: HandLeft|Cube.001Action
+    7400212: "HandLeft|EiMit\xE4\xE4n"
+    7400214: HandLeft|IdleEmptyLeft
+    7400216: HandLeft|IdleEmptyRight
+    7400218: HandLeft|Juonti(Termos)
+    7400220: HandLeft|KompassiEsiin(Hand)
+    7400222: HandLeft|KompassiIdle(Hand)
+    7400224: HandLeft|KompassiRUn(Hand)
+    7400226: HandLeft|LyhtyEsiin
+    7400228: HandLeft|LyhtyIdle(Hand)
+    7400230: HandLeft|NapinPaino(Hand)
+    7400232: "HandLeft|NapinV\xE4\xE4nt\xF6(Hand)"
+    7400234: HandLeft|PoisValoaSaatamasta
+    7400236: HandLeft|RunLyhty(Hand)
+    7400238: HandLeft|RunWalkEmptyLeft
+    7400240: HandLeft|RunWalkEmptyRIght
+    7400242: HandLeft|SaadetaanValoa
+    7400244: "HandLeft|Sy\xF6nti/Juonti(Hand)"
+    7400246: HandLeft|TermosIdle(Termos)
+    7400248: HandLeft|TermosJuoksu(Termos)
+    9500000: //RootNode
+    13700000: Antenni.001
+    13700002: Cube.000
+    13700004: Cube.001
+    13700006: Kompassi_Taulu
+    13700008: Lyhty.001
+    13700010: Suklaa
+    13700012: Termos
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Antenni
+    second: {fileID: 2100000, guid: 3570cf4d31313b14abf85d782f91049c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.000
+    second: {fileID: 2100000, guid: cc711ae8899f96d47b5e038d422f1587, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 7d52e9a8fd67bc84c9d34f04703f1375, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: f7d17699693131b409f9ceee777e4433, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: 42bddfddd58d56b459bea5d426f91378, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.006
+    second: {fileID: 2100000, guid: a27f701f27645a146aca400221aaede0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: 58f861ccbcf08fb4081f0c7fccbfacb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: 711f2fc1ccb82ba499b696146ba503ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: f42ef8133eae66948b0f9b4c95e5a436, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: 8fcc1b4595bcc70409803bd1d4771c2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: 750ae8fe7af598a43accf323cfe48b53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 29307887f37f0f44eb9039858ee0e8cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mikkiteline
+    second: {fileID: 2100000, guid: 05bfa67fb8c2cd844836a0fdda0067ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mikkitelineKoristeOsat
+    second: {fileID: 2100000, guid: 6d68defec457ade4e8fb268fb298a7bf, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
