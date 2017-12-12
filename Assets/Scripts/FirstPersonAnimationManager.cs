@@ -8,6 +8,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
     private GameObject lyhty;
     private GameObject suklaa;
     private GameObject termos;
+    private GameObject antenna;
     private Animator fpsAnimator;
     private PlayerMovementScript pms;
 
@@ -20,10 +21,11 @@ public class FirstPersonAnimationManager : MonoBehaviour {
 
         fpsAnimator = transform.GetChild(0).GetChild(2).GetComponent<Animator>();
         pms = GetComponent<PlayerMovementScript>();
-        kompassi = transform.GetChild(0).GetChild(2).GetChild(6).gameObject;
-        lyhty = transform.GetChild(0).GetChild(2).GetChild(8).gameObject;
-        suklaa = transform.GetChild(0).GetChild(2).GetChild(9).gameObject;
-        termos = transform.GetChild(0).GetChild(2).GetChild(11).gameObject;
+        antenna = transform.GetChild(0).GetChild(2).GetChild(1).gameObject;
+        kompassi = transform.GetChild(0).GetChild(2).GetChild(7).gameObject;
+        lyhty = transform.GetChild(0).GetChild(2).GetChild(9).gameObject;
+        suklaa = transform.GetChild(0).GetChild(2).GetChild(10).gameObject;
+        termos = transform.GetChild(0).GetChild(2).GetChild(12).gameObject;
     }
 	
 	// Update is called once per frame
@@ -49,6 +51,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         lyhty.SetActive(false);
         suklaa.SetActive(false);
         termos.SetActive(false);
+        antenna.SetActive(false);
     }
 
     public void ResetIdleAnimInstantly()
@@ -83,6 +86,12 @@ public class FirstPersonAnimationManager : MonoBehaviour {
             fpsAnimator.Play("HandLeft|IdleEmptyRight", fpsAnimator.GetLayerIndex("LeftHandLayer"), 0f);
             fpsAnimator.Play("Armature|TermosIdle(Termos)", fpsAnimator.GetLayerIndex("TermosLayer"), 0f);
         }
+        else if (item == "Antenna")
+        {
+            fpsAnimator.Play("HandRight|KompassiIdle(Hand)", fpsAnimator.GetLayerIndex("RightHandLayer"), 0f);
+            fpsAnimator.Play("HandLeft|IdleEmptyRight", fpsAnimator.GetLayerIndex("LeftHandLayer"), 0f);
+            fpsAnimator.Play("Antenni|Idle(Antenni)", fpsAnimator.GetLayerIndex("AntenniLayer"), 0f);
+        }
     }
 
     public void IdleHands()
@@ -107,6 +116,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         lyhty.SetActive(true);
         suklaa.SetActive(false);
         termos.SetActive(false);
+        antenna.SetActive(false);
 
         fpsAnimator.Play("otaLyhty", fpsAnimator.GetLayerIndex("LyhtyLayer"), 0f);
         fpsAnimator.SetBool("LyhtyActive", true);
@@ -121,6 +131,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         lyhty.SetActive(false);
         suklaa.SetActive(false);
         termos.SetActive(false);
+        antenna.SetActive(false);
         Debug.Log("kompaasasda");
         fpsAnimator.Play("otaKompassi", fpsAnimator.GetLayerIndex("KompassiLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
@@ -139,6 +150,7 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         lyhty.SetActive(false);
         suklaa.SetActive(true);
         termos.SetActive(false);
+        antenna.SetActive(false);
 
         fpsAnimator.Play("otaSuklaa", fpsAnimator.GetLayerIndex("SuklaaLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
@@ -152,8 +164,23 @@ public class FirstPersonAnimationManager : MonoBehaviour {
         lyhty.SetActive(false);
         suklaa.SetActive(false);
         termos.SetActive(true);
+        antenna.SetActive(false);
 
         fpsAnimator.Play("otaTermos", fpsAnimator.GetLayerIndex("TermosLayer"), 0f);
+        fpsAnimator.SetBool("KompassiActive", true);
+        syncing = true;
+    }
+
+    public void TakeAntenna()
+    {
+        itemTaken = "Antenna";
+        kompassi.SetActive(false);
+        lyhty.SetActive(false);
+        suklaa.SetActive(false);
+        termos.SetActive(false);
+        antenna.SetActive(true);
+
+        fpsAnimator.Play("Antenni|Idle(Antenni)", fpsAnimator.GetLayerIndex("AntennaLayer"), 0f);
         fpsAnimator.SetBool("KompassiActive", true);
         syncing = true;
     }

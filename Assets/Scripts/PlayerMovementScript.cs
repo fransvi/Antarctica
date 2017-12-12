@@ -151,7 +151,7 @@ public class PlayerMovementScript : NetworkBehaviour {
                     fpsAnimManager.ResetItemHold();
                     fpsAnimManager.ResetIdleAnimInstantly();
                     itemHeld = "Antenna";
-                    //fpsAnimManager.TakeThermos();
+                    fpsAnimManager.TakeAntenna();
                 }
                 else if (Input.GetKeyDown(KeyCode.Alpha4) && itemHeld == "Antenna")
                 {
@@ -292,7 +292,7 @@ public class PlayerMovementScript : NetworkBehaviour {
             fpsAnimManager.ResetItemHold();
             fpsAnimManager.ResetIdleAnimInstantly();
             itemHeld = "Antenna";
-            //fpsAnimManager.TakeCompass();
+            fpsAnimManager.TakeAntenna();
         }
         else if (itemHeld == "Antenna")
         {
