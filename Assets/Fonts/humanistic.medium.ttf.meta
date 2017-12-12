@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1efc82ba4ea81054ca070b2e3cf8af02
+timeCreated: 1513020478
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Humanistic
+  fontNames:
+  - Humanistic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

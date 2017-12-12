@@ -42,6 +42,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         if (item != null)//tsekkaus onko asia jota halutaan siirtää esine
         {
+            //Debug.Log(eventData.pointerPress.gameObject.name);
             this.transform.SetParent(this.transform.parent.parent);
             this.transform.position = eventData.position;//kerrotaan esineelle seurata kursoria
             GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -68,16 +69,21 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)//tapahtuu siirron loputtua
     {
-        
+        Debug.Log(eventData.lastPress.gameObject.GetComponent<ItemData>().name);
+        Debug.Log(eventData.lastPress.gameObject.GetComponent<ItemData>().equiped);
         this.transform.SetParent(inv.slots[slotLocation].transform);
         this.transform.position = inv.slots[slotLocation].transform.position;// Asetetaan esineen paikaksi halutun slotin paikka 
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         slot = transform.GetComponentInParent<Slot>();
         Debug.Log("edellinen slot " + previousSlot);
         Debug.Log("nykyinen slot " + slotLocation);
+        Debug.Log(inv.slots[previousSlot].GetComponent<Slot>().equiped);
 
-        if ((inv.slots[previousSlot].GetComponent<Slot>().equiped == true) && (apu.GetChild(0).GetComponent<ItemPick>().id == gameObject.GetComponent<ItemData>().id))
+
+
+        if ((inv.slots[previousSlot].GetComponent<Slot>().equiped == true) && (eventData.lastPress.gameObject.GetComponent<ItemData>().equiped == true))
         {
+            Debug.Log("Joooo");
             changeOutline(inv.slots[slotLocation].GetComponent<Slot>());
             if(previousSlot == slotLocation)
             {
@@ -183,7 +189,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Debug.Log(equiped);
         Debug.Log((previousSlot == slotLocation && slot.equiped == false));
         Debug.Log((previousSlot == slotLocation && slot.equiped == false) && equiped == false);
-
+        Debug.Log((previousSlot != slotLocation && slot.equiped == false) && equiped == false);
 
         if ((previousSlot == slotLocation && slot.equiped == false) && equiped == false)
         {
@@ -216,6 +222,7 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             inv.slots[previousSlot].GetComponent<Outline>().enabled = false;
 
             equiped = true;
+            Debug.Log(inv.slots[previousSlot].GetComponent<Slot>().equiped);
         }
         else if ((previousSlot != slotLocation && slot.equiped == false) && equiped == true)
         {
@@ -227,7 +234,8 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             slot.GetComponent<Slot>().equiped = true;
         }
 
+        Debug.Log("asfdadgSDGASFHESTDHSFGH");
         previousSlot = slotLocation;
-
+        Debug.Log(previousSlot);
     }
 }

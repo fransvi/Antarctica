@@ -130,17 +130,20 @@ public class ActionBar : NetworkBehaviour {
     void DropItem(Item item)
     {
         Transform apu = GameObject.Find("Equipment").transform;
-
+        Debug.Log("dasd " + item.Title);
         if (equiped == true)
         {
-            Destroy(apu.GetChild(0).gameObject);
+          //  Destroy(apu.GetChild(0).gameObject);
         }
 
         equiped = false;
         inv.RemoveItem(item.ID);
         actionbar.SetActive(false);
-
-        Object itemtodrop = Network.Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity,0);
+        Debug.Log("dasd " + item.Title);
+        GameObject itemtodropnet = (GameObject)Instantiate(Resources.Load("Prefabs/" + item.Title), this.transform.position + Vector3.up, Quaternion.identity);
+        NetworkServer.Spawn(itemtodropnet);
+        Debug.Log("dropped ");
+      //  Object itemtodrop = Network.Instantiate((GameObject)Resources.Load("Prefabs/" + _item.Title), this.transform.position + Vector3.forward, Quaternion.identity,0);
     }
 
 

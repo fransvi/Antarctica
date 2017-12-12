@@ -43,16 +43,21 @@ public class Slot : MonoBehaviour, IDropHandler {
             Transform item = this.transform.GetChild(0);
             item.GetComponent<ItemData>().slotLocation = droppedItem.slotLocation;
             Debug.Log("asdasdasdasfsfdbadfb" + item.GetComponent<ItemData>().slotLocation);
+            Debug.Log("asdasdasdasfsfdbadfb" + item.GetComponent<ItemData>().item.Title);
+            Debug.Log("asdasdasdasfsfdbadfb" + droppedItem.name);
+
 
             Debug.Log(inventory.slots[droppedItem.slotLocation].GetComponent<Slot>().equiped);
+            Debug.Log(inventory.slots[ItemData.previousSlot].GetComponent<Slot>().equiped);
             Debug.Log(droppedItem.slotLocation != ItemData.previousSlot);
 
             if (inventory.slots[droppedItem.slotLocation].GetComponent<Slot>().equiped == true || inventory.slots[ItemData.previousSlot].GetComponent<Slot>().equiped == true)
             {
                 if (droppedItem.slotLocation != ItemData.previousSlot)
                 {
+                    Debug.Log(inventory.slots[droppedItem.slotLocation].GetComponent<Slot>().id);
                     Debug.Log("Bissee");
-                    droppedItem.changeOutline(inventory.slots[droppedItem.slotLocation].GetComponent<Slot>());
+                    item.GetComponent<ItemData>().changeOutline(inventory.slots[droppedItem.slotLocation].GetComponent<Slot>());
                 }
             }
 
