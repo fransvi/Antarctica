@@ -83,8 +83,7 @@ public class NetworkRadio : NetworkBehaviour
     void RpcAntennaInPlace(NetworkInstanceId id, bool state, NetworkInstanceId antennaId)
     {
         GameObject player = ClientScene.FindLocalObject(antennaId);
-        GameObject obj = player.transform.Find("Equipment").Find("Antenna(Clone)").gameObject;
-        ClientScene.FindLocalObject(id).GetComponent<RadioPuzzle>().AntennaInPlace(state, obj);
+        ClientScene.FindLocalObject(id).GetComponent<RadioPuzzle>().AntennaInPlace(state, player);
     }
 
     public void AntennaInPlace(NetworkInstanceId id, bool state, NetworkInstanceId antennaId)
