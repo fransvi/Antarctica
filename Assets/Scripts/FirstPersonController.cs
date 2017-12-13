@@ -277,6 +277,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
+            
             // pick & play a random footstep sound from the array,
             // excluding sound at index 0
             int n = Random.Range(1, m_FootstepSounds.Length);
@@ -285,6 +286,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // move picked sound to index 0 so it's not picked next time
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.tag == "InHouse")
+            {
+                Debug.Log("inside");
+                m_FootstepSounds[0] = (AudioClip)Resources.Load("Audio/Footstep01");
+                m_FootstepSounds[1] = (AudioClip)Resources.Load("Audio/Footstep02");
+
+            }
+            if(other.tag == "Outside")
+            {
+                Debug.Log("outside");
+                m_FootstepSounds[0] = (AudioClip)Resources.Load("Audio/Askelten_aani_lumessa");
+                m_FootstepSounds[1] = (AudioClip)Resources.Load("Audio/Askelten_aani_lumessa");
+            }
+
         }
 
 

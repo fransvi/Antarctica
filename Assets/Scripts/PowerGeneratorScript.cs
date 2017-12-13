@@ -14,6 +14,7 @@ public class PowerGeneratorScript : MonoBehaviour {
     public GameObject[] _housingSwitches;
     public GameObject _researchSwitch;
     public GameObject[] _researchDoors;
+    
     // Use this for initialization
     void Start () {
         _animator = GetComponent<Animator>();
@@ -36,9 +37,11 @@ public class PowerGeneratorScript : MonoBehaviour {
     public void EnablePower()
     {
         _animator.SetTrigger("SwitchUp");
+        gameObject.GetComponent<AudioSource>().Play();
     }
     public void DisablePower()
     {
+        gameObject.GetComponent<AudioSource>().Play();
         _animator.enabled = true;
         _powerOn = false;
         _powerLight.GetComponent<Renderer>().material.color = Color.red;

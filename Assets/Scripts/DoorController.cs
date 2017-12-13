@@ -13,7 +13,7 @@ public class DoorController : MonoBehaviour {
     private string _doorLockedString = "The door is locked.";
     private string _doorRequiresPower = "The door requires power to open.";
     private string _doorRequiresKeyCode = "This door requires a keycode to open.";
-    private string _doorInfo;
+    public string _doorInfo;
     public bool _requiresKeyCode;
 
 
@@ -38,6 +38,7 @@ public class DoorController : MonoBehaviour {
             {
                 if (hasKeyCode)
                 {
+                    gameObject.GetComponent<AudioSource>().Play();
                     _animator.SetTrigger("OpenDoor");
                 }
                 else
@@ -56,6 +57,7 @@ public class DoorController : MonoBehaviour {
         {
             if (hasKey)
             {
+                //gameObject.GetComponent<AudioSource>().Play();
                 _animator.SetTrigger("OpenDoor");
             }
             else
@@ -65,6 +67,7 @@ public class DoorController : MonoBehaviour {
             }
         }else if(!_requiresKey && !_requiresKeyCode && !_requiresPower)
         {
+            //gameObject.GetComponent<AudioSource>().Play();
             _animator.SetTrigger("OpenDoor");
         }
         
@@ -73,6 +76,7 @@ public class DoorController : MonoBehaviour {
     {
         if (!_requiresKey)
         {
+            gameObject.GetComponent<AudioSource>().Play();
             _animator.enabled = true;
             _isOpen = false;
         }
@@ -86,15 +90,15 @@ public class DoorController : MonoBehaviour {
         _animator.enabled = false;
     }
 
-    void OnGUI()
-    {
-        if (_guiEnable != false)
-        {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), _doorInfo);
-        }
-        else
-        {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), " ");
-        }
-    }
+    //public void OnGUI()
+    //{
+    //    if (_guiEnable != false)
+    //    {
+    //        GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), _doorInfo);
+    //    }
+    //    else
+    //    {
+    //        GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), " ");
+    //    }
+    //}
 }

@@ -1392,6 +1392,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1130893188818054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4283904337298176}
+  - component: {fileID: 33773060296703312}
+  - component: {fileID: 65492810613731956}
+  m_Layer: 0
+  m_Name: Outside
+  m_TagString: Outside
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1131585724502280
 GameObject:
   m_ObjectHideFlags: 1
@@ -4220,6 +4237,23 @@ GameObject:
   m_Layer: 0
   m_Name: Runko003
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1354206840669412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4932549523634328}
+  - component: {fileID: 33324441798073756}
+  - component: {fileID: 65400182831343606}
+  m_Layer: 0
+  m_Name: InDaHouse
+  m_TagString: InHouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13598,6 +13632,19 @@ Transform:
   m_Father: {fileID: 4828481875890928}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4283904337298176
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130893188818054}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.29, y: 1.3900003, z: -9.42}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4604865210920022}
+  m_RootOrder: 32
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4284516275589170
 Transform:
   m_ObjectHideFlags: 1
@@ -16747,6 +16794,8 @@ Transform:
   - {fileID: 4435534013355178}
   - {fileID: 4928509475116828}
   - {fileID: 4499397357291878}
+  - {fileID: 4932549523634328}
+  - {fileID: 4283904337298176}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19593,6 +19642,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4748062313543850}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4932549523634328
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354206840669412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.97, y: 1.39, z: -11.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4604865210920022}
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4934227767051152
 Transform:
@@ -37390,6 +37452,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1539188781296306}
   m_Mesh: {fileID: 4300582, guid: 9b3184e9ae42a7e469d2b76cc834b990, type: 3}
+--- !u!33 &33324441798073756
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354206840669412}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33324949361766988
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -38902,6 +38971,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1964343749431894}
   m_Mesh: {fileID: 4300130, guid: 9b3184e9ae42a7e469d2b76cc834b990, type: 3}
+--- !u!33 &33773060296703312
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130893188818054}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33776881695490930
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -42197,6 +42273,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.90820396, y: 2.4244425, z: 0.1462459}
   m_Center: {x: -3.1174184e-15, y: 0.00000071525574, z: 0.07312295}
+--- !u!65 &65400182831343606
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354206840669412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 2.5, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65418639505030738
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -42245,6 +42333,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3714695, y: 0.2237548, z: 2.5935507}
   m_Center: {x: -0.62012196, y: -0.052971885, z: -0.033818603}
+--- !u!65 &65492810613731956
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130893188818054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 2.5, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65509279734756214
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -42956,20 +43056,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43006,20 +43092,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43056,20 +43128,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43106,20 +43164,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43156,20 +43200,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43206,20 +43236,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43256,20 +43272,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43306,20 +43308,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43356,20 +43344,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43406,20 +43380,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43456,20 +43416,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43506,20 +43452,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43556,20 +43488,6 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -43911,6 +43829,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114021333555418642
 MonoBehaviour:
@@ -44055,6 +43974,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114065531532579096
 MonoBehaviour:
@@ -44071,6 +43991,7 @@ MonoBehaviour:
   _requiresKey: 1
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114079700422592084
 MonoBehaviour:
@@ -44381,6 +44302,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114309374323814984
 MonoBehaviour:
@@ -44461,6 +44383,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114324375115896434
 MonoBehaviour:
@@ -44477,6 +44400,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114340929902828822
 MonoBehaviour:
@@ -44749,6 +44673,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114493481188780590
 MonoBehaviour:
@@ -44797,6 +44722,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114518052167058268
 MonoBehaviour:
@@ -44909,6 +44835,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114564842209822158
 MonoBehaviour:
@@ -44957,6 +44884,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114594163928907146
 MonoBehaviour:
@@ -44973,6 +44901,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114598757129878474
 MonoBehaviour:
@@ -44989,6 +44918,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114622223581090124
 MonoBehaviour:
@@ -45037,6 +44967,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114649759912776154
 MonoBehaviour:
@@ -45213,6 +45144,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114780405991581094
 MonoBehaviour:
@@ -45261,6 +45193,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114786686885332462
 MonoBehaviour:
@@ -45277,6 +45210,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114789304857422294
 MonoBehaviour:
@@ -45437,6 +45371,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114844594232743080
 MonoBehaviour:
@@ -45453,6 +45388,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114853212823840694
 MonoBehaviour:
@@ -45501,6 +45437,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114876966048498140
 MonoBehaviour:
@@ -45533,6 +45470,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114889951431847970
 MonoBehaviour:
@@ -45549,6 +45487,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114900312489306778
 MonoBehaviour:
@@ -45677,6 +45616,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114990984663764178
 MonoBehaviour:
@@ -45693,6 +45633,7 @@ MonoBehaviour:
   _requiresKey: 0
   _requiresPower: 0
   _hasPower: 0
+  _doorInfo: 
   _requiresKeyCode: 0
 --- !u!114 &114991101276406738
 MonoBehaviour:

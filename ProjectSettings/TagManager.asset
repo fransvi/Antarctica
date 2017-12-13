@@ -17,6 +17,8 @@ TagManager:
   - Key
   - KeyCode
   - Microphone
+  - InHouse
+  - Outside
   layers:
   - Default
   - TransparentFX

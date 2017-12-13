@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using UnityStandardAssets.Vehicles.Car;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class EnterVehicle : NetworkBehaviour
 {
@@ -259,11 +260,16 @@ public class EnterVehicle : NetworkBehaviour
     {
         if (guiEnable != false)
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), "F to Enter.");
+            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.SetActive(true);
+            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().text = "F to Enter.";
+            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = true;
+            //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), "F to Enter.");
         }
         else
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), " ");
+            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.SetActive(false);
+            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = false;
+            //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), " ");
         }
     }
 }

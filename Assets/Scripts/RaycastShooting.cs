@@ -2,10 +2,11 @@
 using System.Collections;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class RaycastShooting : NetworkBehaviour
 {
-
+   
     public int gunDamage = 1;
     public float fireRate = 0.25f;
     public float weaponRange = 50f;
@@ -25,11 +26,13 @@ public class RaycastShooting : NetworkBehaviour
     private Inventory inv;
 
     private bool viewingText;
+    public Image _textImage;
 
     public bool hasKey = false;
     public bool hasKeyCode = false;
     private bool _guiEnable = false;
     private string _showText;
+    public float waitTime = 3.0f;
 
     void Start()
     {
@@ -158,13 +161,15 @@ public class RaycastShooting : NetworkBehaviour
                 if (!viewingText)
                 {
                     GetComponent<FirstPersonController>().MouseLockFPSC = true;
-                    h.transform.gameObject.GetComponent<InteractableObject>().ShowText(true);
+                    _textImage.gameObject.SetActive(true);
+                    _textImage.gameObject.GetComponentInChildren<Text>().text = h.transform.gameObject.GetComponent<InteractableObject>()._itemText;
                     viewingText = true;
                 }
                 else
                 {
+                    _textImage.gameObject.SetActive(false);
                     GetComponent<FirstPersonController>().MouseLockFPSC = false;
-                    h.transform.gameObject.GetComponent<InteractableObject>().ShowText(false);
+                   // h.transform.gameObject.GetComponent<InteractableObject>().ShowText(false, _textImage);
                     viewingText = false;
                 }
                 //h.transform.gameObject.GetComponent<InteractableObject>().ShowText(true);
@@ -199,12 +204,15 @@ public class RaycastShooting : NetworkBehaviour
                 else
                 {
                     h.transform.GetComponent<DoorController>().OpenDoor(hasKey, hasKeyCode);
+                    _showText = h.transform.GetComponent<DoorController>()._doorInfo;
+                    StartCoroutine(ShowText());
                 }
                 
             }
             if (h.transform.CompareTag("Item"))
             {
                 int id = h.transform.GetComponent<ItemPick>().id;
+                StopAllCoroutines();
                 CmdHitObject(3, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
                 inv.AddItem(id);
                 switch (id)
@@ -223,6 +231,7 @@ public class RaycastShooting : NetworkBehaviour
                         break;
                     case 3:
                         _showText = "Choco picked up.";
+                        Debug.Log("asdasd");
                         StartCoroutine(ShowText());
                         break;
                     case 4:
@@ -285,20 +294,29 @@ public class RaycastShooting : NetworkBehaviour
 
     IEnumerator ShowText()
     {
+        //StopAllCoroutines();
         _guiEnable = true;
-        yield return new WaitForSeconds(3f);
+        itemtext();
+        yield return new WaitForSeconds(waitTime);
         _guiEnable = false;
+        itemtext();
     }
 
-    void OnGUI()
+     public void itemtext()
     {
-        if(_guiEnable != false)
+        if((_guiEnable != false) && (_showText != ""))
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), _showText);
+            _textImage.gameObject.SetActive(true);
+            _textImage.gameObject.GetComponentInChildren<Text>().text = _showText;
+            _textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = true;
+            //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), _showText);
         }
         else
         {
-            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), " ");
+            _textImage.gameObject.SetActive(false);
+            _textImage.gameObject.GetComponentInChildren<Text>().text = " ";
+            _textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = false;
+            //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), " ");
         }
     }
 
