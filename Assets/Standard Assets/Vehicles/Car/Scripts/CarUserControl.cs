@@ -14,8 +14,8 @@ public class CarUserControl : NetworkBehaviour
 
         private void Awake()
         {
-            // get the car controller
-            vehicle = GameObject.Find("SnowMobile");
+        // get the car controller
+        vehicle = GameObject.FindGameObjectWithTag("Vehicle");
         }
 
         public void FullBrake()

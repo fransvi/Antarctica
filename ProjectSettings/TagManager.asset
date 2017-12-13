@@ -16,6 +16,7 @@ TagManager:
   - RemoveParticles
   - Key
   - KeyCode
+  - Microphone
   layers:
   - Default
   - TransparentFX

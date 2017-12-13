@@ -14,6 +14,7 @@ public class RadioPuzzle : MonoBehaviour
     public AudioSource audioSource;
     public AudioSource interferenceSource;
     public GameObject antenna;
+    public GameObject microphone;
     public Transform bestAntennaPosition; // Interference is smaller when antenna is close to this position
     public bool antennaInPlace = false; // If the player holding the antenna is in the right place
 
@@ -26,6 +27,8 @@ public class RadioPuzzle : MonoBehaviour
     private float lastMousePosition; // Used for changefrequency to track mousemovement
     private float volume; // audio volume
     private bool puzzleDone = false; // When puzzle is done
+    private bool _guiEnable = false;
+    public string _text;
 
     private void Update()
     {
@@ -70,6 +73,51 @@ public class RadioPuzzle : MonoBehaviour
                 changeFrequency = true;
                 lastMousePosition = Input.mousePosition.x;
             }
+            if(hit.transform.gameObject == microphone)
+            {
+                if (puzzleDone)
+                {
+                    _text = "The second rescue team has reached its first destination, over.";
+                    StartCoroutine(ShowText());
+                }
+                else if (!puzzleDone && playingAudio == 3 && volume != 1)
+                {
+                    _text = "Signal is not strong enough.";
+                    StartCoroutine(ShowText());
+                }
+                else if (!puzzleDone && playingAudio == 3 && volume == 1)
+                {
+                    _text = "Antenna is getting too much interference.";
+                    StartCoroutine(ShowText());
+                }
+                else
+                {
+                    _text = "This is not the right station.";
+                    StartCoroutine(ShowText());
+                
+                }
+            }
+        }
+    }
+
+
+    IEnumerator ShowText()
+    {
+        _guiEnable = true;
+        yield return new WaitForSeconds(3f);
+        _guiEnable = false;
+    }
+
+
+    void OnGUI()
+    {
+        if (_guiEnable != false)
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), _text);
+        }
+        else
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), " ");
         }
     }
 
@@ -147,7 +195,7 @@ public class RadioPuzzle : MonoBehaviour
             if(dist < 10)
             {
                 addInterference = dist / 12;
-                if (addInterference < 0.1f) addInterference = 0;
+                if (addInterference < 0.2f) addInterference = 0;
             }
         }
         audioSource.volume = Mathf.Clamp(volume - addInterference, 0, 1);
@@ -182,7 +230,9 @@ public class RadioPuzzle : MonoBehaviour
     {
         if(puzzleActive == false && other.CompareTag("Player"))
         {
+            Transform hands = other.transform.Find("HANDS");
             activePlayer = other.gameObject;
+            hands.gameObject.SetActive(false);
             puzzleCamera.enabled = true;
             other.GetComponentInChildren<Camera>().enabled = true;
             other.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_MouseLook.SetCursorLock(false);
@@ -194,6 +244,8 @@ public class RadioPuzzle : MonoBehaviour
     {
         if(activePlayer != null && other.CompareTag("Player"))
         {
+            Transform hands = other.transform.Find("HANDS");
+            hands.gameObject.SetActive(false);
             activePlayer.GetComponent<NetworkRadio>().TurnWheel(GetComponent<NetworkIdentity>().netId, pointer.transform.localPosition, scrollWheel.transform.localEulerAngles);
             activePlayer = null;
             other.GetComponentInChildren<Camera>().enabled = true;
