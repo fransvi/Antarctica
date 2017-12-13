@@ -230,7 +230,8 @@ public class RadioPuzzle : MonoBehaviour
     {
         if(puzzleActive == false && other.CompareTag("Player"))
         {
-            Transform hands = other.transform.Find("HANDS");
+            Transform hands = other.transform.Find("FirstPersonCharacter").Find("HANDS");
+            Debug.Log(hands);
             activePlayer = other.gameObject;
             hands.gameObject.SetActive(false);
             puzzleCamera.enabled = true;
@@ -244,8 +245,8 @@ public class RadioPuzzle : MonoBehaviour
     {
         if(activePlayer != null && other.CompareTag("Player"))
         {
-            Transform hands = other.transform.Find("HANDS");
-            hands.gameObject.SetActive(false);
+            Transform hands = other.transform.Find("FirstPersonCharacter").Find("HANDS");
+            hands.gameObject.SetActive(true);
             activePlayer.GetComponent<NetworkRadio>().TurnWheel(GetComponent<NetworkIdentity>().netId, pointer.transform.localPosition, scrollWheel.transform.localEulerAngles);
             activePlayer = null;
             other.GetComponentInChildren<Camera>().enabled = true;

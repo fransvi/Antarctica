@@ -393,6 +393,12 @@ public class PlayerMovementScript : NetworkBehaviour {
             allowItemChange = false;
         }
 
+        if(id == 2)
+        {
+            ActivateOrDisableAntenna();
+            allowItemChange = false;
+        }
+
         if ((id == 3))
         {
             fpsAnimManager.TakeChocolate();
