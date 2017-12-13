@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class NetworkPlayerSetup : NetworkBehaviour
 {
@@ -13,6 +14,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public GameObject worldModel;
     public GameObject viewModel;
     public GameObject weatherSystem;
+    public GameObject introCanvas;
     public bool isClients;
     public bool isServers;
     [SyncVar]
@@ -72,13 +74,35 @@ public class NetworkPlayerSetup : NetworkBehaviour
     }
 
 
+    IEnumerator DisplayIntroCanvas()
+    {
+        introCanvas = GameObject.Find("IntroCanvas");
+        Image image = introCanvas.transform.Find("Image").GetComponent<Image>();
+        Text text = introCanvas.transform.Find("Text").GetComponent<Text>();
+        Text text2 = introCanvas.transform.Find("Text2").GetComponent<Text>();
+        
+        introCanvas.SetActive(true);
+        text2.CrossFadeAlpha(0f, 0f, false);
+        text.CrossFadeAlpha(0f, 0f, false);
+        text.CrossFadeAlpha(1f, 2f, false);
+        yield return new WaitForSeconds(3f);
+        text.CrossFadeAlpha(0f, 1f, false);
+        yield return new WaitForSeconds(1f);
+        text2.CrossFadeAlpha(1f, 1f, false);
+        yield return new WaitForSeconds(5f);
+        text2.CrossFadeAlpha(0f, 2f, false);
+        image.CrossFadeAlpha(0f, 2f, false);
+        yield return new WaitForSeconds(3f);
+        introCanvas.SetActive(false);
 
+    }
     public override void OnStartLocalPlayer()
     {
 
         gameObject.layer = LayerMask.NameToLayer("LocalPlayer");
         playerCamera = GetComponentInChildren<Camera>();
         //Enable Components
+        StartCoroutine(DisplayIntroCanvas());
         foreach (Behaviour component in componentsToEnable)
         {
             component.enabled = true;

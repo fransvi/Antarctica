@@ -186,6 +186,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle + .5f;
         }
 
+        [Command]
+        public void CmdLobby()
+        {
+            var lobby = NetworkManager.singleton as NetworkLobbyManager;
+            NetworkManager.singleton.ServerChangeScene(lobby.playScene);
+        }
 
         private void FixedUpdate()
         {

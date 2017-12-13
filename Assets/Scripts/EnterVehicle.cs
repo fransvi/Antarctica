@@ -129,7 +129,10 @@ public class EnterVehicle : NetworkBehaviour
                 _player.GetComponent<CarUserControl>().enabled = true;
                 _carParent.GetComponent<CarController>()._hasDriver = true;
             }
+
             _inVehicle = true;
+            _carParent.GetComponent<CarController>().setWeather(true);
+            
         }
 
     }
@@ -165,14 +168,15 @@ public class EnterVehicle : NetworkBehaviour
 
         transform.position = exitPoint.position;
         transform.rotation = exitPoint.rotation;
-
+        _carParent.GetComponent<CarController>().setWeather(false);
+        
         //_playerModel.SetActive(false);
 
     }
 
     void Update()
     {
-        Debug.Log("2: " + isServer);
+       // Debug.Log("2: " + isServer);
         if (Vehicle == null)
         {
             Vehicle = GameObject.FindWithTag("Vehicle");

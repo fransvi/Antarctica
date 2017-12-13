@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.Networking.Types;
 using UnityEngine.Networking.Match;
 using System.Collections;
-
+using UnityStandardAssets.Characters.FirstPerson;
 
 namespace Prototype.NetworkLobby
 {
@@ -395,8 +395,20 @@ namespace Prototype.NetworkLobby
                     (lobbySlots[i] as LobbyPlayer).RpcUpdateCountdown(0);
                 }
             }
-
             ServerChangeScene(playScene);
+            //StartCoroutine(WaitIntroAndLoad());
+        }
+
+        IEnumerator WaitIntroAndLoad()
+        {
+            ServerChangeScene("IntroScene");
+            yield return new WaitForSeconds(1f);
+            NetworkServer.SetAllClientsNotReady();
+            foreach (PlayerController p in ClientScene.localPlayers)
+            {
+                p.gameObject.GetComponent<FirstPersonController>().CmdLobby();
+            }
+               // ServerChangeScene(playScene);
         }
 
         // ----------------- Client callbacks ------------------

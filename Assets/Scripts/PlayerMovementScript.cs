@@ -44,11 +44,13 @@ public class PlayerMovementScript : NetworkBehaviour {
     [Command]
     void CmdEquipLantern(NetworkInstanceId netId, bool b)
     {
+        Debug.Log("EQUIP 2");
         RpcEquipLantern(netId, b);
     }
     [ClientRpc]
     void RpcEquipLantern(NetworkInstanceId netId, bool b)
     {
+        Debug.Log("EQUIP 3");
         if (b)
         {
             GameObject localPlayer = ClientScene.FindLocalObject(netId);
@@ -81,6 +83,7 @@ public class PlayerMovementScript : NetworkBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.Alpha1) && itemHeld != "Lantern" && allowItemChange)
                 {
+                    Debug.Log("EQUIP 1");
                     CmdEquipLantern(GetComponent<NetworkIdentity>().netId, true);
                     /*
             playerAnimator.SetBool(lanternActive, true);

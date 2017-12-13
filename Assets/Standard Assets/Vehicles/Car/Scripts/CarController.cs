@@ -65,10 +65,12 @@ namespace UnityStandardAssets.Vehicles.Car
         private bool fullBrakeActive = false;
         private bool brakeResetNeeded = false;
 
+        public GameObject weatherSystem;
 
         // Use this for initialization
         private void Start()
         {
+            weatherSystem.SetActive(false);
             _lights.SetActive(false);
             m_WheelMeshLocalRotations = new Quaternion[4];
             for (int i = 0; i < 4; i++)
@@ -82,7 +84,10 @@ namespace UnityStandardAssets.Vehicles.Car
             m_Rigidbody = GetComponent<Rigidbody>();
             m_CurrentTorque = m_FullTorqueOverAllWheels - (m_TractionControl*m_FullTorqueOverAllWheels);
         }
-
+        public void setWeather(bool b)
+        {
+            weatherSystem.SetActive(b);
+        }
 
         private void GearChanging()
         {
