@@ -135,7 +135,7 @@ public class Inventory : MonoBehaviour
                     itemObj.transform.SetParent(slots[i].transform); //Asettaa esineen olemaan slotin lapsi
                     itemObj.transform.position = slots[i].transform.position;
                     itemObj.GetComponent<Image>().sprite = itemToAdd.Sprite;// Asettaa prefabin source imagen olemaan esineen nimen mukainen Sprite
-                    itemObj.transform.localScale = new Vector3(1, 1, 1);
+                    itemObj.transform.localScale = new Vector3(1.5f, 1.5f, 1);
                     itemObj.transform.localRotation = Quaternion.identity;
                    // itemObj.transform.localPosition = new Vector3(itemObj.transform.localPosition.x, itemObj.transform.localPosition.y, 0);
                     itemObj.name = itemToAdd.Title;// Asettaa slotissa olevien esineiden nimeksi databasessa olevan nimen. Tämä näkyy inspectorissa
