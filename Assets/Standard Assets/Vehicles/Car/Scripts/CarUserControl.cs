@@ -21,12 +21,14 @@ public class CarUserControl : NetworkBehaviour
 
         public void FullBrake()
         {
-            CmdStop(vehicle.GetComponent<NetworkIdentity>().netId);
+        vehicle = GameObject.FindGameObjectWithTag("Vehicle");
+        CmdStop(vehicle.GetComponent<NetworkIdentity>().netId);
         }
 
         public void ResetBrake()
         {
-            CmdResetBrake(vehicle.GetComponent<NetworkIdentity>().netId);
+        vehicle = GameObject.FindGameObjectWithTag("Vehicle");
+        CmdResetBrake(vehicle.GetComponent<NetworkIdentity>().netId);
         }
 
         [Command]
@@ -106,8 +108,13 @@ public class CarUserControl : NetworkBehaviour
             map.SetActive(false);
             mapActive = false;
         }
-        vehicle = GameObject.Find("SnowMobile");
 
+
+    }
+
+    private void FixedUpdate()
+        {
+        vehicle = GameObject.Find("SnowMobile");
 
         h = CrossPlatformInputManager.GetAxis("Horizontal");
         v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -116,13 +123,6 @@ public class CarUserControl : NetworkBehaviour
 
 
         CmdMove(h, v, handbrake, vehicle.GetComponent<NetworkIdentity>().netId);
-    }
-
-    private void FixedUpdate()
-        {
-
-
-
     }
     
 }

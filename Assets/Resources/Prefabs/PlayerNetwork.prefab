@@ -10544,7 +10544,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1178771245328552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 151f25885e1c86648a8722449d0887b9, type: 3}
   m_Name: 
@@ -10555,7 +10555,7 @@ MonoBehaviour:
   _playerHealthBar: {fileID: 1099850500828332}
   _playerColliders: {fileID: 0}
   _player: {fileID: 0}
-  Vehicle: {fileID: 0}
+  Vehicle: {fileID: 1237631512170892, guid: 00935f0ce0ebca44f9e2d7293d1523ad, type: 2}
   _carParent: {fileID: 1237631512170892, guid: 00935f0ce0ebca44f9e2d7293d1523ad, type: 2}
   _handsModel: {fileID: 1447929366360930}
   cam: {fileID: 0}
@@ -11064,8 +11064,9 @@ MonoBehaviour:
   worldModel: {fileID: 1785076906148652}
   viewModel: {fileID: 1447929366360930}
   weatherSystem: {fileID: 0}
-  introCanvas: {fileID: 0}
-  endCanvas: {fileID: 0}
+  introCanvas: {fileID: 1684386070300388, guid: 67dc1951c07ef3c4e9a0ad9d5e6f7ceb,
+    type: 2}
+  endCanvas: {fileID: 1281642394144768, guid: 375fa5b9216888345b81ca95cefea7d6, type: 2}
   radio: {fileID: 0}
   isClients: 0
   isServers: 0

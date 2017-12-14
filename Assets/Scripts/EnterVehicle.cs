@@ -25,12 +25,14 @@ public class EnterVehicle : NetworkBehaviour
     bool _nearVehicle;
     public GameObject _spawnPoint;
     private NetworkIdentity _objNetId;
+    private bool _start = true;
 
     void Start()
     {
 
 
         _inVehicle = false;
+
         _playercam = GetComponentInChildren<Camera>();
         _fpsCon = transform.GetComponent<FirstPersonController>();
         _playerModel = transform.Find("EMILY").gameObject;
@@ -38,7 +40,6 @@ public class EnterVehicle : NetworkBehaviour
         _playerHealthBar = transform.Find("WorldSpaceHealthbarCanvas").gameObject;
         _player = this.gameObject;
         _nearVehicle = false;
-
     }
 
 
@@ -109,6 +110,7 @@ public class EnterVehicle : NetworkBehaviour
         if (_nearVehicle)
         {
             _player = this.gameObject;
+            cam = _carParent.GetComponentInChildren<Camera>();
             cam.enabled = true;
             _player.GetComponent<FirstPersonController>().enabled = false;
             _player.GetComponent<CharacterController>().enabled = false;
@@ -140,6 +142,7 @@ public class EnterVehicle : NetworkBehaviour
     private void DeactivateVehicle(bool b)
     {
         _player = this.gameObject;
+        cam = _carParent.GetComponentInChildren<Camera>();
         cam.enabled = false;
         _player.GetComponent<FirstPersonController>().enabled = true;
         _player.GetComponent<CharacterController>().enabled = true;
@@ -177,21 +180,21 @@ public class EnterVehicle : NetworkBehaviour
 
     void Update()
     {
-       // Debug.Log("2: " + isServer);
-        if (Vehicle == null)
+        // Debug.Log("2: " + isServer);
+        if (_start)
         {
-            Vehicle = GameObject.FindWithTag("Vehicle");
-            cam = Vehicle.GetComponentInChildren<Camera>();
+            _carParent = GameObject.Find("SnowMobile");
+            cam = _carParent.GetComponentInChildren<Camera>();
             cam.enabled = false;
-            
+            _start = false;
         }
-        
+
+
+
         //Exit vehicle
         if (_inVehicle && Input.GetKeyUp(KeyCode.F))
         {
             _carParent = GameObject.Find("SnowMobile");
-            if (cam.enabled == true)
-            {
 
                 if (_carParent.GetComponent<CarSeats>()._hasDriver)
                 {
@@ -204,16 +207,12 @@ public class EnterVehicle : NetworkBehaviour
                     DeactivateVehicle(false);
                 }
 
-            }
 
         }
 
         //Enter vehicle
         else if (!_inVehicle && Input.GetKeyUp(KeyCode.F))
         {
-            if (cam.enabled == false)
-            {
-
                 if (_carParent.GetComponent<CarSeats>()._hasDriver)
                 {
                     //Activate passanger seat
@@ -224,8 +223,6 @@ public class EnterVehicle : NetworkBehaviour
                     //Activate driver seat
                     ActivateVehicle(false);
                 }
-
-            }
         }
     }
 

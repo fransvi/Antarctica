@@ -35,12 +35,20 @@ public class NetworkPlayerSetup : NetworkBehaviour
         {
             
         }
-        if (radio.GetComponent<RadioPuzzle>().puzzleDone && !endDisplayed)
+        if (!radio)
         {
-            endDisplayed = true;
-            StartCoroutine(DisplayEndCanvas());
-
+            radio = GameObject.Find("Radio");
         }
+        else
+        {
+            if (radio.GetComponent<RadioPuzzle>().puzzleDone && !endDisplayed)
+            {
+                endDisplayed = true;
+                StartCoroutine(DisplayEndCanvas());
+
+            }
+        }
+
 
         
     }
@@ -61,6 +69,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
             weatherSystem.SetActive(false);
             this.GetComponent<CharacterController>().enabled = false;
             viewModel.SetActive(false);
+            this.GetComponent<EnterVehicle>().enabled = false;
 
         }
         radio = GameObject.Find("Radio");
@@ -120,6 +129,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
         gameObject.layer = LayerMask.NameToLayer("LocalPlayer");
         playerCamera = GetComponentInChildren<Camera>();
         //Enable Components
+
         if (GameObject.Find("GameEndCanvas"))
         {
             endCanvas = GameObject.Find("GameEndCanvas");
@@ -141,7 +151,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
         playerCamera.GetComponent<AudioListener>().enabled = true;
         //Enable CharacterController
         this.GetComponent<CharacterController>().enabled = true;
-
+        GetComponent<EnterVehicle>().Vehicle = GameObject.Find("SnowMobile");
         //Renderer[] rens = GetComponentsInChildren<Renderer>();
         //foreach(Renderer ren in rens)
         //{
