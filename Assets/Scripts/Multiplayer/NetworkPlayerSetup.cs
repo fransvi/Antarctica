@@ -15,7 +15,10 @@ public class NetworkPlayerSetup : NetworkBehaviour
     public GameObject viewModel;
     public GameObject weatherSystem;
     public GameObject introCanvas;
+    public GameObject endCanvas;
+    public GameObject radio;
     public bool isClients;
+    private bool endDisplayed = false;
     public bool isServers;
     [SyncVar]
     public string pName = "player";
@@ -31,6 +34,12 @@ public class NetworkPlayerSetup : NetworkBehaviour
         if (inVehicle)
         {
             
+        }
+        if (radio.GetComponent<RadioPuzzle>().puzzleDone && !endDisplayed)
+        {
+            endDisplayed = true;
+            StartCoroutine(DisplayEndCanvas());
+
         }
 
         
@@ -54,6 +63,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
             viewModel.SetActive(false);
 
         }
+        radio = GameObject.Find("Radio");
     }
 
     public void ReloadWorldModels()
@@ -96,13 +106,31 @@ public class NetworkPlayerSetup : NetworkBehaviour
         introCanvas.SetActive(false);
 
     }
+
+    IEnumerator DisplayEndCanvas()
+    {
+        endCanvas.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        endCanvas.SetActive(false);
+
+    }
     public override void OnStartLocalPlayer()
     {
 
         gameObject.layer = LayerMask.NameToLayer("LocalPlayer");
         playerCamera = GetComponentInChildren<Camera>();
         //Enable Components
-        StartCoroutine(DisplayIntroCanvas());
+        if (GameObject.Find("GameEndCanvas"))
+        {
+            endCanvas = GameObject.Find("GameEndCanvas");
+            endCanvas.SetActive(false);
+        }
+
+        if (GameObject.Find("IntroCanvas"))
+        {
+            StartCoroutine(DisplayIntroCanvas());
+        }
+
         foreach (Behaviour component in componentsToEnable)
         {
             component.enabled = true;

@@ -260,15 +260,17 @@ public class EnterVehicle : NetworkBehaviour
     {
         if (guiEnable != false)
         {
-            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.SetActive(true);
-            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().text = "F to Enter.";
-            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = true;
+            //_player = this.gameObject;
+            //_player.GetComponent<RaycastShooting>()._textImage.gameObject.SetActive(true);
+            //_player.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().text = "F to Enter.";
+            //_player.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = true;
             //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 100, 50), "F to Enter.");
         }
         else
         {
-            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.SetActive(false);
-            _fpsCon.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = false;
+            _player = this.gameObject;
+            //_player.GetComponent<RaycastShooting>()._textImage.gameObject.SetActive(false);
+            //_player.GetComponent<RaycastShooting>()._textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = false;
             //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 50, 50), " ");
         }
     }

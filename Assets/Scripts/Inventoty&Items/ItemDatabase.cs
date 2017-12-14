@@ -13,7 +13,6 @@ public class ItemDatabase : MonoBehaviour {
 
         itemData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/StreamingAssets/Items.json")); // Muutetaan esineiden Jsondata string muotoon Items.json tiedostosta
         ConstructItemDatabase();//Kutsutaan rakennusfunktiota
-        Debug.Log(FetchItemById(0).Description);
 	}
 
     //Etsii db:stä tietyn esineen käyttämällä id:tä

@@ -113,8 +113,7 @@ namespace UnityStandardAssets.Vehicles.Car
         {
             brakeResetNeeded = true;
         }
-
-        private void FixedUpdate()
+        private void Update()
         {
             if (fullBrakeActive)
             {
@@ -126,11 +125,16 @@ namespace UnityStandardAssets.Vehicles.Car
 
             }
 
-           if (brakeResetNeeded)
-           {
-                 StartCoroutine(ResetWheels());
-                 brakeResetNeeded = false;
-           }
+            if (brakeResetNeeded)
+            {
+                StartCoroutine(ResetWheels());
+                brakeResetNeeded = false;
+            }
+        }
+
+        private void FixedUpdate()
+        {
+
 
             
         }

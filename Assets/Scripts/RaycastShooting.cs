@@ -31,7 +31,7 @@ public class RaycastShooting : NetworkBehaviour
     public bool hasKey = false;
     public bool hasKeyCode = false;
     private bool _guiEnable = false;
-    private string _showText;
+    public string _showText;
     public float waitTime = 3.0f;
 
     void Start()
@@ -113,7 +113,6 @@ public class RaycastShooting : NetworkBehaviour
                 }
                 else
                 {
-                    Debug.Log("No revive needed.");
                 }
                 break;
 
@@ -162,14 +161,15 @@ public class RaycastShooting : NetworkBehaviour
                 {
                     GetComponent<FirstPersonController>().MouseLockFPSC = true;
                     _textImage.gameObject.SetActive(true);
+                    GetComponent<PlayerHealth>().Note2.text = "Found a message from the previous team in the book.";
                     _textImage.gameObject.GetComponentInChildren<Text>().text = h.transform.gameObject.GetComponent<InteractableObject>()._itemText;
                     viewingText = true;
                 }
                 else
                 {
-                    _textImage.gameObject.SetActive(false);
+                    _textImage.gameObject.GetComponentInChildren<Text>().text = "";
                     GetComponent<FirstPersonController>().MouseLockFPSC = false;
-                   // h.transform.gameObject.GetComponent<InteractableObject>().ShowText(false, _textImage);
+                    //h.transform.gameObject.GetComponent<InteractableObject>().ShowText(false, _textImage);
                     viewingText = false;
                 }
                 //h.transform.gameObject.GetComponent<InteractableObject>().ShowText(true);
@@ -231,7 +231,6 @@ public class RaycastShooting : NetworkBehaviour
                         break;
                     case 3:
                         _showText = "Choco picked up.";
-                        Debug.Log("asdasd");
                         StartCoroutine(ShowText());
                         break;
                     case 4:
@@ -253,12 +252,14 @@ public class RaycastShooting : NetworkBehaviour
             {
                 _showText = "Key picked up.";
                 StartCoroutine(ShowText());
+                GetComponent<PlayerHealth>().Note1.text = "Found a key from the housing unit.";
                 CmdHitObject(5, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
             }
             if (h.transform.CompareTag("KeyCode"))
             {
                 _showText = "Keycode picked up.";
                 StartCoroutine(ShowText());
+                GetComponent<PlayerHealth>().Note3.text = "Found a numpad code on the wall: 1853.";
                 CmdHitObject(6, h.transform.gameObject.GetComponent<NetworkIdentity>().netId);
             }
 
@@ -292,7 +293,7 @@ public class RaycastShooting : NetworkBehaviour
         */
     }
 
-    IEnumerator ShowText()
+    public IEnumerator ShowText()
     {
         //StopAllCoroutines();
         _guiEnable = true;
@@ -307,13 +308,15 @@ public class RaycastShooting : NetworkBehaviour
         if((_guiEnable != false) && (_showText != ""))
         {
             _textImage.gameObject.SetActive(true);
+
             _textImage.gameObject.GetComponentInChildren<Text>().text = _showText;
             _textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = true;
+
             //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), _showText);
         }
         else
         {
-            _textImage.gameObject.SetActive(false);
+           // _textImage.gameObject.SetActive(false);
             _textImage.gameObject.GetComponentInChildren<Text>().text = " ";
             _textImage.gameObject.GetComponentInChildren<Text>().resizeTextForBestFit = false;
             //GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 640, 480), " ");

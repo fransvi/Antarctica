@@ -19,6 +19,7 @@ TagManager:
   - Microphone
   - InHouse
   - Outside
+  - World
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Indoors
   - RemotePlayer
   - Test
-  - 
+  - World
   - 
   - 
   - 

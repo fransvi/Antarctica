@@ -53,6 +53,9 @@ public class PlayerHealth : NetworkBehaviour
     public bool startHungerReduction;
     public bool startThirstReduction;
     public bool startTemperatureReduction;
+    public Text Note1;
+    public Text Note2;
+    public Text Note3;
 
     private AudioSource audioSource;
     public AudioClip eating;
@@ -76,6 +79,14 @@ public class PlayerHealth : NetworkBehaviour
         hungerBarContent = transform.GetChild(5).GetChild(0).GetChild(3).GetChild(0).GetComponent<Image>();
         thirstBarContent = transform.GetChild(5).GetChild(0).GetChild(4).GetChild(0).GetComponent<Image>();
         temperatureBarContent = transform.GetChild(5).GetChild(0).GetChild(5).GetChild(0).GetComponent<Image>();
+
+        Note1 = transform.GetChild(5).GetChild(3).GetComponent<Text>();
+        Note2 = transform.GetChild(5).GetChild(4).GetComponent<Text>();
+        Note3 = transform.GetChild(5).GetChild(5).GetComponent<Text>();
+
+        Note1.text = "";
+        Note2.text = "";
+        Note3.text = "";
 
         healthBarContent.fillAmount = currentHealth / 100f;
         staminaBarContent.fillAmount = currentStamina / 100f;

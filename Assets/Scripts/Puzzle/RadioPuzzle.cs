@@ -26,7 +26,7 @@ public class RadioPuzzle : MonoBehaviour
     private bool changeFrequency = false; // If wheel button is pressed it gives permission to use changefrequency
     private float lastMousePosition; // Used for changefrequency to track mousemovement
     private float volume; // audio volume
-    private bool puzzleDone = false; // When puzzle is done
+    public bool puzzleDone = false; // When puzzle is done
     private bool _guiEnable = false;
     public string _text;
 

@@ -10,6 +10,7 @@ public class CarUserControl : NetworkBehaviour
         private float h;
         private float v;
         private float handbrake;
+        private bool mapActive = false;
 
 
         private void Awake()
@@ -86,22 +87,40 @@ public class CarUserControl : NetworkBehaviour
             RpcLights(netId);
         }
 
-
-
-        private void FixedUpdate()
+    private void Update()
+    {
+        vehicle = GameObject.Find("SnowMobile");
+        if (Input.GetKeyUp(KeyCode.L))
         {
-            vehicle = GameObject.Find("SnowMobile");
-            if (Input.GetKeyUp(KeyCode.L))
-            {
-                CmdLights(vehicle.GetComponent<NetworkIdentity>().netId);
-            }
-            h = CrossPlatformInputManager.GetAxis("Horizontal");
-            v = CrossPlatformInputManager.GetAxis("Vertical");
-            handbrake = CrossPlatformInputManager.GetAxis("Jump");
-        
+            CmdLights(vehicle.GetComponent<NetworkIdentity>().netId);
+        }
+        if (Input.GetKeyDown(KeyCode.M) && !mapActive)
+        {
+            GameObject map = vehicle.transform.Find("VehMap").gameObject;
+            map.SetActive(true);
+            mapActive = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.M) && mapActive)
+        {
+            GameObject map = vehicle.transform.Find("VehMap").gameObject;
+            map.SetActive(false);
+            mapActive = false;
+        }
+        vehicle = GameObject.Find("SnowMobile");
 
-            
-            CmdMove(h, v, handbrake, vehicle.GetComponent<NetworkIdentity>().netId);
+
+        h = CrossPlatformInputManager.GetAxis("Horizontal");
+        v = CrossPlatformInputManager.GetAxis("Vertical");
+        handbrake = CrossPlatformInputManager.GetAxis("Jump");
+
+
+
+        CmdMove(h, v, handbrake, vehicle.GetComponent<NetworkIdentity>().netId);
+    }
+
+    private void FixedUpdate()
+        {
+
 
 
     }

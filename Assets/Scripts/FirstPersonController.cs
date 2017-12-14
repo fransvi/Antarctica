@@ -105,10 +105,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if (isLocalPlayer)
             {
-                if (Input.GetKeyUp(KeyCode.N))
-                {
-                    transform.position = new Vector3(0, 0, 0);
-                }
                 if (Input.GetKeyUp(KeyCode.M))
                 {
                     if (!_mapActive)
@@ -142,7 +138,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     if (!m_PreviouslyGrounded && m_CharacterController.isGrounded)
                     {
                         StartCoroutine(m_JumpBob.DoBobCycle());
-                        PlayLandingSound();
+                        //PlayLandingSound();
                         m_MoveDir.y = 0f;
                         m_Jumping = false;
                     }
@@ -184,6 +180,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
+
         }
 
         [Command]
@@ -222,7 +219,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                         {
 
                             m_MoveDir.y = m_JumpSpeed;
-                            PlayJumpSound();
+                            //PlayJumpSound();
                             m_Jump = false;
                             m_Jumping = true;
 
@@ -292,14 +289,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             if(other.tag == "InHouse")
             {
-                Debug.Log("inside");
                 m_FootstepSounds[0] = (AudioClip)Resources.Load("Audio/Footstep01");
                 m_FootstepSounds[1] = (AudioClip)Resources.Load("Audio/Footstep02");
 
             }
             if(other.tag == "Outside")
             {
-                Debug.Log("outside");
                 m_FootstepSounds[0] = (AudioClip)Resources.Load("Audio/Askelten_aani_lumessa");
                 m_FootstepSounds[1] = (AudioClip)Resources.Load("Audio/Askelten_aani_lumessa");
             }

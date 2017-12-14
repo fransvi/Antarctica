@@ -57,7 +57,7 @@ public class DoorController : MonoBehaviour {
         {
             if (hasKey)
             {
-                //gameObject.GetComponent<AudioSource>().Play();
+                gameObject.GetComponent<AudioSource>().Play();
                 _animator.SetTrigger("OpenDoor");
             }
             else
@@ -67,7 +67,7 @@ public class DoorController : MonoBehaviour {
             }
         }else if(!_requiresKey && !_requiresKeyCode && !_requiresPower)
         {
-            //gameObject.GetComponent<AudioSource>().Play();
+            gameObject.GetComponent<AudioSource>().Play();
             _animator.SetTrigger("OpenDoor");
         }
         
