@@ -104,14 +104,14 @@ public class NetworkPlayerSetup : NetworkBehaviour
         text2.CrossFadeAlpha(0f, 0f, false);
         text.CrossFadeAlpha(0f, 0f, false);
         text.CrossFadeAlpha(1f, 2f, false);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         text.CrossFadeAlpha(0f, 1f, false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         text2.CrossFadeAlpha(1f, 1f, false);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(6f);
         text2.CrossFadeAlpha(0f, 2f, false);
         image.CrossFadeAlpha(0f, 2f, false);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         introCanvas.SetActive(false);
 
     }
@@ -119,7 +119,7 @@ public class NetworkPlayerSetup : NetworkBehaviour
     IEnumerator DisplayEndCanvas()
     {
         endCanvas.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         endCanvas.SetActive(false);
 
     }

@@ -71,8 +71,8 @@ public class AutoIntensity : MonoBehaviour
         transform.Rotate(nightRotateSpeed * Time.deltaTime * skySpeed);
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadPlus)) skySpeed *= 0.5f;
-        if (Input.GetKeyDown(KeyCode.KeypadMinus)) skySpeed *= 2f;
+        if (Input.GetKeyDown(KeyCode.O)) skySpeed *= 0.5f;
+        if (Input.GetKeyDown(KeyCode.P)) skySpeed *= 2f;
 
 
     }

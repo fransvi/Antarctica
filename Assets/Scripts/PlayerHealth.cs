@@ -102,8 +102,8 @@ public class PlayerHealth : NetworkBehaviour
 
         startHealthReduction = false;
         startStaminaReduction = false;
-        startHungerReduction = true;
-        startThirstReduction = true;
+        startHungerReduction = false;
+        startThirstReduction = false;
         startTemperatureReduction = false;
 
         healthIncreaseCooldown = 0f;

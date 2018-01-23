@@ -105,7 +105,8 @@ public class PlayerMovementScript : NetworkBehaviour {
                     itemHeld = "";
                     */
                 }
-                if (Input.GetKeyDown(KeyCode.Alpha2) && itemHeld != "Compass" && allowItemChange)
+                /*
+                if (Input.GetKeyDown(KeyCode.) && itemHeld != "Compass" && allowItemChange)
                 {
                     playerAnimator.SetBool("lanternActive", false);
                     fpsAnimManager.ResetItemHold();
@@ -165,6 +166,7 @@ public class PlayerMovementScript : NetworkBehaviour {
                     fpsAnimManager.EmptyHands();
                     itemHeld = "";
                 }
+                */
                 //Check jump before anything
                 if (Input.GetKey(KeyCode.Space))
                 {

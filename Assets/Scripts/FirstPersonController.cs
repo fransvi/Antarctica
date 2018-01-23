@@ -291,12 +291,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_FootstepSounds[0] = (AudioClip)Resources.Load("Audio/Footstep01");
                 m_FootstepSounds[1] = (AudioClip)Resources.Load("Audio/Footstep02");
+                Transform t = transform.Find("FirstPersonCharacter");
+                t.gameObject.GetComponent<AudioSource>().mute = true;
 
             }
             if(other.tag == "Outside")
             {
                 m_FootstepSounds[0] = (AudioClip)Resources.Load("Audio/Askelten_aani_lumessa");
                 m_FootstepSounds[1] = (AudioClip)Resources.Load("Audio/Askelten_aani_lumessa");
+                Transform t = transform.Find("FirstPersonCharacter");
+                t.gameObject.GetComponent<AudioSource>().mute = false;
             }
 
         }
